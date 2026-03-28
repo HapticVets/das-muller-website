@@ -8,8 +8,6 @@ export default function Home() {
       <Header />
 
       <main className="min-h-screen bg-neutral-950 text-white">
-        
-        {/* HERO */}
         <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
           <div className="max-w-3xl">
             <p className="mb-4 text-sm uppercase tracking-[0.25em] text-amber-400">
@@ -50,7 +48,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PROGRAMS */}
         <section className="border-t border-neutral-900 bg-neutral-900/40">
           <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
             <div className="max-w-2xl">
@@ -63,8 +60,6 @@ export default function Home() {
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-3">
-
-              {/* Puppies */}
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <h3 className="text-2xl font-semibold">
                   German Shepherd Puppies
@@ -75,7 +70,6 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Training */}
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <h3 className="text-2xl font-semibold">
                   Online Dog Training
@@ -95,7 +89,6 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* Mission */}
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <h3 className="text-2xl font-semibold">
                   Veteran Mission
@@ -105,32 +98,29 @@ export default function Home() {
                   gives back through disciplined dogs and strong homes.
                 </p>
               </div>
-
             </div>
           </div>
         </section>
 
-        {/* APPLICATION CTA */}
         <section id="application" className="border-t border-neutral-900">
-          <div className="mx-auto max-w-5xl px-6 py-20 md:px-10 text-center">
+          <div className="mx-auto max-w-5xl px-6 py-20 text-center md:px-10">
             <h2 className="text-3xl font-bold md:text-5xl">
               Apply for a Puppy
             </h2>
 
             <p className="mt-6 text-lg text-neutral-300">
-              We evaluate puppies weekly starting at week 5 to properly match
-              them with the right homes.
+              We evaluate puppies weekly starting at week 5 to help place each
+              puppy in the right home.
             </p>
 
             <a
-              href="#application-form"
+              href="mailto:jreese@hapticvets.com?subject=Puppy%20Application%20Inquiry"
               className="mt-8 inline-block rounded-2xl bg-amber-500 px-8 py-4 text-lg font-semibold text-black hover:opacity-90"
             >
-              Start Application
+              Contact About Current Litter
             </a>
           </div>
         </section>
-
       </main>
     </>
   );
