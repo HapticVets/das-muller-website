@@ -237,162 +237,71 @@ export default function Home() {
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <input
-                    name="name"
-                    type="text"
-                    placeholder="Full Name"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                    required
-                  />
-                  <input
-                    name="email"
-                    type="email"
-                    placeholder="Email Address"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                    required
-                  />
-                  <input
-                    name="phone"
-                    type="tel"
-                    placeholder="Phone Number"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                    required
-                  />
-                  <input
-                    name="location"
-                    type="text"
-                    placeholder="City and State"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                    required
-                  />
+                  <input name="name" type="text" placeholder="Full Name" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" required />
+                  <input name="email" type="email" placeholder="Email Address" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" required />
+                  <input name="phone" type="tel" placeholder="Phone Number" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" required />
+                  <input name="location" type="text" placeholder="City and State" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" required />
                 </div>
               </div>
 
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <div className="mb-6">
-                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-                    Section 2
-                  </p>
-                  <h3 className="mt-2 text-2xl font-semibold">
-                    Household Profile
-                  </h3>
+                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">Section 2</p>
+                  <h3 className="mt-2 text-2xl font-semibold">Household Profile</h3>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <select
-                    name="housing"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    required
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Do you rent or own your home?
-                    </option>
+                  <select name="housing" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" required defaultValue="">
+                    <option value="" disabled>Do you rent or own your home?</option>
                     <option>Own</option>
                     <option>Rent</option>
                   </select>
 
-                  <select
-                    name="fencedYard"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    required
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Do you have a fenced yard?
-                    </option>
+                  <select name="fencedYard" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" required defaultValue="">
+                    <option value="" disabled>Do you have a fenced yard?</option>
                     <option>Yes</option>
                     <option>No</option>
                     <option>Partially</option>
                   </select>
 
-                  <input
-                    name="householdSize"
-                    type="text"
-                    placeholder="How many people live in the home?"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                  />
-
-                  <input
-                    name="childrenAges"
-                    type="text"
-                    placeholder="Ages of children in the home (if any)"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                  />
+                  <input name="householdSize" type="text" placeholder="How many people live in the home?" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
+                  <input name="childrenAges" type="text" placeholder="Ages of children in the home (if any)" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
                 </div>
 
                 <div className="mt-6 grid gap-6 md:grid-cols-2">
-                  <textarea
-                    name="householdAnimals"
-                    placeholder="Tell us about any other dogs or animals in the home"
-                    rows={4}
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                  />
-                  <textarea
-                    name="householdRoutine"
-                    placeholder="Tell us about your household environment and daily routine"
-                    rows={4}
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                  />
+                  <textarea name="householdAnimals" placeholder="Tell us about any other dogs or animals in the home" rows={4} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
+                  <textarea name="householdRoutine" placeholder="Tell us about your household environment and daily routine" rows={4} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
                 </div>
               </div>
 
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <div className="mb-6">
-                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-                    Section 3
-                  </p>
-                  <h3 className="mt-2 text-2xl font-semibold">
-                    Experience Level
-                  </h3>
+                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">Section 3</p>
+                  <h3 className="mt-2 text-2xl font-semibold">Experience Level</h3>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <select
-                    name="ownedGsdBefore"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Have you owned a German Shepherd before?
-                    </option>
+                  <select name="ownedGsdBefore" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>Have you owned a German Shepherd before?</option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
 
-                  <select
-                    name="raisedPuppyBefore"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Have you raised a puppy before?
-                    </option>
+                  <select name="raisedPuppyBefore" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>Have you raised a puppy before?</option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
 
-                  <select
-                    name="structuredTraining"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Have you worked with structured dog training?
-                    </option>
+                  <select name="structuredTraining" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>Have you worked with structured dog training?</option>
                     <option>Yes</option>
                     <option>A little</option>
                     <option>No</option>
                   </select>
 
-                  <select
-                    name="experienceLevel"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      How would you describe your experience level?
-                    </option>
+                  <select name="experienceLevel" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>How would you describe your experience level?</option>
                     <option>First-time owner</option>
                     <option>Some experience</option>
                     <option>Experienced owner</option>
@@ -401,34 +310,19 @@ export default function Home() {
                 </div>
 
                 <div className="mt-6">
-                  <textarea
-                    name="experience"
-                    placeholder="Tell us about your past dog ownership and training experience"
-                    rows={5}
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                  />
+                  <textarea name="experience" placeholder="Tell us about your past dog ownership and training experience" rows={5} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
                 </div>
               </div>
 
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <div className="mb-6">
-                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-                    Section 4
-                  </p>
-                  <h3 className="mt-2 text-2xl font-semibold">
-                    Goals for the Dog
-                  </h3>
+                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">Section 4</p>
+                  <h3 className="mt-2 text-2xl font-semibold">Goals for the Dog</h3>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <select
-                    name="primaryGoal"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      What are you mainly looking for?
-                    </option>
+                  <select name="primaryGoal" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>What are you mainly looking for?</option>
                     <option>Family companion</option>
                     <option>Active family dog</option>
                     <option>Protection-minded home dog</option>
@@ -437,108 +331,53 @@ export default function Home() {
                     <option>Working prospect</option>
                   </select>
 
-                  <select
-                    name="homeActivityLevel"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      How active is your home?
-                    </option>
+                  <select name="homeActivityLevel" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>How active is your home?</option>
                     <option>Low</option>
                     <option>Moderate</option>
                     <option>High</option>
                   </select>
 
-                  <input
-                    name="aloneHours"
-                    type="text"
-                    placeholder="How many hours will the dog be alone each day?"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                  />
-
-                  <input
-                    name="dailyExercise"
-                    type="text"
-                    placeholder="How much daily exercise do you realistically plan to provide?"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                  />
+                  <input name="aloneHours" type="text" placeholder="How many hours will the dog be alone each day?" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
+                  <input name="dailyExercise" type="text" placeholder="How much daily exercise do you realistically plan to provide?" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
                 </div>
 
                 <div className="mt-6 grid gap-6 md:grid-cols-2">
-                  <textarea
-                    name="whyGsd"
-                    placeholder="Why do you want a German Shepherd specifically?"
-                    rows={4}
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                  />
-                  <textarea
-                    name="idealDogRole"
-                    placeholder="Describe your ideal dog and what role it will have in your life"
-                    rows={4}
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                  />
+                  <textarea name="whyGsd" placeholder="Why do you want a German Shepherd specifically?" rows={4} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
+                  <textarea name="idealDogRole" placeholder="Describe your ideal dog and what role it will have in your life" rows={4} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
                 </div>
               </div>
 
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <div className="mb-6">
-                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-                    Section 5
-                  </p>
-                  <h3 className="mt-2 text-2xl font-semibold">
-                    Temperament Preference
-                  </h3>
+                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">Section 5</p>
+                  <h3 className="mt-2 text-2xl font-semibold">Temperament Preference</h3>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <select
-                    name="preferredEnergy"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Preferred energy level
-                    </option>
+                  <select name="preferredEnergy" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>Preferred energy level</option>
                     <option>Lower / easier going</option>
                     <option>Moderate / balanced</option>
                     <option>High drive / highly active</option>
                   </select>
 
-                  <select
-                    name="preferredConfidence"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Preferred confidence level
-                    </option>
+                  <select name="preferredConfidence" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>Preferred confidence level</option>
                     <option>Soft and easier to handle</option>
                     <option>Balanced confidence</option>
                     <option>Bold and very confident</option>
                   </select>
 
-                  <select
-                    name="preferredSocialStyle"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Preferred social style
-                    </option>
+                  <select name="preferredSocialStyle" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>Preferred social style</option>
                     <option>Very social and outgoing</option>
                     <option>Balanced / neutral</option>
                     <option>More reserved and watchful</option>
                   </select>
 
-                  <select
-                    name="preferredTrainingStyle"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Preferred training style
-                    </option>
+                  <select name="preferredTrainingStyle" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>Preferred training style</option>
                     <option>Easy companion dog</option>
                     <option>Trainable family dog</option>
                     <option>Strong working potential</option>
@@ -546,89 +385,48 @@ export default function Home() {
                 </div>
 
                 <div className="mt-6">
-                  <textarea
-                    name="preferredTraits"
-                    placeholder="Tell us what traits matter most to you in a puppy"
-                    rows={5}
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                  />
+                  <textarea name="preferredTraits" placeholder="Tell us what traits matter most to you in a puppy" rows={5} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
                 </div>
               </div>
 
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <div className="mb-6">
-                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-                    Section 6
-                  </p>
-                  <h3 className="mt-2 text-2xl font-semibold">
-                    Commitment and Placement Standards
-                  </h3>
+                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">Section 6</p>
+                  <h3 className="mt-2 text-2xl font-semibold">Commitment and Placement Standards</h3>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <select
-                    name="crateTrain"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Are you willing to crate train?
-                    </option>
+                  <select name="crateTrain" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>Are you willing to crate train?</option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
 
-                  <select
-                    name="maintainStructure"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Are you willing to maintain structure and obedience?
-                    </option>
+                  <select name="maintainStructure" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>Are you willing to maintain structure and obedience?</option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
 
-                  <select
-                    name="openToTraining"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Are you open to training guidance or a training program?
-                    </option>
+                  <select name="openToTraining" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>Are you open to training guidance or a training program?</option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
 
-                  <select
-                    name="preparedForCosts"
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Are you prepared for the ongoing cost of a large breed dog?
-                    </option>
+                  <select name="preparedForCosts" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
+                    <option value="" disabled>Are you prepared for the ongoing cost of a large breed dog?</option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </div>
 
                 <div className="mt-6">
-                  <textarea
-                    name="finalNotes"
-                    placeholder="Anything else you want us to know about your home, goals, or ideal puppy?"
-                    rows={5}
-                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
-                  />
+                  <textarea name="finalNotes" placeholder="Anything else you want us to know about your home, goals, or ideal puppy?" rows={5} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
                 </div>
               </div>
 
-              <button
-                type="submit"
-                className="w-full rounded-2xl bg-amber-500 px-6 py-4 text-lg font-semibold text-black hover:opacity-90"
-              >
+              <button type="submit" className="w-full rounded-2xl bg-amber-500 px-6 py-4 text-lg font-semibold text-black hover:opacity-90">
                 Submit Puppy Application
               </button>
             </form>
