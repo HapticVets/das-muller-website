@@ -75,7 +75,7 @@ export default function Home() {
         <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
           <div className="max-w-3xl">
             <p className="mb-4 text-sm uppercase tracking-[0.25em] text-amber-400">
-              Das Müller Kennel
+              Patriot K9 Kennel
             </p>
 
             <h1 className="text-4xl font-bold leading-tight md:text-6xl">
@@ -87,24 +87,26 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
-              Das Müller is being built as a premium German Shepherd kennel and
-              training brand focused on quality dogs, obedience, owner support,
-              and a mission that gives back.
+              Patriot K9 Kennel is built to place the right German Shepherd in
+              the right home, backed by structure, screening, and a training
+              pathway that continues beyond pickup day.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
               <a
-                href="#programs"
+                href="#application"
                 className="rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
               >
-                View Programs
+                Apply for a Puppy
               </a>
 
               <a
-                href="#application"
+                href="https://train.hapticvets.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-2xl border border-neutral-700 px-6 py-3 font-semibold text-white hover:bg-neutral-900"
               >
-                Puppy Application
+                Start Training
               </a>
             </div>
           </div>
@@ -123,9 +125,9 @@ export default function Home() {
                 Built around dogs with purpose.
               </h2>
               <p className="mt-6 text-lg leading-8 text-neutral-300">
-                From puppy placement to obedience development, Das Müller is
-                structured to serve families, working homes, and owners who want
-                clarity, communication, and standards.
+                From puppy placement to training support, Patriot K9 Kennel is
+                structured to serve serious homes that want clarity,
+                accountability, and long-term success with their dog.
               </p>
             </div>
 
@@ -135,23 +137,35 @@ export default function Home() {
                   German Shepherd Puppies
                 </h3>
                 <p className="mt-4 text-neutral-300">
-                  Purpose-bred puppies matched to the right homes.
+                  Purpose-bred puppies matched to the right homes through a
+                  structured application and evaluation process.
                 </p>
               </div>
 
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <h3 className="text-2xl font-semibold">
-                  Dog Training Programs
+                  Online Dog Training
                 </h3>
                 <p className="mt-4 text-neutral-300">
-                  Structured obedience and real-world reliability.
+                  Continue building obedience and communication with our
+                  structured training platform for real-world results.
                 </p>
+
+                <a
+                  href="https://train.hapticvets.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-block text-amber-400 hover:underline"
+                >
+                  Go to Training Platform →
+                </a>
               </div>
 
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <h3 className="text-2xl font-semibold">Veteran Mission</h3>
                 <p className="mt-4 text-neutral-300">
-                  Long-term placement of dogs with veterans.
+                  Long-term placement and support built around a mission that
+                  gives back through disciplined dogs and strong homes.
                 </p>
               </div>
             </div>
@@ -171,14 +185,21 @@ export default function Home() {
 
             <div className="space-y-6 text-lg text-neutral-300">
               <p>
-                Das Müller is built on standards, discipline, and long-term
-                purpose—developing dogs and supporting owners the right way.
+                Patriot K9 Kennel is built on standards, discipline, and
+                long-term purpose—developing dogs and supporting owners the
+                right way from the start.
               </p>
 
               <p>
-                The goal is to create reliable dogs and place them with homes
-                that are truly prepared for the breed, the structure, and the
-                responsibility that comes with a German Shepherd.
+                The goal is to place reliable German Shepherds with homes that
+                are prepared for the breed, the structure, and the
+                responsibility that comes with ownership.
+              </p>
+
+              <p>
+                Training is part of that process, which is why we also direct
+                owners into our online training platform for continued
+                development after placement.
               </p>
             </div>
           </div>
@@ -216,71 +237,162 @@ export default function Home() {
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <input name="name" type="text" placeholder="Full Name" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" required />
-                  <input name="email" type="email" placeholder="Email Address" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" required />
-                  <input name="phone" type="tel" placeholder="Phone Number" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" required />
-                  <input name="location" type="text" placeholder="City and State" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" required />
+                  <input
+                    name="name"
+                    type="text"
+                    placeholder="Full Name"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                    required
+                  />
+                  <input
+                    name="email"
+                    type="email"
+                    placeholder="Email Address"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                    required
+                  />
+                  <input
+                    name="phone"
+                    type="tel"
+                    placeholder="Phone Number"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                    required
+                  />
+                  <input
+                    name="location"
+                    type="text"
+                    placeholder="City and State"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                    required
+                  />
                 </div>
               </div>
 
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <div className="mb-6">
-                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">Section 2</p>
-                  <h3 className="mt-2 text-2xl font-semibold">Household Profile</h3>
+                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
+                    Section 2
+                  </p>
+                  <h3 className="mt-2 text-2xl font-semibold">
+                    Household Profile
+                  </h3>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <select name="housing" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" required defaultValue="">
-                    <option value="" disabled>Do you rent or own your home?</option>
+                  <select
+                    name="housing"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    required
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Do you rent or own your home?
+                    </option>
                     <option>Own</option>
                     <option>Rent</option>
                   </select>
 
-                  <select name="fencedYard" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" required defaultValue="">
-                    <option value="" disabled>Do you have a fenced yard?</option>
+                  <select
+                    name="fencedYard"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    required
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Do you have a fenced yard?
+                    </option>
                     <option>Yes</option>
                     <option>No</option>
                     <option>Partially</option>
                   </select>
 
-                  <input name="householdSize" type="text" placeholder="How many people live in the home?" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
-                  <input name="childrenAges" type="text" placeholder="Ages of children in the home (if any)" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
+                  <input
+                    name="householdSize"
+                    type="text"
+                    placeholder="How many people live in the home?"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                  />
+
+                  <input
+                    name="childrenAges"
+                    type="text"
+                    placeholder="Ages of children in the home (if any)"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                  />
                 </div>
 
                 <div className="mt-6 grid gap-6 md:grid-cols-2">
-                  <textarea name="householdAnimals" placeholder="Tell us about any other dogs or animals in the home" rows={4} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
-                  <textarea name="householdRoutine" placeholder="Tell us about your household environment and daily routine" rows={4} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
+                  <textarea
+                    name="householdAnimals"
+                    placeholder="Tell us about any other dogs or animals in the home"
+                    rows={4}
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                  />
+                  <textarea
+                    name="householdRoutine"
+                    placeholder="Tell us about your household environment and daily routine"
+                    rows={4}
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                  />
                 </div>
               </div>
 
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <div className="mb-6">
-                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">Section 3</p>
-                  <h3 className="mt-2 text-2xl font-semibold">Experience Level</h3>
+                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
+                    Section 3
+                  </p>
+                  <h3 className="mt-2 text-2xl font-semibold">
+                    Experience Level
+                  </h3>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <select name="ownedGsdBefore" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>Have you owned a German Shepherd before?</option>
+                  <select
+                    name="ownedGsdBefore"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Have you owned a German Shepherd before?
+                    </option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
 
-                  <select name="raisedPuppyBefore" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>Have you raised a puppy before?</option>
+                  <select
+                    name="raisedPuppyBefore"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Have you raised a puppy before?
+                    </option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
 
-                  <select name="structuredTraining" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>Have you worked with structured dog training?</option>
+                  <select
+                    name="structuredTraining"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Have you worked with structured dog training?
+                    </option>
                     <option>Yes</option>
                     <option>A little</option>
                     <option>No</option>
                   </select>
 
-                  <select name="experienceLevel" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>How would you describe your experience level?</option>
+                  <select
+                    name="experienceLevel"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      How would you describe your experience level?
+                    </option>
                     <option>First-time owner</option>
                     <option>Some experience</option>
                     <option>Experienced owner</option>
@@ -289,19 +401,34 @@ export default function Home() {
                 </div>
 
                 <div className="mt-6">
-                  <textarea name="experience" placeholder="Tell us about your past dog ownership and training experience" rows={5} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
+                  <textarea
+                    name="experience"
+                    placeholder="Tell us about your past dog ownership and training experience"
+                    rows={5}
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                  />
                 </div>
               </div>
 
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <div className="mb-6">
-                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">Section 4</p>
-                  <h3 className="mt-2 text-2xl font-semibold">Goals for the Dog</h3>
+                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
+                    Section 4
+                  </p>
+                  <h3 className="mt-2 text-2xl font-semibold">
+                    Goals for the Dog
+                  </h3>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <select name="primaryGoal" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>What are you mainly looking for?</option>
+                  <select
+                    name="primaryGoal"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      What are you mainly looking for?
+                    </option>
                     <option>Family companion</option>
                     <option>Active family dog</option>
                     <option>Protection-minded home dog</option>
@@ -310,53 +437,108 @@ export default function Home() {
                     <option>Working prospect</option>
                   </select>
 
-                  <select name="homeActivityLevel" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>How active is your home?</option>
+                  <select
+                    name="homeActivityLevel"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      How active is your home?
+                    </option>
                     <option>Low</option>
                     <option>Moderate</option>
                     <option>High</option>
                   </select>
 
-                  <input name="aloneHours" type="text" placeholder="How many hours will the dog be alone each day?" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
-                  <input name="dailyExercise" type="text" placeholder="How much daily exercise do you realistically plan to provide?" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
+                  <input
+                    name="aloneHours"
+                    type="text"
+                    placeholder="How many hours will the dog be alone each day?"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                  />
+
+                  <input
+                    name="dailyExercise"
+                    type="text"
+                    placeholder="How much daily exercise do you realistically plan to provide?"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                  />
                 </div>
 
                 <div className="mt-6 grid gap-6 md:grid-cols-2">
-                  <textarea name="whyGsd" placeholder="Why do you want a German Shepherd specifically?" rows={4} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
-                  <textarea name="idealDogRole" placeholder="Describe your ideal dog and what role it will have in your life" rows={4} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
+                  <textarea
+                    name="whyGsd"
+                    placeholder="Why do you want a German Shepherd specifically?"
+                    rows={4}
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                  />
+                  <textarea
+                    name="idealDogRole"
+                    placeholder="Describe your ideal dog and what role it will have in your life"
+                    rows={4}
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                  />
                 </div>
               </div>
 
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <div className="mb-6">
-                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">Section 5</p>
-                  <h3 className="mt-2 text-2xl font-semibold">Temperament Preference</h3>
+                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
+                    Section 5
+                  </p>
+                  <h3 className="mt-2 text-2xl font-semibold">
+                    Temperament Preference
+                  </h3>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <select name="preferredEnergy" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>Preferred energy level</option>
+                  <select
+                    name="preferredEnergy"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Preferred energy level
+                    </option>
                     <option>Lower / easier going</option>
                     <option>Moderate / balanced</option>
                     <option>High drive / highly active</option>
                   </select>
 
-                  <select name="preferredConfidence" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>Preferred confidence level</option>
+                  <select
+                    name="preferredConfidence"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Preferred confidence level
+                    </option>
                     <option>Soft and easier to handle</option>
                     <option>Balanced confidence</option>
                     <option>Bold and very confident</option>
                   </select>
 
-                  <select name="preferredSocialStyle" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>Preferred social style</option>
+                  <select
+                    name="preferredSocialStyle"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Preferred social style
+                    </option>
                     <option>Very social and outgoing</option>
                     <option>Balanced / neutral</option>
                     <option>More reserved and watchful</option>
                   </select>
 
-                  <select name="preferredTrainingStyle" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>Preferred training style</option>
+                  <select
+                    name="preferredTrainingStyle"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Preferred training style
+                    </option>
                     <option>Easy companion dog</option>
                     <option>Trainable family dog</option>
                     <option>Strong working potential</option>
@@ -364,48 +546,89 @@ export default function Home() {
                 </div>
 
                 <div className="mt-6">
-                  <textarea name="preferredTraits" placeholder="Tell us what traits matter most to you in a puppy" rows={5} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
+                  <textarea
+                    name="preferredTraits"
+                    placeholder="Tell us what traits matter most to you in a puppy"
+                    rows={5}
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                  />
                 </div>
               </div>
 
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <div className="mb-6">
-                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">Section 6</p>
-                  <h3 className="mt-2 text-2xl font-semibold">Commitment and Placement Standards</h3>
+                  <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
+                    Section 6
+                  </p>
+                  <h3 className="mt-2 text-2xl font-semibold">
+                    Commitment and Placement Standards
+                  </h3>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
-                  <select name="crateTrain" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>Are you willing to crate train?</option>
+                  <select
+                    name="crateTrain"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Are you willing to crate train?
+                    </option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
 
-                  <select name="maintainStructure" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>Are you willing to maintain structure and obedience?</option>
+                  <select
+                    name="maintainStructure"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Are you willing to maintain structure and obedience?
+                    </option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
 
-                  <select name="openToTraining" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>Are you open to training guidance or a training program?</option>
+                  <select
+                    name="openToTraining"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Are you open to training guidance or a training program?
+                    </option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
 
-                  <select name="preparedForCosts" className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none" defaultValue="">
-                    <option value="" disabled>Are you prepared for the ongoing cost of a large breed dog?</option>
+                  <select
+                    name="preparedForCosts"
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white focus:outline-none"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Are you prepared for the ongoing cost of a large breed dog?
+                    </option>
                     <option>Yes</option>
                     <option>No</option>
                   </select>
                 </div>
 
                 <div className="mt-6">
-                  <textarea name="finalNotes" placeholder="Anything else you want us to know about your home, goals, or ideal puppy?" rows={5} className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none" />
+                  <textarea
+                    name="finalNotes"
+                    placeholder="Anything else you want us to know about your home, goals, or ideal puppy?"
+                    rows={5}
+                    className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
+                  />
                 </div>
               </div>
 
-              <button type="submit" className="w-full rounded-2xl bg-amber-500 px-6 py-4 text-lg font-semibold text-black hover:opacity-90">
+              <button
+                type="submit"
+                className="w-full rounded-2xl bg-amber-500 px-6 py-4 text-lg font-semibold text-black hover:opacity-90"
+              >
                 Submit Puppy Application
               </button>
             </form>
