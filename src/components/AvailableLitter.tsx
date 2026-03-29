@@ -75,7 +75,7 @@ export default function AvailableLitters() {
                 </a>
   
                 <a
-                  href="https://www.gooddog.com"
+                  href="https://www.gooddog.com/breeders/das-mller-hund-haus-ohio#breed_id=117&m_layout=new&locName=Leetonia%2C%20OH%2044431"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-2xl border border-neutral-700 px-6 py-3 font-semibold text-white hover:bg-neutral-900"
