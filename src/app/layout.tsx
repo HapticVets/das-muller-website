@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     images: ["/share-image.jpg"],
   },
   icons: {
-    icon: "/logos/das-muller-icon.png",
+    icon: "/favicon.ico",
   },
 };
 
