@@ -1,6 +1,7 @@
 "use client";
 
 import Header from "@/components/Header";
+import AvailableLitters from "@/components/AvailableLitter";
 
 export default function Home() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -72,45 +73,57 @@ export default function Home() {
       <Header />
 
       <main className="min-h-screen bg-neutral-950 text-white">
-        <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
-          <div className="max-w-3xl">
-            <p className="mb-4 text-sm uppercase tracking-[0.25em] text-amber-400">
-              Das Müller Kennel
-            </p>
+        <section className="relative">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: "url('/hero.jpg')",
+            }}
+          />
+          <div className="absolute inset-0 bg-black/70" />
 
-            <h1 className="text-4xl font-bold leading-tight md:text-6xl">
-              Purpose-bred German Shepherds.
-              <br />
-              Structured training.
-              <br />
-              Veteran-driven mission.
-            </h1>
+          <div className="relative mx-auto max-w-7xl px-6 py-28 md:px-10 lg:px-12">
+            <div className="max-w-3xl">
+              <p className="mb-4 text-sm uppercase tracking-[0.25em] text-amber-400">
+                Das Müller Kennel
+              </p>
 
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
-              Das Müller is built to place the right German Shepherd in the
-              right home, backed by structure, screening, and a training path
-              that continues beyond pickup day.
-            </p>
+              <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+                Purpose-bred German Shepherds.
+                <br />
+                Structured training.
+                <br />
+                Veteran-driven mission.
+              </h1>
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="#application"
-                className="rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
-              >
-                Apply for a Puppy
-              </a>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
+                Das Müller is built to place the right German Shepherd in the
+                right home, backed by structure, screening, and a training path
+                that continues beyond pickup day.
+              </p>
 
-              <a
-                href="https://train.hapticvets.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-2xl border border-neutral-700 px-6 py-3 font-semibold text-white hover:bg-neutral-900"
-              >
-                Start Training
-              </a>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="#application"
+                  className="rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
+                >
+                  Apply for a Puppy
+                </a>
+
+                <a
+                  href="https://train.hapticvets.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl border border-neutral-700 px-6 py-3 font-semibold text-white hover:bg-neutral-900"
+                >
+                  Start Training
+                </a>
+              </div>
             </div>
           </div>
         </section>
+
+        <AvailableLitters />
 
         <section
           id="programs"
