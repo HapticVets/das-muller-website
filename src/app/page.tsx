@@ -24,7 +24,7 @@ declare global {
 }
 
 export default function Home() {
-  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
   const widgetRendered = useRef(false);
   const widgetId = useRef<string | null>(null);
 
@@ -74,15 +74,15 @@ export default function Home() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    if (!siteKey) {
+      alert("Captcha is not configured for this deployment yet.");
+      return;
+    }
+
     const form = e.currentTarget;
     const formData = new FormData(form);
 
     const turnstileToken = formData.get("cf-turnstile-response");
-
-    if (!siteKey) {
-      alert("Turnstile site key is missing from .env.local");
-      return;
-    }
 
     if (!turnstileToken || typeof turnstileToken !== "string") {
       alert("Please complete the captcha before submitting.");
@@ -92,7 +92,6 @@ export default function Home() {
     const data = {
       turnstileToken,
       companyFax: formData.get("companyFax"),
-
       name: formData.get("name"),
       email: formData.get("email"),
       phone: formData.get("phone"),
@@ -175,9 +174,7 @@ export default function Home() {
         <section className="relative">
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: "url('/hero.jpg')",
-            }}
+            style={{ backgroundImage: "url('/hero.jpg')" }}
           />
           <div className="absolute inset-0 bg-black/70" />
 
@@ -750,13 +747,20 @@ export default function Home() {
                   Verification
                 </p>
 
-                <div id="turnstile-container" />
-
-                <input
-                  type="hidden"
-                  name="cf-turnstile-response"
-                  id="turnstile-token"
-                />
+                {siteKey ? (
+                  <>
+                    <div id="turnstile-container" />
+                    <input
+                      type="hidden"
+                      name="cf-turnstile-response"
+                      id="turnstile-token"
+                    />
+                  </>
+                ) : (
+                  <p className="text-sm text-red-400">
+                    Captcha is not configured for this deployment yet.
+                  </p>
+                )}
               </div>
 
               <button
