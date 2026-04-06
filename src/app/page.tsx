@@ -1,16 +1,98 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import Script from "next/script";
 import Header from "@/components/Header";
 import AvailableLitters from "@/components/AvailableLitter";
 
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: string | HTMLElement,
+        options: {
+          sitekey: string;
+          callback?: (token: string) => void;
+          "expired-callback"?: () => void;
+          "error-callback"?: () => void;
+        }
+      ) => string;
+      remove?: (widgetId: string) => void;
+      reset?: (widgetId?: string) => void;
+    };
+  }
+}
+
 export default function Home() {
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const widgetRendered = useRef(false);
+  const widgetId = useRef<string | null>(null);
+
+  useEffect(() => {
+    const tryRender = () => {
+      if (!siteKey) return;
+      if (!window.turnstile) return;
+      if (widgetRendered.current) return;
+
+      const container = document.getElementById("turnstile-container");
+      const hiddenInput = document.getElementById(
+        "turnstile-token"
+      ) as HTMLInputElement | null;
+
+      if (!container || !hiddenInput) return;
+
+      widgetId.current = window.turnstile.render(container, {
+        sitekey: siteKey,
+        callback: (token: string) => {
+          hiddenInput.value = token;
+        },
+        "expired-callback": () => {
+          hiddenInput.value = "";
+        },
+        "error-callback": () => {
+          hiddenInput.value = "";
+        },
+      });
+
+      widgetRendered.current = true;
+    };
+
+    const interval = window.setInterval(() => {
+      tryRender();
+      if (widgetRendered.current) {
+        window.clearInterval(interval);
+      }
+    }, 300);
+
+    tryRender();
+
+    return () => {
+      window.clearInterval(interval);
+    };
+  }, [siteKey]);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
+    const turnstileToken = formData.get("cf-turnstile-response");
+
+    if (!siteKey) {
+      alert("Turnstile site key is missing from .env.local");
+      return;
+    }
+
+    if (!turnstileToken || typeof turnstileToken !== "string") {
+      alert("Please complete the captcha before submitting.");
+      return;
+    }
+
     const data = {
+      turnstileToken,
+      companyFax: formData.get("companyFax"),
+
       name: formData.get("name"),
       email: formData.get("email"),
       phone: formData.get("phone"),
@@ -58,8 +140,20 @@ export default function Home() {
       if (res.ok && result.success) {
         alert("Application submitted successfully.");
         form.reset();
+
+        const hiddenInput = document.getElementById(
+          "turnstile-token"
+        ) as HTMLInputElement | null;
+
+        if (hiddenInput) {
+          hiddenInput.value = "";
+        }
+
+        if (window.turnstile && widgetId.current) {
+          window.turnstile.reset?.(widgetId.current);
+        }
       } else {
-        alert("Something went wrong submitting the application.");
+        alert(result.error || "Something went wrong submitting the application.");
         console.error(result);
       }
     } catch (error) {
@@ -70,6 +164,11 @@ export default function Home() {
 
   return (
     <>
+      <Script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+        strategy="afterInteractive"
+      />
+
       <Header />
 
       <main className="min-h-screen bg-neutral-950 text-white">
@@ -239,6 +338,14 @@ export default function Home() {
             </div>
 
             <form onSubmit={handleSubmit} className="mt-12 space-y-10">
+              <input
+                type="text"
+                name="companyFax"
+                className="hidden"
+                autoComplete="off"
+                tabIndex={-1}
+              />
+
               <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <div className="mb-6">
                   <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
@@ -636,6 +743,20 @@ export default function Home() {
                     className="w-full rounded-xl border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:outline-none"
                   />
                 </div>
+              </div>
+
+              <div className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
+                <p className="mb-4 text-sm uppercase tracking-[0.2em] text-amber-400">
+                  Verification
+                </p>
+
+                <div id="turnstile-container" />
+
+                <input
+                  type="hidden"
+                  name="cf-turnstile-response"
+                  id="turnstile-token"
+                />
               </div>
 
               <button

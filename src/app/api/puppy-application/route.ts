@@ -2,9 +2,67 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+type TurnstileResponse = {
+  success: boolean;
+  "error-codes"?: string[];
+};
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
+
+    const token = body.turnstileToken;
+    const honeypot = body.companyFax;
+
+    if (honeypot) {
+      return Response.json(
+        { success: false, error: "Spam detected." },
+        { status: 400 }
+      );
+    }
+
+    if (!token || typeof token !== "string") {
+      return Response.json(
+        { success: false, error: "Captcha token missing." },
+        { status: 400 }
+      );
+    }
+
+    const ipHeader =
+      req.headers.get("x-forwarded-for") ||
+      req.headers.get("x-real-ip") ||
+      "";
+    const remoteip = ipHeader.split(",")[0].trim();
+
+    const verifyFormData = new FormData();
+    verifyFormData.append("secret", process.env.TURNSTILE_SECRET_KEY || "");
+    verifyFormData.append("response", token);
+
+    if (remoteip) {
+      verifyFormData.append("remoteip", remoteip);
+    }
+
+    const turnstileRes = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        body: verifyFormData,
+      }
+    );
+
+    const turnstileData = (await turnstileRes.json()) as TurnstileResponse;
+
+    if (!turnstileData.success) {
+      console.error("Turnstile verification failed:", turnstileData);
+      return Response.json(
+        {
+          success: false,
+          error: "Captcha verification failed.",
+          details: turnstileData["error-codes"] || [],
+        },
+        { status: 403 }
+      );
+    }
 
     const html = `
       <h1>New Das Müller Puppy Application</h1>
