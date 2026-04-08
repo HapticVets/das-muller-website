@@ -4,6 +4,7 @@ import "./globals.css";
 // Merge Agent: approved SEO metadata updates.
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://patriotk9kennel.com"),
   title: "Das Muller German Shepherds | Structured Training and Puppy Placement",
   description:
     "Purpose-bred German Shepherds, structured puppy placement, and training support for serious homes.",
