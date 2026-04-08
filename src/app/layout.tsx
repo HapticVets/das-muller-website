@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+// Merge Agent: approved SEO metadata updates.
+
 export const metadata: Metadata = {
-  title: "Das Müller German Shepherds",
+  title: "Das Muller German Shepherds | Structured Training and Puppy Placement",
   description:
-    "Purpose-bred German Shepherds, structured placement, and a veteran-driven mission.",
+    "Purpose-bred German Shepherds, structured puppy placement, and training support for serious homes.",
   openGraph: {
-    title: "Das Müller German Shepherds",
+    title: "Das Muller German Shepherds | Structured Training and Puppy Placement",
     description:
-      "Purpose-bred German Shepherds, structured placement, and a veteran-driven mission.",
+      "Purpose-bred German Shepherds, structured puppy placement, and training support for serious homes.",
     url: "https://patriotk9kennel.com",
     siteName: "Das Müller German Shepherds",
     images: [
@@ -24,9 +26,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Das Müller German Shepherds",
+    title: "Das Muller German Shepherds | Structured Training and Puppy Placement",
     description:
-      "Purpose-bred German Shepherds, structured placement, and a veteran-driven mission.",
+      "Purpose-bred German Shepherds, structured puppy placement, and training support for serious homes.",
     images: ["/share-image.jpg"],
   },
   icons: {
