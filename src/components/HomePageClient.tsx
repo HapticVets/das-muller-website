@@ -185,11 +185,7 @@ export default function HomePageClient() {
               </p>
 
               <h1 className="text-4xl font-bold leading-tight md:text-6xl">
-                Purpose-bred German Shepherds.
-                <br />
-                Structured training.
-                <br />
-                Veteran-driven mission.
+                Purpose-Bred German Shepherds Trained and Matched for the Right Home
               </h1>
 
               <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
@@ -203,7 +199,7 @@ export default function HomePageClient() {
                   href="#application"
                   className="rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
                 >
-                  Apply for a Puppy
+                  Start Your Puppy Application
                 </a>
 
                 <a

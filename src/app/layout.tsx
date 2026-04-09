@@ -5,9 +5,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://patriotk9kennel.com"),
-  title: "Das Muller German Shepherds | Structured Training and Puppy Placement",
+  title: "German Shepherd Puppies for Sale | Structured Training & Placement | Patriot K9 Kennel",
   description:
-    "Purpose-bred German Shepherds, structured puppy placement, and training support for serious homes.",
+    "Purpose-bred German Shepherd puppies with structured placement, proven training foundations, and ongoing support. Apply today to secure your dog.",
   openGraph: {
     title: "Das Muller German Shepherds | Structured Training and Puppy Placement",
     description:
