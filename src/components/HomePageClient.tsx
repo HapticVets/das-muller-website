@@ -215,6 +215,38 @@ export default function HomePageClient() {
 
         <AvailableLitters />
 
+{/* <!-- AGENT_MANAGED_PUPPY_LISTINGS_START --> */}
+        <section id="available-puppies" className="border-t border-neutral-900 bg-neutral-900/40">
+          <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
+            <div className="max-w-3xl">
+              <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
+                Available Puppies
+              </p>
+              <h2 className="mt-4 text-3xl font-bold md:text-5xl">
+                Current puppy listings
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-neutral-300">
+                These puppy cards come directly from approved listing drafts so the homepage can stay current without manual copy-paste updates.
+              </p>
+            </div>
+            <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <article className="rounded-3xl border border-neutral-800 bg-neutral-950 p-6">
+                <div className="overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900">
+                  <img src="/uploads/puppy-listings/petra-(purple-collar)-1775777506497-f516cec6.jpeg" alt="Petra (purple collar) Female puppy from the Ana &amp; Adolf litter reserved photo 1" className="h-64 w-full object-cover" />
+                </div>
+              <div className="mt-5 flex items-center justify-between gap-4">
+                <h3 className="text-2xl font-semibold">Petra (purple collar)</h3>
+                <span className="rounded-full bg-amber-500/15 px-3 py-1 text-sm font-semibold text-amber-300">reserved</span>
+              </div>
+              <p className="mt-4 text-neutral-300">Petra (purple collar) is a female puppy 5 weeks old from the Ana &amp; Adolf litter showing She was very vocal at first, but she calmed down pretty quickly. Second day with her she already was quiet and more observant of surroundings and not overstimulated..</p>
+              <p className="mt-4 text-sm text-neutral-400">Petra (purple collar) • 5 weeks old • Temperament: She was very vocal at first, but she calmed down pretty quickly. Second day with her she already was quiet and more observant of surroundings and not overstimulated. • Status: Reserved</p>
+              <a href="#application" className="mt-6 inline-flex text-sm font-semibold text-amber-400 hover:underline">Ask about Petra (purple collar) →</a>
+            </article>
+            </div>
+          </div>
+        </section>
+{/* <!-- AGENT_MANAGED_PUPPY_LISTINGS_END --> */}
+
 
 
         <section
