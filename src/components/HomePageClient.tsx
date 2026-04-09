@@ -309,6 +309,42 @@ export default function HomePageClient() {
             </div>
           </div>
         </section>
+        {/* FAQ Placement Agent: approved FAQ section start - faq_items-faq-draft-set:-common-questions-for-new-clients */}
+        <section id="faq" className="border-t border-neutral-900 bg-neutral-900/40">
+          <div className="mx-auto max-w-5xl px-6 py-20 md:px-10">
+            <div className="max-w-3xl">
+              <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
+                FAQ
+              </p>
+              <h2 className="mt-4 text-3xl font-bold md:text-5xl">
+                Common questions before you apply.
+              </h2>
+              <p className="mt-6 text-lg leading-8 text-neutral-300">
+                These answers come from the approved FAQ content draft so visitors can get clarity before contacting the kennel or starting the application.
+              </p>
+            </div>
+            <div className="mt-10 space-y-4">
+              <details className="rounded-2xl border border-neutral-800 bg-neutral-950 p-6">
+                <summary className="cursor-pointer text-lg font-semibold text-white">What types of dogs do you work with?</summary>
+                <p className="mt-4 text-neutral-300">We work with dogs needing strong obedience foundations, behavior structure, and goal-based training support.</p>
+              </details>
+              <details className="rounded-2xl border border-neutral-800 bg-neutral-950 p-6">
+                <summary className="cursor-pointer text-lg font-semibold text-white">How do I ask about available puppies?</summary>
+                <p className="mt-4 text-neutral-300">Use the contact or inquiry form to ask about current and upcoming litters, timing, and fit.</p>
+              </details>
+              <details className="rounded-2xl border border-neutral-800 bg-neutral-950 p-6">
+                <summary className="cursor-pointer text-lg font-semibold text-white">How do I know which training option is right for my dog?</summary>
+                <p className="mt-4 text-neutral-300">We recommend starting with your dog’s age, behavior, and goals so we can point you toward the best next step.</p>
+              </details>
+              <details className="rounded-2xl border border-neutral-800 bg-neutral-950 p-6">
+                <summary className="cursor-pointer text-lg font-semibold text-white">Do you work with family dogs as well as higher-drive dogs?</summary>
+                <p className="mt-4 text-neutral-300">Yes. Training recommendations should match the dog’s temperament, home, and intended role.</p>
+              </details>
+            </div>
+          </div>
+        </section>
+        {/* FAQ Placement Agent: approved FAQ section end - faq_items-faq-draft-set:-common-questions-for-new-clients */}
+
 
         <section
           id="application"
