@@ -214,7 +214,6 @@ export default function HomePageClient() {
         </section>
 
         <AvailableLitters />
-
 {/* <!-- AGENT_MANAGED_PUPPY_LISTINGS_START --> */}
         <section id="available-puppies" className="border-t border-neutral-900 bg-neutral-900/40">
           <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
@@ -246,6 +245,7 @@ export default function HomePageClient() {
           </div>
         </section>
 {/* <!-- AGENT_MANAGED_PUPPY_LISTINGS_END --> */}
+
 
 
 
