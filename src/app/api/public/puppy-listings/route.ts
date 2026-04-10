@@ -31,8 +31,8 @@ type PuppyListingImageRow = {
 };
 
 const publicStatuses = [
-  "approved",
-  "ready_for_placement",
+  "live_on_site",
+  // Legacy live statuses remain readable during migration.
   "active_on_site",
   "sold_or_reserved"
 ];
