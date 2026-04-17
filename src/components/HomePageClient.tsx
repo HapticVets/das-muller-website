@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Script from "next/script";
 import Header from "@/components/Header";
 import AvailableLitters from "@/components/AvailableLitter";
+import Pricing from "@/components/Pricing";
 
 declare global {
   interface Window {
@@ -280,6 +281,8 @@ export default function HomePageClient() {
             </div>
           </div>
         </section>
+
+        <Pricing />
 
         <section id="mission" className="border-t border-neutral-900">
           <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:px-10 lg:grid-cols-2 lg:px-12">
