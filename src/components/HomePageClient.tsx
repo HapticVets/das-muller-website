@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import Script from "next/script";
 import Header from "@/components/Header";
-import AvailableLitters from "@/components/AvailableLitter";
 import Pricing from "@/components/Pricing";
 
 declare global {
@@ -213,15 +212,6 @@ export default function HomePageClient() {
             </div>
           </div>
         </section>
-
-        <AvailableLitters />
-
-
-
-
-
-
-
         <section
           id="programs"
           className="border-t border-neutral-900 bg-neutral-900/40"
