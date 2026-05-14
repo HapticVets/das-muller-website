@@ -206,7 +206,7 @@ export default function HomePageClient() {
                   rel="noopener noreferrer"
                   className="rounded-2xl border border-neutral-700 px-6 py-3 font-semibold text-white hover:bg-neutral-900"
                 >
-                  Start Training
+                  Online Training
                 </a>
               </div>
             </div>
