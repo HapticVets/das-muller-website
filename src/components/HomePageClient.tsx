@@ -373,8 +373,16 @@ export default function HomePageClient() {
 
         <section className="border-t border-neutral-900 bg-neutral-900/40">
           <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
-            <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-              <article className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
+            <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+              <div className="order-1 overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-950">
+                <img
+                  src="/images/gallery/calm-structured-companions.jpg"
+                  alt="Calm structured companion dogs"
+                  className="h-full min-h-80 w-full object-contain bg-neutral-950"
+                />
+              </div>
+
+              <article className="order-2 rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
                 <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
                   Contact
                 </p>
@@ -406,23 +414,23 @@ export default function HomePageClient() {
                   </p>
                 </div>
               </article>
-
-              <aside className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
-                <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
-                  Puppy Inquiries
-                </p>
-                <p className="mt-6 text-lg leading-8 text-neutral-300">
-                  For puppy applications, submit the application and we will
-                  contact you within 24 hours.
-                </p>
-                <a
-                  href="#application"
-                  className="mt-8 inline-block rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
-                >
-                  Start Your Puppy Application
-                </a>
-              </aside>
             </div>
+
+            <aside className="mt-6 rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
+              <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
+                Puppy Inquiries
+              </p>
+              <p className="mt-6 text-lg leading-8 text-neutral-300">
+                For puppy applications, submit the application and we will
+                contact you within 24 hours.
+              </p>
+              <a
+                href="#application"
+                className="mt-8 inline-block rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
+              >
+                Start Your Puppy Application
+              </a>
+            </aside>
           </div>
         </section>
 
