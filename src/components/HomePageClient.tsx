@@ -212,6 +212,35 @@ export default function HomePageClient() {
             </div>
           </div>
         </section>
+
+        <section className="border-t border-neutral-900 bg-neutral-950">
+          <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:px-10 lg:grid-cols-[1.05fr_0.95fr] lg:px-12">
+            <div className="flex flex-col justify-center">
+              <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
+                Lifestyle & Training
+              </p>
+              <h2 className="mt-4 text-3xl font-bold md:text-5xl">
+                Structured Environment. Real Stability.
+              </h2>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
+                Our dogs are raised and trained in a calm, structured
+                environment focused on obedience, neutrality, confidence, and
+                real-world reliability.
+              </p>
+            </div>
+
+            <div className="rounded-[2rem] border border-neutral-800 bg-neutral-900/70 p-4">
+              <div className="relative overflow-hidden rounded-[1.5rem] border border-neutral-800 bg-neutral-950">
+                <img
+                  src="/images/gallery/structured-pack-training.jpg"
+                  alt="Structured pack training session"
+                  className="h-full min-h-80 w-full object-contain"
+                />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/55 to-transparent" />
+              </div>
+            </div>
+          </div>
+        </section>
         <section
           id="programs"
           className="border-t border-neutral-900 bg-neutral-900/40"
