@@ -13,7 +13,7 @@ const trainingBannerImages: Record<TrainingService["slug"], string> = {
 };
 
 const trainingHeroVideos: Partial<Record<TrainingService["slug"], string>> = {
-  "puppy-foundation": "/videos/puppy-foundation.mp4",
+  "puppy-foundation": "/videos/training/puppy-foundation.mp4",
   "behavior-modification": "/videos/training/behavior-modification.mp4",
 };
 
@@ -89,29 +89,33 @@ export default function TrainingServicePage({
                 <div className="relative h-full min-h-80 overflow-hidden rounded-[1.5rem] border border-neutral-700">
                   <video
                     autoPlay
-                    className="absolute inset-0 h-full w-full object-cover"
+                    aria-hidden="true"
+                    className="pointer-events-none select-none absolute inset-0 h-full w-full object-cover"
+                    controls={false}
+                    controlsList="nodownload nofullscreen noremoteplayback"
+                    disablePictureInPicture
                     loop
                     muted
                     playsInline
+                    tabIndex={-1}
                   >
                     <source
                       src={trainingHeroVideos[service.slug]}
                       type="video/mp4"
                     />
                   </video>
+                  <div className="absolute inset-0 z-10 bg-transparent" />
                   <div className="absolute inset-0 bg-black/45" />
-                  <div className="relative flex h-full min-h-80 items-end p-8">
+                  <div className="relative z-20 flex h-full min-h-80 items-end p-8">
                     <div>
                       {service.slug === "puppy-foundation" ? (
                         <>
-                          <p className="text-sm uppercase tracking-[0.2em] text-amber-300">
-                            Puppy Foundation
+                          <p className="text-sm uppercase tracking-[0.25em] text-amber-300">
+                            PUPPY FOUNDATION
                           </p>
-                          <p className="mt-3 max-w-sm text-sm leading-7 text-neutral-200">
-                            Early structure, confidence, and clean
-                            communication for puppies learning the right habits
-                            from the start.
-                          </p>
+                          <h2 className="mt-3 text-3xl font-bold leading-tight text-white md:text-5xl">
+                            STRUCTURE EARLY. BUILD RIGHT.
+                          </h2>
                         </>
                       ) : null}
 
