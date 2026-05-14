@@ -12,6 +12,11 @@ const trainingBannerImages: Record<TrainingService["slug"], string> = {
     "/images/training/service-dog-foundations-banner.png",
 };
 
+const trainingHeroVideos: Partial<Record<TrainingService["slug"], string>> = {
+  "puppy-foundation": "/videos/puppy-foundation.mp4",
+  "behavior-modification": "/videos/training/behavior-modification.mp4",
+};
+
 function SectionList({
   title,
   items,
@@ -80,7 +85,7 @@ export default function TrainingServicePage({
             </div>
 
             <div className="rounded-[2rem] border border-neutral-800 bg-neutral-900/70 p-4">
-              {service.slug === "puppy-foundation" ? (
+              {trainingHeroVideos[service.slug] ? (
                 <div className="relative h-full min-h-80 overflow-hidden rounded-[1.5rem] border border-neutral-700">
                   <video
                     autoPlay
@@ -89,18 +94,37 @@ export default function TrainingServicePage({
                     muted
                     playsInline
                   >
-                    <source src="/videos/puppy-foundation.mp4" type="video/mp4" />
+                    <source
+                      src={trainingHeroVideos[service.slug]}
+                      type="video/mp4"
+                    />
                   </video>
                   <div className="absolute inset-0 bg-black/45" />
                   <div className="relative flex h-full min-h-80 items-end p-8">
                     <div>
-                      <p className="text-sm uppercase tracking-[0.2em] text-amber-300">
-                        Puppy Foundation
-                      </p>
-                      <p className="mt-3 max-w-sm text-sm leading-7 text-neutral-200">
-                        Early structure, confidence, and clean communication for
-                        puppies learning the right habits from the start.
-                      </p>
+                      {service.slug === "puppy-foundation" ? (
+                        <>
+                          <p className="text-sm uppercase tracking-[0.2em] text-amber-300">
+                            Puppy Foundation
+                          </p>
+                          <p className="mt-3 max-w-sm text-sm leading-7 text-neutral-200">
+                            Early structure, confidence, and clean
+                            communication for puppies learning the right habits
+                            from the start.
+                          </p>
+                        </>
+                      ) : null}
+
+                      {service.slug === "behavior-modification" ? (
+                        <>
+                          <p className="text-sm uppercase tracking-[0.25em] text-amber-300">
+                            BEHAVIOR MODIFICATION
+                          </p>
+                          <h2 className="mt-3 text-3xl font-bold leading-tight text-white md:text-5xl">
+                            REAL CHANGE. LASTING RESULTS.
+                          </h2>
+                        </>
+                      ) : null}
                     </div>
                   </div>
                 </div>
