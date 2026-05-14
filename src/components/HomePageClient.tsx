@@ -342,6 +342,61 @@ export default function HomePageClient() {
         </section>
         {/* FAQ Placement Agent: approved FAQ section end - faq_items-faq-draft-set:-common-questions-for-new-clients */}
 
+        <section className="border-t border-neutral-900 bg-neutral-900/40">
+          <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
+            <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+              <article className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
+                <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
+                  Contact
+                </p>
+                <h2 className="mt-4 text-3xl font-bold md:text-5xl">
+                  Located in Leetonia, Ohio
+                </h2>
+                <div className="mt-8 space-y-4 text-lg leading-8 text-neutral-300">
+                  <p>
+                    Email:{" "}
+                    <a
+                      href="mailto:jreese@hapticvets.com"
+                      className="text-white hover:text-amber-300"
+                    >
+                      jreese@hapticvets.com
+                    </a>
+                  </p>
+                  <p>
+                    Call or Text:{" "}
+                    <a
+                      href="tel:8132996905"
+                      className="text-white hover:text-amber-300"
+                    >
+                      (813) 299-6905
+                    </a>
+                  </p>
+                  <p className="text-base text-neutral-400">
+                    Text message preferred for first contact. If calling,
+                    please leave a voicemail.
+                  </p>
+                </div>
+              </article>
+
+              <aside className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
+                <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
+                  Puppy Inquiries
+                </p>
+                <p className="mt-6 text-lg leading-8 text-neutral-300">
+                  For puppy applications, submit the application and we will
+                  contact you within 24 hours.
+                </p>
+                <a
+                  href="#application"
+                  className="mt-8 inline-block rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
+                >
+                  Start Your Puppy Application
+                </a>
+              </aside>
+            </div>
+          </div>
+        </section>
+
 
         <section
           id="application"

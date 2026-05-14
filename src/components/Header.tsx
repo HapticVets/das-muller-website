@@ -1,3 +1,16 @@
+const trainingLinks = [
+  { href: "/training/evaluation", label: "Evaluation" },
+  { href: "/training/puppy-foundation", label: "Puppy Foundation" },
+  { href: "/training/private-lessons", label: "Private Lessons" },
+  { href: "/training/day-training", label: "Day Training" },
+  { href: "/training/board-and-train", label: "Board & Train" },
+  { href: "/training/behavior-modification", label: "Behavior Modification" },
+  {
+    href: "/training/service-dog-foundations",
+    label: "Service Dog Foundations",
+  },
+];
+
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
@@ -23,14 +36,40 @@ export default function Header() {
           <a href="#programs" className="hover:text-white">
             Programs
           </a>
-          <a
-            href="https://train.hapticvets.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-white"
-          >
-            Training
-          </a>
+          <div className="group relative">
+            <button
+              type="button"
+              className="flex items-center gap-2 text-neutral-300 transition hover:text-white focus:outline-none"
+            >
+              <span>Training Services</span>
+              <svg
+                aria-hidden="true"
+                className="h-3 w-3 transition group-hover:rotate-180 group-focus-within:rotate-180"
+                viewBox="0 0 12 12"
+                fill="none"
+              >
+                <path
+                  d="M3 4.5L6 7.5L9 4.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+
+            <div className="invisible absolute left-0 top-full z-50 mt-3 w-72 translate-y-2 rounded-2xl border border-neutral-800 bg-neutral-950/95 p-2 opacity-0 shadow-2xl shadow-black/40 transition duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+              {trainingLinks.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="block rounded-xl px-4 py-3 text-sm text-neutral-300 transition hover:bg-neutral-900 hover:text-white"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </div>
           <a href="#application" className="hover:text-white">
             Apply
           </a>
