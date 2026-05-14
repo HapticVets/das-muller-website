@@ -1,6 +1,17 @@
 import Header from "@/components/Header";
 import type { TrainingService } from "@/lib/trainingServices";
 
+const trainingBannerImages: Record<TrainingService["slug"], string> = {
+  evaluation: "/images/training/evaluation-banner.png",
+  "puppy-foundation": "/images/training/puppy-foundation-banner.png",
+  "private-lessons": "/images/training/private-lessons-banner.png",
+  "day-training": "/images/training/day-training-banner.png",
+  "board-and-train": "/images/training/board-and-train-banner.png",
+  "behavior-modification": "/images/training/behavior-modification-banner.png",
+  "service-dog-foundations":
+    "/images/training/service-dog-foundations-banner.png",
+};
+
 function SectionList({
   title,
   items,
@@ -94,16 +105,13 @@ export default function TrainingServicePage({
                   </div>
                 </div>
               ) : (
-                <div className="flex h-full min-h-80 items-end rounded-[1.5rem] border border-dashed border-neutral-700 bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.18),transparent_45%),linear-gradient(180deg,rgba(38,38,38,1)_0%,rgba(10,10,10,1)_100%)] p-8">
-                  <div>
-                    <p className="text-sm uppercase tracking-[0.2em] text-neutral-400">
-                      Placeholder Hero Area
-                    </p>
-                    <p className="mt-3 max-w-sm text-sm leading-7 text-neutral-300">
-                      Final training artwork can be added here later without
-                      changing the page structure.
-                    </p>
-                  </div>
+                <div className="relative h-full min-h-80 overflow-hidden rounded-[1.5rem] border border-neutral-700 bg-neutral-950">
+                  <img
+                    alt={`${service.title} banner`}
+                    className="absolute inset-0 h-full w-full object-contain"
+                    src={trainingBannerImages[service.slug]}
+                  />
+                  <div className="absolute inset-0 bg-black/45" />
                 </div>
               )}
             </div>
