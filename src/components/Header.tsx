@@ -26,12 +26,12 @@ export default function Header() {
           <a href="/" className="flex items-center gap-3">
             <img
               src="/logos/das-muller-icon.png"
-              alt="Das MÃ¼ller"
+              alt="Das Müller"
               className="h-10 w-10 rounded-lg bg-neutral-900 p-1 object-contain"
             />
             <div className="leading-tight">
               <p className="text-sm font-semibold tracking-wider text-white">
-                DAS MÃœLLER
+                DAS MÜLLER
               </p>
               <p className="text-xs text-neutral-400">GERMAN SHEPHERDS</p>
             </div>
