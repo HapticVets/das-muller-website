@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Script from "next/script";
+import AvailableLitters from "@/components/AvailableLitter";
 import Header from "@/components/Header";
 import Pricing from "@/components/Pricing";
 
@@ -241,6 +242,9 @@ export default function HomePageClient() {
             </div>
           </div>
         </section>
+
+        <AvailableLitters />
+
         <section
           id="programs"
           className="border-t border-neutral-900 bg-neutral-900/40"

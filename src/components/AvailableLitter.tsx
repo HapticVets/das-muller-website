@@ -19,6 +19,7 @@ type PuppyListing = {
   listingTitle: string;
   shortSummary: string;
   homepageCardCopy: string;
+  priceOrDeposit?: string;
   suggestedSlug: string;
   images: PuppyListingImage[];
 };
@@ -151,6 +152,12 @@ export default function AvailableLitters() {
                     <h3 className="mt-6 text-2xl font-semibold">
                       {listing.listingTitle || listing.puppyName}
                     </h3>
+
+                    {listing.priceOrDeposit ? (
+                      <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-amber-400">
+                        {listing.priceOrDeposit}
+                      </p>
+                    ) : null}
 
                     <p className="mt-4 leading-8 text-neutral-300">
                       {listing.homepageCardCopy || listing.shortSummary}
