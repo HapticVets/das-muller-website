@@ -228,9 +228,9 @@ export default function TrainingServicePage({
                   For puppy applications, submit the application and we will
                   contact you within 24 hours.
                 </p>
-                <a
-                  href="/#application"
-                  className="mt-8 inline-block rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
+                  <a
+                    href="/#application"
+                    className="mt-8 inline-block rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
                 >
                   Start Your Puppy Application
                 </a>
