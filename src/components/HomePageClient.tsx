@@ -5,6 +5,7 @@ import Script from "next/script";
 import AvailableLitters from "@/components/AvailableLitter";
 import Header from "@/components/Header";
 import Pricing from "@/components/Pricing";
+import { ONLINE_TRAINING_APP_URL } from "@/lib/siteUrls";
 
 declare global {
   interface Window {
@@ -202,7 +203,7 @@ export default function HomePageClient() {
                 </a>
 
                 <a
-                  href="https://train.hapticvets.com"
+                  href={ONLINE_TRAINING_APP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-2xl border border-neutral-700 px-6 py-3 font-semibold text-white hover:bg-neutral-900"
@@ -285,7 +286,7 @@ export default function HomePageClient() {
                 </p>
 
                 <a
-                  href="https://train.hapticvets.com"
+                  href={ONLINE_TRAINING_APP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-6 inline-block text-amber-400 hover:underline"
