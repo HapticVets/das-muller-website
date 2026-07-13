@@ -49,6 +49,7 @@ type FormState = {
   preferredSocialStyle: string;
   preferredTrainingStyle: string;
   preferredTraits: string;
+  pickupPreference: string;
   crateTrain: string;
   maintainStructure: string;
   openToTraining: string;
@@ -84,6 +85,7 @@ const initialState: FormState = {
   preferredSocialStyle: "",
   preferredTrainingStyle: "",
   preferredTraits: "",
+  pickupPreference: "",
   crateTrain: "",
   maintainStructure: "",
   openToTraining: "",
@@ -760,6 +762,29 @@ export default function PuppyApplicationWizard() {
                 className="field-base min-h-40"
               />
             </div>
+
+            <div>
+              <label className="mb-2 block text-sm font-medium text-neutral-200">
+                Preferred puppy pickup or transportation option
+              </label>
+              <select
+                name="pickupPreference"
+                className="field-base"
+                value={formData.pickupPreference}
+                onChange={(e) => updateField("pickupPreference", e.target.value)}
+              >
+                <option value="">Select an option</option>
+                <option>Pickup in Leetonia, Ohio</option>
+                <option>Scheduled meet-up location</option>
+                <option>Delivery or transport request</option>
+                <option>Not sure yet</option>
+              </select>
+              <p className="form-hint">
+                Meet-up and delivery availability depends on distance,
+                scheduling, and the individual placement. Any transportation
+                fee will be discussed before final arrangements.
+              </p>
+            </div>
           </section>
         ) : null}
 
@@ -904,6 +929,10 @@ export default function PuppyApplicationWizard() {
               <ReviewItem
                 label="Preferred Training Style"
                 value={formData.preferredTrainingStyle}
+              />
+              <ReviewItem
+                label="Preferred Pickup or Transportation"
+                value={formData.pickupPreference}
               />
               <ReviewItem
                 label="Preferred Traits"

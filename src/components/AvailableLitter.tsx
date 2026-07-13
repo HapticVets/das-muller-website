@@ -94,7 +94,9 @@ export default function AvailableLitters() {
           <p className="mt-6 max-w-[62ch] text-lg leading-8 text-neutral-300">
             Current puppies and confirmed upcoming litters will appear here as
             details become available. Families interested in a future Patriot K9
-            Command puppy are encouraged to submit an application.
+            Command puppy are encouraged to submit an application. Pickup,
+            scheduled meet-up, and delivery arrangements may be available
+            depending on distance, scheduling, and the individual placement.
           </p>
         </div>
 

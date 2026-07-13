@@ -59,6 +59,10 @@ export default function ApplyPage() {
                 Your information is used only to review your application and
                 communicate with you about potential placement.
               </p>
+              <p className="mt-4 max-w-[62ch] text-sm leading-7 text-neutral-400">
+                Based in Leetonia, Ohio. Serving clients throughout Ohio and
+                the surrounding tri-state region.
+              </p>
             </div>
 
             <div className="w-full max-w-xl justify-self-center lg:max-w-[34rem] lg:justify-self-end">
@@ -73,6 +77,28 @@ export default function ApplyPage() {
                 framed={false}
                 wrapperClassName="rounded-[1.85rem] border border-neutral-700/80 bg-neutral-950/40 shadow-[0_24px_56px_rgba(0,0,0,0.26)] ring-1 ring-amber-400/10"
               />
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-neutral-900 bg-neutral-900/35">
+          <div className="mx-auto max-w-5xl px-5 py-10 sm:px-8 sm:py-12 lg:px-12 lg:py-12">
+            <div className="surface-card p-6 md:p-8">
+              <p className="section-eyebrow">
+                Pickup, Meet-Up, and Delivery Options
+              </p>
+              <p className="mt-4 max-w-4xl text-lg leading-8 text-neutral-300">
+                Families may pick up their puppy directly from Patriot K9
+                Command in Leetonia, Ohio. Depending on distance and
+                scheduling, we may also arrange a scheduled meet-up location,
+                coordinated pickup, or delivery. Transportation availability
+                and any related fee are confirmed individually before
+                placement.
+              </p>
+              <p className="mt-4 text-sm leading-7 text-neutral-400">
+                Transportation arrangements are not guaranteed until confirmed
+                directly by Patriot K9 Command.
+              </p>
             </div>
           </div>
         </section>

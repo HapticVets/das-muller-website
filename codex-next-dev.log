@@ -15,3 +15,51 @@
  GET / 200 in 48ms (next.js: 4ms, application-code: 45ms)
  GET /apply 200 in 510ms (next.js: 431ms, application-code: 79ms)
  GET /training/puppy-foundation 200 in 1107ms (next.js: 900ms, generate-params: 622ms, application-code: 207ms)
+ GET / 200 in 90ms (next.js: 9ms, application-code: 81ms)
+[browser] Image with src "/media/puppies/puppy-black-tan-portrait-outdoors.JPG" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[PublicPuppyListings] failed to load listings Error: Supabase puppy listing environment variables are not configured.
+    at getSupabaseRequestConfig (src\app\api\public\puppy-listings\route.ts:46:11)
+    at GET (src\app\api\public\puppy-listings\route.ts:103:38)
+  44 |
+  45 |   if (!supabaseUrl || !supabaseKey) {
+> 46 |     throw new Error("Supabase puppy listing environment variables are not configured.");
+     |           ^
+  47 |   }
+  48 |
+  49 |   return {
+ GET /api/public/puppy-listings 500 in 411ms (next.js: 252ms, application-code: 159ms)
+[browser] [AvailableLitters] puppy listing load failed Error: Unable to load puppy listings.
+    at loadPuppyListings (file://C:/Users/jrees/das-muller-website/.next/dev/static/chunks/src_058jv_p._.js:36:31) (file://C:/Users/jrees/das-muller-website/.next/dev/static/chunks/src_058jv_p._.js:43:29)
+ GET / 200 in 71ms (next.js: 6ms, application-code: 64ms)
+[PublicPuppyListings] failed to load listings Error: Supabase puppy listing environment variables are not configured.
+    at getSupabaseRequestConfig (src\app\api\public\puppy-listings\route.ts:46:11)
+    at GET (src\app\api\public\puppy-listings\route.ts:103:38)
+  44 |
+  45 |   if (!supabaseUrl || !supabaseKey) {
+> 46 |     throw new Error("Supabase puppy listing environment variables are not configured.");
+     |           ^
+  47 |   }
+  48 |
+  49 |   return {
+ GET /api/public/puppy-listings 500 in 91ms (next.js: 4ms, application-code: 88ms)
+[browser] [AvailableLitters] puppy listing load failed Error: Unable to load puppy listings.
+    at loadPuppyListings (file://C:/Users/jrees/das-muller-website/.next/dev/static/chunks/src_058jv_p._.js:36:31) (file://C:/Users/jrees/das-muller-website/.next/dev/static/chunks/src_058jv_p._.js:43:29)
+ GET / 200 in 81ms (next.js: 5ms, application-code: 76ms)
+[PublicPuppyListings] failed to load listings Error: Supabase puppy listing environment variables are not configured.
+    at getSupabaseRequestConfig (src\app\api\public\puppy-listings\route.ts:46:11)
+    at GET (src\app\api\public\puppy-listings\route.ts:103:38)
+  44 |
+  45 |   if (!supabaseUrl || !supabaseKey) {
+> 46 |     throw new Error("Supabase puppy listing environment variables are not configured.");
+     |           ^
+  47 |   }
+  48 |
+  49 |   return {
+ GET /api/public/puppy-listings 500 in 83ms (next.js: 3ms, application-code: 80ms)
+[browser] [AvailableLitters] puppy listing load failed Error: Unable to load puppy listings.
+    at loadPuppyListings (file://C:/Users/jrees/das-muller-website/.next/dev/static/chunks/src_058jv_p._.js:36:31) (file://C:/Users/jrees/das-muller-website/.next/dev/static/chunks/src_058jv_p._.js:43:29)
+✓ Compiled in 136ms
+✓ Compiled in 41ms
+✓ Compiled in 45ms
+✓ Compiled in 61ms

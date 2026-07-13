@@ -8,11 +8,11 @@ export const metadata: Metadata = {
     template: "%s | Patriot K9 Command",
   },
   description:
-    "German Shepherd breeding and professional dog training in Leetonia, Ohio.",
+    "German Shepherd breeding and professional dog training based in Leetonia, Ohio, serving clients throughout Ohio and the surrounding tri-state region.",
   openGraph: {
     title: "Patriot K9 Command",
     description:
-      "German Shepherd breeding and professional dog training in Leetonia, Ohio.",
+      "German Shepherd breeding and professional dog training based in Leetonia, Ohio, serving clients throughout Ohio and the surrounding tri-state region.",
     url: "/",
     siteName: "Patriot K9 Command",
     images: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Patriot K9 Command",
     description:
-      "German Shepherd breeding and professional dog training in Leetonia, Ohio.",
+      "German Shepherd breeding and professional dog training based in Leetonia, Ohio, serving clients throughout Ohio and the surrounding tri-state region.",
     images: ["/images/branding/og-image.jpg"],
   },
   icons: {

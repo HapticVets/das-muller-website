@@ -174,6 +174,12 @@ export default function TrainingServicePage({
               <p className="section-eyebrow">Training Services</p>
               <h1 className="section-title max-w-[14ch]">{service.title}</h1>
               <p className="section-copy">{service.shortDescription}</p>
+              <p className="mt-4 max-w-2xl text-base leading-8 text-neutral-400">
+                In-person training is based in Leetonia, Ohio. Clients
+                traveling from other parts of Ohio or the surrounding region
+                may contact us to discuss scheduling, evaluation locations, and
+                available transportation arrangements.
+              </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
                 <a
@@ -369,9 +375,15 @@ export default function TrainingServicePage({
                   Start With the Right Next Step
                 </h2>
                 <p className="section-copy">
-                  Reach out with your dog&apos;s age, current behavior, and the
-                  kind of help you are looking for so we can guide you toward
-                  the right next step.
+                  Whether you are looking for a German Shepherd puppy,
+                  in-person training, or help choosing the right program, tell
+                  us about your goals and location. Patriot K9 Command is based
+                  in Leetonia, Ohio and works with clients throughout Ohio and
+                  the surrounding tri-state region.
+                </p>
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-neutral-400">
+                  Pickup, meet-up, and delivery arrangements may be available
+                  depending on the service, distance, and scheduling.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
@@ -411,6 +423,10 @@ export default function TrainingServicePage({
                     Located at 4277 Lisbon Rd, Leetonia, OH 44431. Visits are
                     by appointment only. Please do not arrive without
                     scheduling first.
+                  </p>
+                  <p className="text-base text-neutral-400">
+                    Pickup and drop-off may be available for select programs
+                    and locations by prior arrangement.
                   </p>
                 </div>
               </article>

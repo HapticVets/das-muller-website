@@ -43,7 +43,7 @@ export default function HomePageClient() {
               <p className="mt-6 max-w-[62ch] text-lg leading-8 text-neutral-300">
                 Patriot K9 Command raises German Shepherd puppies with purpose
                 and provides structured, hands-on training for dogs and
-                families throughout the Leetonia, Ohio area.
+                families throughout Ohio and the surrounding tri-state region.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
@@ -163,6 +163,12 @@ export default function HomePageClient() {
                 focused on communication, obedience, impulse control, public
                 manners, and behavior that carries into daily life.
               </p>
+              <p className="mt-4 max-w-[62ch] text-base leading-8 text-neutral-400">
+                In-person training is based in Leetonia, Ohio. Clients
+                traveling from other parts of Ohio or the surrounding region
+                may contact us to discuss scheduling, evaluation locations, and
+                available transportation arrangements.
+              </p>
               <a
                 href="#pricing"
                 className="mt-8 inline-flex items-center justify-center rounded-2xl bg-amber-500 px-6 py-3.5 font-semibold text-black transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-amber-300"
@@ -261,6 +267,10 @@ export default function HomePageClient() {
                 for structured obedience, puppy development, controlled
                 exposure, and outdoor distraction work.
               </p>
+              <p className="mt-4 max-w-[62ch] text-base leading-8 text-neutral-400">
+                Based in Leetonia, Ohio and serving clients throughout Ohio and
+                the surrounding tri-state region.
+              </p>
 
               <div className="mt-8 rounded-[2rem] border border-neutral-800 bg-neutral-900/70 p-4">
                 <ResponsiveMedia
@@ -337,9 +347,14 @@ export default function HomePageClient() {
                   </h2>
                   <p className="mt-6 max-w-[62ch] text-lg leading-8 text-neutral-300">
                     Whether you are looking for a German Shepherd puppy,
-                    private training, board and train, or help with
-                    challenging behavior, begin by telling us about your dog
-                    and your goals.
+                    in-person training, or help choosing the right program,
+                    tell us about your goals and location. Patriot K9 Command
+                    is based in Leetonia, Ohio and works with clients
+                    throughout Ohio and the surrounding tri-state region.
+                  </p>
+                  <p className="mt-4 max-w-[62ch] text-sm leading-7 text-neutral-400">
+                    Pickup, meet-up, and delivery arrangements may be available
+                    depending on the service, distance, and scheduling.
                   </p>
                 </div>
 
@@ -376,7 +391,9 @@ export default function HomePageClient() {
                       </a>
                     </p>
                     <p>Text message preferred for first contact.</p>
-                    <p>Leetonia, Ohio. Visits are by appointment only.</p>
+                    <p>Based in Leetonia, Ohio.</p>
+                    <p>Serving Ohio and the surrounding tri-state region.</p>
+                    <p>Visits are by appointment only.</p>
                   </div>
                 </div>
               </div>
@@ -391,8 +408,12 @@ export default function HomePageClient() {
                 Patriot K9 Command
               </p>
               <p className="mt-2">
-                German Shepherd breeding, puppy placement, and structured
-                in-person training in Leetonia, Ohio.
+                Based in Leetonia, Ohio. Serving Ohio and the surrounding
+                tri-state region.
+              </p>
+              <p className="mt-2">
+                Pickup, scheduled meet-up, and delivery arrangements may be
+                available.
               </p>
             </div>
             <div className="flex flex-wrap gap-4">

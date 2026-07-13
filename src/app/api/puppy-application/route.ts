@@ -101,6 +101,7 @@ export async function POST(req: Request) {
       <p><strong>Preferred Confidence:</strong> ${body.preferredConfidence || ""}</p>
       <p><strong>Preferred Social Style:</strong> ${body.preferredSocialStyle || ""}</p>
       <p><strong>Preferred Training Style:</strong> ${body.preferredTrainingStyle || ""}</p>
+      <p><strong>Preferred Pickup or Transportation:</strong> ${body.pickupPreference || ""}</p>
       <p><strong>Preferred Traits:</strong><br/>${String(body.preferredTraits || "").replace(/\n/g, "<br/>")}</p>
 
       <h2>Commitment and Placement Standards</h2>
