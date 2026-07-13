@@ -6,7 +6,6 @@ type TrainingVideoProps = {
   aspectRatio?: number | string;
   controls?: boolean;
   autoPlay?: boolean;
-  muted?: boolean;
   loop?: boolean;
   className?: string;
   containerClassName?: string;
@@ -31,14 +30,14 @@ export default function TrainingVideo({
   aspectRatio = "16 / 9",
   controls = true,
   autoPlay = false,
-  muted = false,
   loop = false,
   className = "",
   containerClassName = "",
   headingLevel = "h3",
 }: TrainingVideoProps) {
   const HeadingTag = headingLevel;
-  const shouldMute = autoPlay || muted;
+  const shouldMute = true;
+  const shouldLoop = autoPlay || loop;
 
   return (
     <div
@@ -52,7 +51,9 @@ export default function TrainingVideo({
           autoPlay={autoPlay}
           className={`h-full w-full bg-black ${className}`.trim()}
           controls={controls}
-          loop={loop}
+          controlsList="nodownload nofullscreen noremoteplayback"
+          disablePictureInPicture
+          loop={shouldLoop}
           muted={shouldMute}
           playsInline
           poster={poster}

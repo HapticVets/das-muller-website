@@ -320,7 +320,6 @@ export default function TrainingServicePage({
                         description={media.description}
                         aspectRatio={item.aspectRatio}
                         autoPlay={item.autoPlay ?? false}
-                        muted={item.autoPlay ?? false}
                         loop={item.loop ?? false}
                         controls={item.controls ?? true}
                       />
