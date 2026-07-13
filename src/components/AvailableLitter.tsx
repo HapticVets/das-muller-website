@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 type PuppyListingImage = {
@@ -32,7 +33,7 @@ type PuppyListingResponse = {
 const availabilityLabels: Record<PuppyListing["availability"], string> = {
   available: "Available",
   reserved: "Reserved",
-  sold: "Sold"
+  sold: "Sold",
 };
 
 export default function AvailableLitters() {
@@ -46,7 +47,7 @@ export default function AvailableLitters() {
     async function loadPuppyListings() {
       try {
         const response = await fetch("/api/public/puppy-listings", {
-          cache: "no-store"
+          cache: "no-store",
         });
 
         if (!response.ok) {
@@ -62,7 +63,9 @@ export default function AvailableLitters() {
         console.error("[AvailableLitters] puppy listing load failed", error);
 
         if (isMounted) {
-          setErrorMessage("Puppy listings are temporarily unavailable.");
+          setErrorMessage(
+            "Puppy availability could not be loaded right now. Please check back shortly or submit an application to be considered for a future litter."
+          );
         }
       } finally {
         if (isMounted) {
@@ -79,22 +82,19 @@ export default function AvailableLitters() {
   }, []);
 
   return (
-    <section
-      id="litters"
-      className="border-t border-neutral-900 bg-neutral-900/40"
-    >
-      <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
+    <section id="litters" className="border-b border-neutral-900 bg-neutral-900/35">
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12 lg:py-16">
         <div className="max-w-3xl">
-          <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-amber-400">
             Available Puppies
           </p>
-
-          <h2 className="mt-4 text-3xl font-bold md:text-5xl">
-            Current puppy listings.
+          <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+            Available Puppies &amp; Upcoming Litters
           </h2>
-
-          <p className="mt-6 text-lg leading-8 text-neutral-300">
-            Approved puppy listings are pulled directly from the kennel dashboard so this section stays aligned with current availability.
+          <p className="mt-6 max-w-[62ch] text-lg leading-8 text-neutral-300">
+            Current puppies and confirmed upcoming litters will appear here as
+            details become available. Families interested in a future Patriot K9
+            Command puppy are encouraged to submit an application.
           </p>
         </div>
 
@@ -103,32 +103,43 @@ export default function AvailableLitters() {
         ) : null}
 
         {!loading && errorMessage ? (
-          <p className="mt-10 text-red-300">{errorMessage}</p>
-        ) : null}
-
-        {!loading && !errorMessage && listings.length === 0 ? (
-          <div className="mt-12 rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
-            <h3 className="text-2xl font-semibold">No public puppy listings right now.</h3>
-            <p className="mt-4 max-w-2xl leading-8 text-neutral-300">
-              Submit the puppy application to ask about current and upcoming litters, timing, and placement fit.
-            </p>
-            <a
-              href="#application"
-              className="mt-8 inline-block rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
+          <div className="mt-12 rounded-[2rem] border border-neutral-800 bg-neutral-950 p-8">
+            <p className="max-w-3xl leading-8 text-neutral-300">{errorMessage}</p>
+            <Link
+              href="/apply"
+              className="mt-8 inline-flex items-center justify-center rounded-2xl bg-amber-500 px-6 py-3.5 font-semibold text-black transition hover:opacity-90"
             >
-              Start Your Puppy Application
-            </a>
+              Apply for a Puppy
+            </Link>
           </div>
         ) : null}
 
-        {!loading && listings.length > 0 ? (
+        {!loading && !errorMessage && listings.length === 0 ? (
+          <div className="mt-12 rounded-[2rem] border border-neutral-800 bg-neutral-950 p-8">
+            <h3 className="text-2xl font-semibold text-white">
+              No puppies are currently listed
+            </h3>
+            <p className="mt-4 max-w-2xl leading-8 text-neutral-300">
+              Our next available litter or individual puppy will appear here
+              once details are confirmed.
+            </p>
+            <Link
+              href="/apply"
+              className="mt-8 inline-flex items-center justify-center rounded-2xl bg-amber-500 px-6 py-3.5 font-semibold text-black transition hover:opacity-90"
+            >
+              Apply for a Puppy
+            </Link>
+          </div>
+        ) : null}
+
+        {!loading && !errorMessage && listings.length > 0 ? (
           <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
             {listings.map((listing) => {
               const primaryImage = listing.images[0];
 
               return (
                 <article
-                  className="overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-950"
+                  className="overflow-hidden rounded-[2rem] border border-neutral-800 bg-neutral-950 shadow-[0_18px_48px_rgba(0,0,0,0.2)]"
                   key={listing.id}
                 >
                   {primaryImage ? (
@@ -149,7 +160,7 @@ export default function AvailableLitters() {
                       </span>
                     </div>
 
-                    <h3 className="mt-6 text-2xl font-semibold">
+                    <h3 className="mt-6 text-2xl font-semibold text-white">
                       {listing.listingTitle || listing.puppyName}
                     </h3>
 
@@ -167,12 +178,12 @@ export default function AvailableLitters() {
                       {listing.litter}
                     </p>
 
-                    <a
-                      href="#application"
-                      className="mt-8 inline-block rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
+                    <Link
+                      href="/apply"
+                      className="mt-8 inline-flex items-center justify-center rounded-2xl bg-amber-500 px-6 py-3.5 font-semibold text-black transition hover:opacity-90"
                     >
                       Ask About {listing.puppyName}
-                    </a>
+                    </Link>
                   </div>
                 </article>
               );

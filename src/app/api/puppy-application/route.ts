@@ -65,7 +65,7 @@ export async function POST(req: Request) {
     }
 
     const html = `
-      <h1>New Das Müller Puppy Application</h1>
+      <h1>New Patriot K9 Command Puppy Application</h1>
 
       <h2>Basic Information</h2>
       <p><strong>Full Name:</strong> ${body.name || ""}</p>
@@ -112,7 +112,7 @@ export async function POST(req: Request) {
     `;
 
     const data = await resend.emails.send({
-      from: "Das Muller Applications <applications@updates.hapticvets.com>",
+      from: "Patriot K9 Command Applications <applications@updates.hapticvets.com>",
       to: ["jreese@hapticvets.com"],
       replyTo: body.email ? String(body.email) : undefined,
       subject: `New Puppy Application from ${body.name || "Website"}`,

@@ -1,52 +1,54 @@
+import Link from "next/link";
+
 type PricingFeatureBlock = {
   title: string;
   price: string;
-  description?: string;
   features: string[];
   outcome?: string;
-  subtext?: string;
 };
 
 const corePhases: PricingFeatureBlock[] = [
   {
-    title: "Phase 1: Foundation & Obedience",
+    title: "Foundation & Communication",
     price: "$1,000",
     features: [
-      "Leash control & heel work",
-      "Sit, down, place, stay",
-      "Engagement & focus",
+      "Leash control and heel work",
+      "Sit, down, place, and stay",
+      "Engagement and focus",
       "Owner handling fundamentals",
     ],
-    outcome: "Dog listens in controlled environments.",
+    outcome: "Clearer communication and better listening in controlled settings.",
   },
   {
-    title: "Phase 2: Control Under Distraction",
+    title: "Control Around Distractions",
     price: "$1,000",
     features: [
       "Outdoor training environments",
       "Distraction proofing",
       "Owner confidence building",
-      "Controlled exposure to real-world scenarios",
+      "Structured exposure to everyday pressure",
     ],
-    outcome: "Dog listens despite distractions.",
+    outcome: "Stronger obedience while movement, noise, and distractions are present.",
   },
   {
-    title: "Phase 3: Real-World Reliability",
+    title: "Real-World Reliability",
     price: "$1,000",
     features: [
       "Public training sessions",
-      "Advanced obedience",
-      "Off-leash progression (if appropriate)",
+      "Advanced obedience work",
+      "Off-leash progression if appropriate",
       "Real-life application training",
     ],
-    outcome: "Dog is reliable in everyday situations.",
+    outcome: "Better carryover into normal routines, outings, and everyday life.",
   },
 ];
 
-const supportPrograms: PricingFeatureBlock[] = [
+const supportPrograms = [
   {
     title: "Maintenance Program",
     price: "$200/month",
+    description:
+      "For owners who want continued structure, tune-ups, and ongoing support after the initial training phase.",
     features: [
       "2 sessions per month",
       "Priority scheduling",
@@ -55,20 +57,20 @@ const supportPrograms: PricingFeatureBlock[] = [
     ],
   },
   {
-    title: "2 Week Program",
+    title: "2 Week Board & Train",
     price: "$2,200",
     features: [
       "Daily structured training",
-      "Obedience foundation + behavior work",
+      "Obedience foundation and behavior work",
       "Owner transfer session included",
     ],
   },
   {
-    title: "4 Week Program",
+    title: "4 Week Board & Train",
     price: "$3,800",
     features: [
       "Daily structured training",
-      "Obedience foundation + behavior work",
+      "Obedience foundation and behavior work",
       "Owner transfer session included",
     ],
   },
@@ -87,7 +89,7 @@ const additionalServices = [
 
 function FeatureList({ features }: { features: string[] }) {
   return (
-    <ul className="mt-6 space-y-3 text-sm leading-7 text-neutral-300">
+    <ul className="mt-5 space-y-3 text-sm leading-7 text-neutral-300">
       {features.map((feature) => (
         <li className="flex gap-3" key={feature}>
           <span className="mt-2 h-2 w-2 rounded-full bg-amber-400" />
@@ -104,208 +106,148 @@ export default function Pricing() {
       id="pricing"
       className="border-t border-neutral-900 bg-[linear-gradient(180deg,rgba(23,23,23,0.88)_0%,rgba(10,10,10,1)_100%)]"
     >
-      <div className="mx-auto max-w-7xl px-6 py-20 md:px-10 lg:px-12">
+      <div className="section-shell">
         <div className="max-w-3xl">
-          <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
-            Training Pricing
-          </p>
-          <h2 className="mt-4 text-3xl font-bold md:text-5xl">
-            Professional Dog Training Programs
-          </h2>
-          <p className="mt-6 text-lg leading-8 text-neutral-300">
-            A clear, structured training path designed to take dogs from
-            obedience foundations to real-world reliability.
+          <p className="section-eyebrow">In-Person Dog Training</p>
+          <h2 className="section-title">A Progressive Training System</h2>
+          <p className="section-copy">
+            Training progresses from foundational communication to distraction
+            control and real-world reliability. Each phase builds on the work
+            completed before it.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
-          <article className="rounded-3xl border border-neutral-800 bg-neutral-950/90 p-8">
-            <div className="flex flex-col gap-4 border-b border-neutral-800 pb-8 md:flex-row md:items-start md:justify-between">
-              <div className="max-w-2xl">
-                <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-                  Initial Evaluation
-                </p>
-                <h3 className="mt-3 text-2xl font-semibold text-white">
-                  Initial Evaluation {"\u2014"} $100
-                </h3>
-                <p className="mt-4 leading-8 text-neutral-300">
-                  A one-on-one session to assess your dog&apos;s behavior,
-                  identify goals, and build a structured training plan.
+        <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          {corePhases.map((phase, index) => (
+            <article className="surface-card p-7 md:p-8" key={phase.title}>
+              <div className="flex items-center justify-between gap-4">
+                <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-amber-300">
+                  Phase {index + 1}
+                </span>
+                <p className="text-lg font-semibold text-amber-300">
+                  {phase.price}
                 </p>
               </div>
-              <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 px-6 py-4 text-left md:min-w-44">
-                <p className="text-sm uppercase tracking-[0.2em] text-amber-300">
-                  Price
-                </p>
-                <p className="mt-2 text-3xl font-bold text-white">$100</p>
-              </div>
-            </div>
 
-            <FeatureList
-              features={[
-                "Behavior assessment",
-                "Obedience evaluation",
-                "Customized training roadmap",
-              ]}
-            />
-          </article>
-
-          <aside className="rounded-3xl border border-neutral-800 bg-neutral-950/90 p-8">
-            <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-              Full Program Commitment
-            </p>
-            <p className="mt-4 text-4xl font-bold text-white">$2,700</p>
-            <p className="mt-4 text-lg leading-8 text-neutral-300">
-              Save $300 when committing upfront.
-            </p>
-            <div className="mt-8 rounded-2xl border border-neutral-800 bg-neutral-900 p-6">
-              <p className="text-sm uppercase tracking-[0.2em] text-neutral-400">
-                Best for
+              <h3 className="mt-6 text-2xl font-semibold text-white">
+                {phase.title}
+              </h3>
+              <p className="mt-4 text-sm leading-7 text-neutral-300">
+                {phase.outcome}
               </p>
-              <p className="mt-3 leading-7 text-neutral-300">
-                Owners who want a complete, progressive obedience path with
-                clear benchmarks from foundation to public reliability.
-              </p>
-            </div>
-          </aside>
+              <FeatureList features={phase.features} />
+            </article>
+          ))}
         </div>
 
-        <div className="mt-14">
-          <div className="max-w-3xl">
-            <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-              Core Training Program
+        <div className="mt-8 flex flex-col gap-5 rounded-[1.75rem] border border-neutral-800 bg-neutral-950/75 p-7 md:flex-row md:items-center md:justify-between md:p-8">
+          <div className="max-w-2xl">
+            <p className="section-eyebrow">Full Program Commitment</p>
+            <h3 className="mt-4 text-3xl font-semibold text-white">$2,700</h3>
+            <p className="mt-4 text-base leading-8 text-neutral-300">
+              Save $300 when committing to the full three-phase system upfront.
             </p>
-            <h3 className="mt-4 text-2xl font-semibold md:text-4xl">
-              3-Phase System
-            </h3>
           </div>
+          <Link href="/training/evaluation" className="action-primary">
+            Schedule a Training Evaluation
+          </Link>
+        </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {corePhases.map((phase) => (
-              <article
-                className="rounded-3xl border border-neutral-800 bg-neutral-950/90 p-8"
-                key={phase.title}
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <h4 className="max-w-xs text-2xl font-semibold text-white">
-                    {phase.title}
+        <div className="mt-16 grid gap-10 xl:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <p className="section-eyebrow">Support Programs</p>
+            <h3 className="mt-4 text-3xl font-semibold text-white">
+              Ongoing work and immersive options
+            </h3>
+
+            <div className="mt-8 space-y-5">
+              <article className="surface-card p-7 md:p-8">
+                <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                  <h4 className="text-2xl font-semibold text-white">
+                    {supportPrograms[0].title}
                   </h4>
-                  <p className="text-xl font-bold text-amber-300">
-                    {phase.price}
+                  <p className="text-lg font-semibold text-amber-300">
+                    {supportPrograms[0].price}
                   </p>
                 </div>
-
-                <FeatureList features={phase.features} />
-
-                <div className="mt-8 rounded-2xl border border-neutral-800 bg-neutral-900 px-5 py-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
-                    Outcome
-                  </p>
-                  <p className="mt-2 text-sm leading-7 text-neutral-200">
-                    {phase.outcome}
-                  </p>
-                </div>
+                <p className="mt-4 text-sm leading-7 text-neutral-300">
+                  {supportPrograms[0].description}
+                </p>
+                <FeatureList features={supportPrograms[0].features} />
               </article>
-            ))}
-          </div>
-        </div>
 
-        <div className="mt-14 grid gap-6 xl:grid-cols-3">
-          <article className="rounded-3xl border border-neutral-800 bg-neutral-950/90 p-8">
-            <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-              Ongoing Training & Maintenance
-            </p>
-            <h3 className="mt-4 text-2xl font-semibold text-white">
-              Maintenance Program {"\u2014"} $200/month
-            </h3>
-            <FeatureList features={supportPrograms[0].features} />
-          </article>
-
-          <article className="rounded-3xl border border-neutral-800 bg-neutral-950/90 p-8 xl:col-span-2">
-            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <div>
-                <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-                  Board & Train Programs
-                </p>
-                <h3 className="mt-4 text-2xl font-semibold text-white">
-                  Board & Train Programs
-                </h3>
+              <div className="grid gap-5 md:grid-cols-2">
+                {supportPrograms.slice(1).map((program) => (
+                  <article className="surface-card p-7" key={program.title}>
+                    <div className="flex flex-col gap-2">
+                      <h4 className="text-xl font-semibold text-white">
+                        {program.title}
+                      </h4>
+                      <p className="text-base font-semibold text-amber-300">
+                        {program.price}
+                      </p>
+                    </div>
+                    <FeatureList features={program.features} />
+                  </article>
+                ))}
               </div>
             </div>
+          </div>
 
-            <div className="mt-8 grid gap-6 md:grid-cols-2">
-              {supportPrograms.slice(1).map((program) => (
-                <div
-                  className="rounded-2xl border border-neutral-800 bg-neutral-900 p-6"
-                  key={program.title}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <h4 className="text-xl font-semibold text-white">
-                      {program.title}
-                    </h4>
-                    <p className="text-lg font-bold text-amber-300">
-                      {program.price}
-                    </p>
-                  </div>
-                  <FeatureList features={program.features} />
-                </div>
-              ))}
-            </div>
-          </article>
-        </div>
-
-        <div className="mt-14 grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-          <article className="rounded-3xl border border-neutral-800 bg-neutral-950/90 p-8">
-            <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-              Additional Services
-            </p>
-            <h3 className="mt-4 text-2xl font-semibold text-white">
-              Private Sessions
+          <div>
+            <p className="section-eyebrow">Additional Services</p>
+            <h3 className="mt-4 text-3xl font-semibold text-white">
+              Private sessions and support options
             </h3>
 
-            <dl className="mt-8 grid gap-4">
-              {privateSessions.map((session) => (
-                <div
-                  className="flex items-center justify-between rounded-2xl border border-neutral-800 bg-neutral-900 px-5 py-4"
-                  key={session.label}
-                >
-                  <dt className="text-neutral-200">{session.label}</dt>
-                  <dd className="text-lg font-semibold text-white">
-                    {session.price}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+            <div className="mt-8 space-y-5">
+              <div className="surface-card p-7 md:p-8">
+                <h4 className="text-2xl font-semibold text-white">
+                  Private Sessions
+                </h4>
+                <dl className="mt-6 space-y-3">
+                  {privateSessions.map((session) => (
+                    <div
+                      className="flex items-center justify-between border-b border-neutral-800/80 pb-3 text-neutral-200 last:border-b-0 last:pb-0"
+                      key={session.label}
+                    >
+                      <dt>{session.label}</dt>
+                      <dd className="font-semibold text-white">
+                        {session.price}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
-              {additionalServices.map((service) => (
-                <div
-                  className="rounded-2xl border border-neutral-800 bg-neutral-900 px-5 py-5"
-                  key={service.label}
-                >
-                  <p className="text-sm uppercase tracking-[0.2em] text-neutral-500">
-                    Service
-                  </p>
-                  <h4 className="mt-3 text-lg font-semibold text-white">
-                    {service.label}
-                  </h4>
-                  <p className="mt-3 text-xl font-bold text-amber-300">
-                    {service.price}
-                  </p>
-                </div>
-              ))}
+              <div className="surface-card p-7 md:p-8">
+                <dl className="space-y-4">
+                  {additionalServices.map((service) => (
+                    <div
+                      className="flex items-center justify-between gap-4 border-b border-neutral-800/80 pb-4 text-neutral-200 last:border-b-0 last:pb-0"
+                      key={service.label}
+                    >
+                      <dt>{service.label}</dt>
+                      <dd className="font-semibold text-white">
+                        {service.price}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+
+              <aside className="rounded-[1.75rem] border border-amber-500/20 bg-amber-500/10 p-7 md:p-8">
+                <p className="section-eyebrow text-amber-300">
+                  Patriot K9 Command
+                </p>
+                <p className="mt-5 text-xl font-semibold leading-9 text-white md:text-2xl">
+                  At Patriot K9 Command, we don&apos;t just teach commands. We
+                  build discipline, structure, and dependable behavior that
+                  owners can carry into everyday life.
+                </p>
+              </aside>
             </div>
-          </article>
-
-          <aside className="rounded-3xl border border-amber-500/20 bg-amber-500/10 p-8">
-            <p className="text-sm uppercase tracking-[0.2em] text-amber-300">
-              Patriot K9 Command
-            </p>
-            <p className="mt-6 text-2xl font-semibold leading-10 text-white md:text-3xl">
-              At Patriot K9 Command, we don&apos;t just teach commands{"\u2014"}we build
-              discipline, structure, and real-world reliability.
-            </p>
-          </aside>
+          </div>
         </div>
       </div>
     </section>

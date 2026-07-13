@@ -1,25 +1,25 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-// Merge Agent: approved SEO metadata updates.
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://patriotk9kennel.com"),
-  title: "German Shepherd Puppies for Sale | Structured Training & Placement | Patriot K9 Kennel",
+  title:
+    "Patriot K9 Command | German Shepherd Breeding and Structured Training",
   description:
-    "Purpose-bred German Shepherd puppies with structured placement, proven training foundations, and ongoing support. Apply today to secure your dog.",
+    "Purpose-raised German Shepherd puppies, structured puppy placement, and practical in-person training for serious homes in Leetonia, Ohio.",
   openGraph: {
-    title: "Das Muller German Shepherds | Structured Training and Puppy Placement",
+    title:
+      "Patriot K9 Command | German Shepherd Breeding and Structured Training",
     description:
-      "Purpose-bred German Shepherds, structured puppy placement, and training support for serious homes.",
+      "Purpose-raised German Shepherd puppies, structured puppy placement, and practical in-person training for serious homes in Leetonia, Ohio.",
     url: "https://patriotk9kennel.com",
-    siteName: "Das Müller German Shepherds",
+    siteName: "Patriot K9 Command",
     images: [
       {
         url: "/share-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Das Müller German Shepherds",
+        alt: "Patriot K9 Command",
       },
     ],
     locale: "en_US",
@@ -27,9 +27,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Das Muller German Shepherds | Structured Training and Puppy Placement",
+    title:
+      "Patriot K9 Command | German Shepherd Breeding and Structured Training",
     description:
-      "Purpose-bred German Shepherds, structured puppy placement, and training support for serious homes.",
+      "Purpose-raised German Shepherd puppies, structured puppy placement, and practical in-person training for serious homes in Leetonia, Ohio.",
     images: ["/share-image.jpg"],
   },
   icons: {

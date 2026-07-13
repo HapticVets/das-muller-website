@@ -1,4 +1,9 @@
+import Image from "next/image";
+import Link from "next/link";
 import Header from "@/components/Header";
+import ResponsiveMedia from "@/components/media/ResponsiveMedia";
+import TrainingVideo from "@/components/media/TrainingVideo";
+import { siteMediaById } from "@/lib/siteMedia";
 import type { TrainingService } from "@/lib/trainingServices";
 
 const trainingBannerImages: Record<TrainingService["slug"], string> = {
@@ -17,6 +22,118 @@ const trainingHeroVideos: Partial<Record<TrainingService["slug"], string>> = {
   "behavior-modification": "/videos/training/behavior-modification.mp4",
 };
 
+const trainingPageMedia: Partial<
+  Record<
+    TrainingService["slug"],
+    {
+      heading: string;
+      copy: string;
+      notes?: string[];
+      items: Array<
+        | {
+            type: "image";
+            mediaId: keyof typeof siteMediaById;
+            aspectRatio?: number | string;
+            objectFit?: "cover" | "contain";
+          }
+        | {
+            type: "video";
+            mediaId: keyof typeof siteMediaById;
+            aspectRatio?: number | string;
+            controls?: boolean;
+            autoPlay?: boolean;
+            loop?: boolean;
+          }
+      >;
+    }
+  >
+> = {
+  "behavior-modification": {
+    heading: "Controlled Behavior Work with Real Context",
+    copy:
+      "Behavior work is built around neutrality, controlled exposure, handler timing, and realistic thresholds. The goal is steadier decision-making and safer responses, not empty promises.",
+    notes: [
+      "Neutrality means the dog can acknowledge a trigger without escalating into chaotic behavior.",
+      "Controlled exposure helps us work at a threshold where learning is still possible.",
+      "Impulse control and handler consistency matter as much as the session itself.",
+      "No training plan can guarantee the same outcome for every dog or every home.",
+    ],
+    items: [
+      {
+        type: "video",
+        mediaId: "training-behavior-modification-neutrality",
+        aspectRatio: "16 / 9",
+        controls: true,
+      },
+      {
+        type: "image",
+        mediaId: "training-calm-around-cat",
+        aspectRatio: "16 / 10",
+        objectFit: "contain",
+      },
+    ],
+  },
+  "private-lessons": {
+    heading: "Hands-On Lessons with Practical Repetition",
+    copy:
+      "Private lessons are built for owners who want to handle the dog themselves while improving timing, leash communication, place work, and follow-through between sessions.",
+    items: [
+      {
+        type: "video",
+        mediaId: "training-place-stay-with-release-command",
+        aspectRatio: "16 / 9",
+        controls: true,
+      },
+      {
+        type: "image",
+        mediaId: "training-place-command-outdoors",
+        aspectRatio: "16 / 10",
+        objectFit: "contain",
+      },
+    ],
+  },
+  "board-and-train": {
+    heading: "Daily Structure That Transfers into Public Life",
+    copy:
+      "Board and train is designed to create repetition, obedience, calmer behavior, and stronger public manners before the owner handoff phase begins.",
+    items: [
+      {
+        type: "image",
+        mediaId: "training-public-down-stay-store",
+        aspectRatio: "16 / 10",
+        objectFit: "contain",
+      },
+      {
+        type: "video",
+        mediaId: "training-public-place-command-doctors-office",
+        aspectRatio: "16 / 9",
+        controls: true,
+      },
+    ],
+  },
+  "puppy-foundation": {
+    heading: "Early Development with Structure and Exposure",
+    copy:
+      "Puppy foundation work starts with engagement, basic structure, environmental exposure, and clean communication so owners can build the right habits from the beginning.",
+    items: [
+      {
+        type: "video",
+        mediaId: "puppy-ball-drive-development",
+        aspectRatio: "16 / 9",
+        autoPlay: false,
+        loop: false,
+        controls: true,
+      },
+      {
+        type: "image",
+        mediaId: "puppy-evaluations-vet-office-group",
+        aspectRatio: "16 / 10",
+        objectFit: "contain",
+      },
+    ],
+  },
+};
+
 function SectionList({
   title,
   items,
@@ -25,10 +142,8 @@ function SectionList({
   items: string[];
 }) {
   return (
-    <section className="rounded-3xl border border-neutral-800 bg-neutral-950/90 p-8">
-      <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-        {title}
-      </p>
+    <section className="surface-card p-8">
+      <p className="section-eyebrow">{title}</p>
       <ul className="mt-6 space-y-4 text-neutral-300">
         {items.map((item) => (
           <li className="flex gap-3" key={item}>
@@ -46,35 +161,28 @@ export default function TrainingServicePage({
 }: {
   service: TrainingService;
 }) {
+  const pageMedia = trainingPageMedia[service.slug];
+
   return (
     <>
       <Header />
 
       <main className="min-h-screen bg-neutral-950 text-white">
         <section className="border-b border-neutral-900 bg-[linear-gradient(180deg,rgba(23,23,23,0.92)_0%,rgba(10,10,10,1)_100%)]">
-          <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:py-24">
+          <div className="section-shell grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:py-24">
             <div className="max-w-3xl">
-              <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
-                Training Services
-              </p>
-              <h1 className="mt-4 text-4xl font-bold leading-tight md:text-6xl">
-                {service.title}
-              </h1>
-              <p className="mt-6 text-lg leading-8 text-neutral-300">
-                {service.shortDescription}
-              </p>
+              <p className="section-eyebrow">Training Services</p>
+              <h1 className="section-title max-w-[14ch]">{service.title}</h1>
+              <p className="section-copy">{service.shortDescription}</p>
 
               <div className="mt-10 flex flex-wrap gap-4">
                 <a
                   href="mailto:jreese@hapticvets.com?subject=Training%20Inquiry"
-                  className="rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
+                  className="action-primary"
                 >
                   Email About Training
                 </a>
-                <a
-                  href="tel:8132996905"
-                  className="rounded-2xl border border-neutral-700 px-6 py-3 font-semibold text-white hover:bg-neutral-900"
-                >
+                <a href="tel:8132996905" className="action-secondary">
                   Call or Text: (813) 299-6905
                 </a>
               </div>
@@ -134,10 +242,12 @@ export default function TrainingServicePage({
                 </div>
               ) : (
                 <div className="relative h-full min-h-80 overflow-hidden rounded-[1.5rem] border border-neutral-700 bg-neutral-950">
-                  <img
-                    alt={`${service.title} banner`}
-                    className="absolute inset-0 h-full w-full object-contain"
+                  <Image
                     src={trainingBannerImages[service.slug]}
+                    alt={`${service.title} banner`}
+                    fill
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="object-contain"
                   />
                   <div className="absolute inset-0 bg-black/45" />
                 </div>
@@ -147,20 +257,16 @@ export default function TrainingServicePage({
         </section>
 
         <section className="border-b border-neutral-900 bg-neutral-900/40">
-          <div className="mx-auto grid max-w-7xl gap-6 px-6 py-16 md:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:px-12">
-            <article className="rounded-3xl border border-neutral-800 bg-neutral-950/90 p-8">
-              <p className="text-sm uppercase tracking-[0.2em] text-amber-400">
-                Purpose
-              </p>
+          <div className="section-shell-tight grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <article className="surface-card p-8">
+              <p className="section-eyebrow">Purpose</p>
               <p className="mt-4 text-lg leading-8 text-neutral-300">
                 {service.purpose}
               </p>
             </article>
 
             <aside className="rounded-3xl border border-amber-500/20 bg-amber-500/10 p-8">
-              <p className="text-sm uppercase tracking-[0.2em] text-amber-300">
-                Price
-              </p>
+              <p className="section-eyebrow text-amber-300">Price</p>
               <p className="mt-4 text-3xl font-bold text-white">
                 {service.price}
               </p>
@@ -172,7 +278,7 @@ export default function TrainingServicePage({
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 py-16 md:px-10 lg:px-12">
+        <section className="section-shell-tight">
           <div className="grid gap-6 lg:grid-cols-2">
             <SectionList title="Who This Is For" items={service.whoItsFor} />
             <SectionList title="What Is Included" items={service.included} />
@@ -184,16 +290,100 @@ export default function TrainingServicePage({
           </div>
         </section>
 
-        <section className="border-t border-neutral-900 bg-neutral-900/40">
-          <div className="mx-auto max-w-7xl px-6 py-16 md:px-10 lg:px-12">
-            <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-              <article className="rounded-3xl border border-neutral-800 bg-neutral-950/90 p-8">
-                <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
-                  Contact
-                </p>
-                <h2 className="mt-4 text-3xl font-bold md:text-5xl">
-                  Located in Leetonia, Ohio
+        {pageMedia ? (
+          <section className="border-t border-neutral-900 bg-neutral-950">
+            <div className="section-shell-tight">
+              <div className="max-w-3xl">
+                <p className="section-eyebrow">Training in Practice</p>
+                <h2 className="section-title max-w-[15ch]">
+                  {pageMedia.heading}
                 </h2>
+                <p className="section-copy">{pageMedia.copy}</p>
+              </div>
+
+              <div className="mt-12 grid gap-6 lg:grid-cols-2">
+                {pageMedia.items.map((item) => {
+                  const media = siteMediaById[item.mediaId];
+
+                  if (item.type === "video") {
+                    return (
+                      <TrainingVideo
+                        key={media.id}
+                        src={media.src}
+                        title={media.title}
+                        description={media.description}
+                        aspectRatio={item.aspectRatio}
+                        autoPlay={item.autoPlay ?? false}
+                        muted={item.autoPlay ?? false}
+                        loop={item.loop ?? false}
+                        controls={item.controls ?? true}
+                      />
+                    );
+                  }
+
+                  return (
+                    <div className="surface-card p-4" key={media.id}>
+                      <ResponsiveMedia
+                        src={media.src}
+                        alt={media.alt}
+                        sizes="(min-width: 1024px) 45vw, 100vw"
+                        aspectRatio={item.aspectRatio}
+                        objectFit={item.objectFit ?? "cover"}
+                      />
+                      <div className="p-2 pt-5">
+                        <h3 className="text-xl font-semibold text-white">
+                          {media.title}
+                        </h3>
+                        <p className="mt-3 text-sm leading-7 text-neutral-300">
+                          {media.description}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {pageMedia.notes?.length ? (
+                <div className="surface-card-soft mt-6 p-8">
+                  <p className="section-eyebrow">Important Context</p>
+                  <ul className="mt-6 space-y-4 text-neutral-300">
+                    {pageMedia.notes.map((note) => (
+                      <li className="flex gap-3" key={note}>
+                        <span className="mt-2 h-2 w-2 rounded-full bg-amber-400" />
+                        <span className="leading-7">{note}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </div>
+          </section>
+        ) : null}
+
+        <section className="border-t border-neutral-900 bg-neutral-900/40">
+          <div className="section-shell-tight">
+            <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+              <article className="surface-card p-8">
+                <p className="section-eyebrow">Contact</p>
+                <h2 className="section-title max-w-[14ch]">
+                  Start With the Right Next Step
+                </h2>
+                <p className="section-copy">
+                  Reach out with your dog&apos;s age, current behavior, and the
+                  kind of help you are looking for so we can guide you toward
+                  the right next step.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <a
+                    href="mailto:jreese@hapticvets.com?subject=Training%20Inquiry"
+                    className="action-primary"
+                  >
+                    Email About Training
+                  </a>
+                  <a href="tel:8132996905" className="action-secondary">
+                    Call or Text: (813) 299-6905
+                  </a>
+                </div>
                 <div className="mt-8 space-y-4 text-lg leading-8 text-neutral-300">
                   <p>
                     Email:{" "}
@@ -217,52 +407,47 @@ export default function TrainingServicePage({
                     Text message preferred for first contact. If calling,
                     please leave a voicemail.
                   </p>
+                  <p className="text-base text-neutral-400">
+                    Located at 4277 Lisbon Rd, Leetonia, OH 44431. Visits are
+                    by appointment only. Please do not arrive without
+                    scheduling first.
+                  </p>
                 </div>
               </article>
 
-              <aside className="rounded-3xl border border-neutral-800 bg-neutral-950 p-8">
-                <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
-                  Puppy Inquiries
-                </p>
+              <aside className="surface-card p-8">
+                <p className="section-eyebrow">Puppy Inquiries</p>
                 <p className="mt-6 text-lg leading-8 text-neutral-300">
                   For puppy applications, submit the application and we will
                   contact you within 24 hours.
                 </p>
-                  <a
-                    href="/#application"
-                    className="mt-8 inline-block rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
-                >
+                <Link href="/apply" className="action-primary mt-8">
                   Start Your Puppy Application
-                </a>
+                </Link>
               </aside>
             </div>
           </div>
         </section>
 
         <section className="border-t border-neutral-900 bg-neutral-900/40">
-          <div className="mx-auto max-w-5xl px-6 py-16 text-center md:px-10">
-            <p className="text-sm uppercase tracking-[0.25em] text-amber-400">
-              Patriot K9 Command
-            </p>
+          <div className="section-shell-tight max-w-5xl text-center">
+            <p className="section-eyebrow">Patriot K9 Command</p>
             <h2 className="mt-4 text-3xl font-bold md:text-5xl">
               Structured training with clear standards and practical direction.
             </h2>
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-neutral-300">
               Every program is built to improve communication, structure, and
-              real-world handling without making unrealistic guarantees about
+              practical handling without making unrealistic guarantees about
               outcomes.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <a
                 href="mailto:jreese@hapticvets.com?subject=Training%20Inquiry"
-                className="rounded-2xl bg-amber-500 px-6 py-3 font-semibold text-black hover:opacity-90"
+                className="action-primary"
               >
                 Email About Training
               </a>
-              <a
-                href="tel:8132996905"
-                className="rounded-2xl border border-neutral-700 px-6 py-3 font-semibold text-white hover:bg-neutral-900"
-              >
+              <a href="tel:8132996905" className="action-secondary">
                 Call or Text: (813) 299-6905
               </a>
             </div>

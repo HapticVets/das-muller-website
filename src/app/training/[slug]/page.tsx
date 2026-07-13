@@ -24,7 +24,7 @@ export async function generateMetadata({
 
   if (!service) {
     return {
-      title: "Training Service Not Found | Patriot K9 Kennel",
+      title: "Training Service Not Found | Patriot K9 Command",
     };
   }
 

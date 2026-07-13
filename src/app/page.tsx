@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import HomePageClient from "@/components/HomePageClient";
 
 export const metadata: Metadata = {
-  title: "Das Muller German Shepherds | Structured Training and Puppy Placement",
+  title:
+    "Patriot K9 Command | German Shepherd Breeding and Structured Training",
   description:
-    "Purpose-bred German Shepherds, structured puppy placement, and training support for serious homes.",
+    "Patriot K9 Command provides purpose-raised German Shepherd puppies, puppy placement, and structured in-person dog training in Leetonia, Ohio.",
 };
 
 export default function Home() {
