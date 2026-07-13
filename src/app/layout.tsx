@@ -3,23 +3,24 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://patriotk9kennel.com"),
-  title:
-    "Patriot K9 Command | German Shepherd Breeding and Structured Training",
+  title: {
+    default: "Patriot K9 Command",
+    template: "%s | Patriot K9 Command",
+  },
   description:
-    "Purpose-raised German Shepherd puppies, structured puppy placement, and practical in-person training for serious homes in Leetonia, Ohio.",
+    "German Shepherd breeding and professional dog training in Leetonia, Ohio.",
   openGraph: {
-    title:
-      "Patriot K9 Command | German Shepherd Breeding and Structured Training",
+    title: "Patriot K9 Command",
     description:
-      "Purpose-raised German Shepherd puppies, structured puppy placement, and practical in-person training for serious homes in Leetonia, Ohio.",
-    url: "https://patriotk9kennel.com",
+      "German Shepherd breeding and professional dog training in Leetonia, Ohio.",
+    url: "/",
     siteName: "Patriot K9 Command",
     images: [
       {
-        url: "/share-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Patriot K9 Command",
+        url: "/images/branding/og-image.jpg",
+        width: 1358,
+        height: 1159,
+        alt: "Patriot K9 Command German Shepherd breeding and training",
       },
     ],
     locale: "en_US",
@@ -27,11 +28,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Patriot K9 Command | German Shepherd Breeding and Structured Training",
+    title: "Patriot K9 Command",
     description:
-      "Purpose-raised German Shepherd puppies, structured puppy placement, and practical in-person training for serious homes in Leetonia, Ohio.",
-    images: ["/share-image.jpg"],
+      "German Shepherd breeding and professional dog training in Leetonia, Ohio.",
+    images: ["/images/branding/og-image.jpg"],
   },
   icons: {
     icon: "/favicon.ico",

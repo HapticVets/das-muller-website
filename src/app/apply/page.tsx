@@ -5,9 +5,32 @@ import ResponsiveMedia from "@/components/media/ResponsiveMedia";
 import { siteMediaById } from "@/lib/siteMedia";
 
 export const metadata: Metadata = {
-  title: "Puppy Application | Patriot K9 Command",
+  title: "Puppy Application",
   description:
     "Apply for a Patriot K9 Command German Shepherd puppy and tell us about your home, goals, and expectations.",
+  alternates: {
+    canonical: "/apply",
+  },
+  openGraph: {
+    title: "Puppy Application",
+    description:
+      "Apply for a Patriot K9 Command German Shepherd puppy and tell us about your home, goals, and expectations.",
+    url: "/apply",
+    images: [
+      {
+        url: "/images/branding/og-image.jpg",
+        width: 1358,
+        height: 1159,
+        alt: "Patriot K9 Command German Shepherd breeding and training",
+      },
+    ],
+  },
+  twitter: {
+    title: "Puppy Application",
+    description:
+      "Apply for a Patriot K9 Command German Shepherd puppy and tell us about your home, goals, and expectations.",
+    images: ["/images/branding/og-image.jpg"],
+  },
 };
 
 export default function ApplyPage() {
