@@ -72,3 +72,4 @@ Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
 ✓ Compiled in 41ms
  GET / 200 in 286ms (next.js: 121ms, application-code: 165ms)
  GET / 200 in 62ms (next.js: 4ms, application-code: 58ms)
+[?25h

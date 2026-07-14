@@ -761,6 +761,13 @@ export default function PuppyApplicationWizard() {
                 onChange={(e) => updateField("preferredTraits", e.target.value)}
                 className="field-base min-h-40"
               />
+              <p className="form-hint">
+                Eligible puppies include the documentation needed for AKC
+                registration. Registration is completed by the new owner after
+                placement. Companion placements may use limited registration,
+                and any full-registration arrangement must be approved and
+                documented in the purchase agreement.
+              </p>
             </div>
 
             <div>

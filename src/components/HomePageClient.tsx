@@ -4,15 +4,19 @@ import Link from "next/link";
 import AvailableLitters from "@/components/AvailableLitter";
 import Header from "@/components/Header";
 import Pricing from "@/components/Pricing";
+import AiTrainerPath from "@/components/AiTrainerPath";
+import AkcRegistrationBlock from "@/components/AkcRegistrationBlock";
 import ResponsiveMedia from "@/components/media/ResponsiveMedia";
 import TrainingVideo from "@/components/media/TrainingVideo";
 import { siteMediaById } from "@/lib/siteMedia";
+import { AI_TRAINER_PRICE_LINE, ONLINE_TRAINING_APP_URL } from "@/lib/siteUrls";
 
 const trustItems = [
   "Veteran-Owned",
   "Licensed Kennel",
+  "AKC Registered Bloodlines",
   "Structured Puppy Development",
-  "Practical In-Person Training",
+  "Weekly Puppy Evaluations",
 ];
 
 export default function HomePageClient() {
@@ -123,6 +127,9 @@ export default function HomePageClient() {
                 attention to confidence, recovery, engagement, and how each
                 puppy responds to new experiences.
               </p>
+              <div className="mt-8">
+                <AkcRegistrationBlock />
+              </div>
               <Link
                 href="/apply"
                 className="mt-8 inline-flex items-center justify-center rounded-2xl bg-amber-500 px-6 py-3.5 font-semibold text-black transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-amber-300"
@@ -140,6 +147,23 @@ export default function HomePageClient() {
                 objectFit="contain"
                 objectPosition="center top"
               />
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-neutral-900 bg-neutral-950">
+          <div className="section-shell-tight">
+            <div className="max-w-3xl">
+              <p className="section-eyebrow">Breeding Questions</p>
+              <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+                Are Patriot K9 Command puppies AKC registered?
+              </h2>
+              <p className="mt-6 max-w-[62ch] text-lg leading-8 text-neutral-300">
+                Our breeding dogs are AKC registered, and eligible puppies are
+                sold with the documentation needed for their new owners to
+                complete AKC registration. Registration type and any breeding
+                rights are determined by the purchase agreement.
+              </p>
             </div>
           </div>
         </section>
@@ -189,7 +213,65 @@ export default function HomePageClient() {
           </div>
         </section>
 
+        <section className="border-b border-neutral-900 bg-neutral-950">
+          <div className="section-shell-tight">
+            <AiTrainerPath
+              eyebrow="Train Online"
+              title="Prefer to Train Your Dog Yourself?"
+              body="Use the Patriot K9 AI Trainer for personalized guidance, training plans, saved progress, and structured help you can follow at home."
+            />
+          </div>
+        </section>
+
         <Pricing />
+
+        <section className="border-b border-neutral-900 bg-neutral-900/35">
+          <div className="section-shell-tight">
+            <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+              <article className="surface-card p-8">
+                <p className="section-eyebrow">Online Option</p>
+                <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+                  Not Ready for an In-Person Program?
+                </h2>
+                <p className="mt-6 max-w-[62ch] text-lg leading-8 text-neutral-300">
+                  Start with personalized online guidance and work at your own
+                  pace. The AI Trainer can help you build structure, practice
+                  foundational skills, and document progress before deciding
+                  whether you need hands-on training.
+                </p>
+                <Link href="/ai-dog-trainer" className="action-primary mt-8">
+                  See the AI Trainer
+                </Link>
+              </article>
+
+              <aside className="rounded-[1.75rem] border border-amber-500/20 bg-amber-500/10 p-8">
+                <p className="section-eyebrow text-amber-300">
+                  Patriot K9 AI Trainer
+                </p>
+                <p className="mt-5 text-xl font-semibold leading-9 text-white md:text-2xl">
+                  Personalized online guidance for owners who want a structured
+                  place to start at home.
+                </p>
+                <p className="mt-5 text-base leading-8 text-neutral-200">
+                  {AI_TRAINER_PRICE_LINE}
+                </p>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link href="/ai-dog-trainer" className="action-secondary">
+                    Learn More
+                  </Link>
+                  <a
+                    href={ONLINE_TRAINING_APP_URL}
+                    className="action-primary"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Start Training Online
+                  </a>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
 
         <section className="border-b border-neutral-900 bg-neutral-950">
           <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12 lg:py-16">
@@ -417,6 +499,12 @@ export default function HomePageClient() {
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
+              <Link
+                href="/ai-dog-trainer"
+                className="transition hover:text-white"
+              >
+                AI Dog Trainer
+              </Link>
               <Link href="/apply" className="transition hover:text-white">
                 Apply for a Puppy
               </Link>
@@ -426,6 +514,10 @@ export default function HomePageClient() {
               >
                 Training Evaluation
               </Link>
+            </div>
+            <div className="text-sm text-neutral-500">
+              Personalized online dog-training guidance available from
+              anywhere.
             </div>
           </div>
         </footer>

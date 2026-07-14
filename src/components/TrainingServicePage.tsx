@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import AiTrainerPath from "@/components/AiTrainerPath";
 import Header from "@/components/Header";
 import ResponsiveMedia from "@/components/media/ResponsiveMedia";
 import TrainingVideo from "@/components/media/TrainingVideo";
@@ -162,6 +163,13 @@ export default function TrainingServicePage({
   service: TrainingService;
 }) {
   const pageMedia = trainingPageMedia[service.slug];
+  const shouldShowAiTrainerPath = new Set([
+    "evaluation",
+    "puppy-foundation",
+    "private-lessons",
+    "day-training",
+    "board-and-train",
+  ]).has(service.slug);
 
   return (
     <>
@@ -361,6 +369,44 @@ export default function TrainingServicePage({
                   </ul>
                 </div>
               ) : null}
+            </div>
+          </section>
+        ) : null}
+
+        {shouldShowAiTrainerPath ? (
+          <section className="border-t border-neutral-900 bg-neutral-950">
+            <div className="section-shell-tight">
+              <AiTrainerPath
+                eyebrow="Want to Begin at Home?"
+                title="Train Online Before or Between In-Person Sessions"
+                body="The Patriot K9 AI Trainer can help you start building routines and practicing foundational skills before or between in-person sessions."
+                internalLabel="Train Online"
+                externalLabel="Open the AI Trainer"
+                compact
+              />
+            </div>
+          </section>
+        ) : null}
+
+        {service.slug === "behavior-modification" ? (
+          <section className="border-t border-neutral-900 bg-neutral-950">
+            <div className="section-shell-tight">
+              <article className="rounded-[1.75rem] border border-neutral-800 bg-neutral-950/80 p-7 md:p-8">
+                <p className="section-eyebrow">Want to Begin at Home?</p>
+                <p className="mt-4 max-w-3xl text-lg leading-8 text-neutral-300">
+                  Online guidance may support management and homework, but
+                  serious aggression and bite-risk concerns should begin with an
+                  in-person evaluation.
+                </p>
+                <div className="mt-7 flex flex-wrap gap-4">
+                  <Link href="/training/evaluation" className="action-primary">
+                    Schedule an Evaluation
+                  </Link>
+                  <Link href="/ai-dog-trainer" className="action-secondary">
+                    View the AI Trainer
+                  </Link>
+                </div>
+              </article>
             </div>
           </section>
         ) : null}

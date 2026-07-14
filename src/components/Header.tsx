@@ -84,6 +84,9 @@ export default function Header() {
                 ))}
               </div>
             </div>
+            <Link href="/ai-dog-trainer" className="transition hover:text-white">
+              AI Dog Trainer
+            </Link>
             <Link href="/apply" className="transition hover:text-white">
               Apply
             </Link>
@@ -168,6 +171,12 @@ export default function Header() {
                   </div>
                 ) : null}
               </div>
+              <Link
+                href="/ai-dog-trainer"
+                className="block rounded-xl px-4 py-3 transition hover:bg-neutral-900 hover:text-white"
+              >
+                AI Dog Trainer
+              </Link>
               <Link
                 href="/apply"
                 aria-label="Apply for a Puppy"
