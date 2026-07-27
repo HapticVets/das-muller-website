@@ -7,7 +7,6 @@ import Pricing from "@/components/Pricing";
 import AiTrainerPath from "@/components/AiTrainerPath";
 import AkcRegistrationBlock from "@/components/AkcRegistrationBlock";
 import ResponsiveMedia from "@/components/media/ResponsiveMedia";
-import TrainingVideo from "@/components/media/TrainingVideo";
 import { siteMediaById } from "@/lib/siteMedia";
 import { AI_TRAINER_PRICE_LINE, ONLINE_TRAINING_APP_URL } from "@/lib/siteUrls";
 
@@ -22,8 +21,6 @@ const trustItems = [
 export default function HomePageClient() {
   const puppyPortrait = siteMediaById["puppy-black-tan-portrait-outdoors"];
   const publicStoreTraining = siteMediaById["training-public-down-stay-store"];
-  const publicOfficeTraining =
-    siteMediaById["training-public-place-command-doctors-office"];
   const placeCommandOutdoors =
     siteMediaById["training-place-command-outdoors"];
   const facilityOverview = siteMediaById["facility-drone-property-overview"];
@@ -304,14 +301,6 @@ export default function HomePageClient() {
                   </p>
                 </div>
               </div>
-
-              <TrainingVideo
-                src={publicOfficeTraining.src}
-                title="Doctor&apos;s Office"
-                description="Settling quietly in an everyday public environment."
-                aspectRatio="16 / 10"
-                controls
-              />
 
               <div className="rounded-[2rem] border border-neutral-800 bg-neutral-900/70 p-4">
                 <ResponsiveMedia

@@ -54,11 +54,11 @@ export const siteMedia: readonly SiteMediaItem[] = [
   {
     id: "puppy-evaluations-vet-office-group",
     type: "image",
-    src: "/media/puppies/puppy-evaluations-vet-office-group.JPG",
-    alt: "German Shepherd puppies together during an early environmental exposure outing.",
-    title: "Early Environmental Exposure",
+    src: "/images/training/puppy-foundation-training.jpg",
+    alt: "German Shepherd puppy beginning foundation training with Patriot K9 Command.",
+    title: "Puppy Foundation Training",
     description:
-      "Group outings help us observe curiosity, composure, and developing engagement in new environments.",
+      "Early foundation repetitions help build calm engagement, handling, and clearer puppy communication from the start.",
     category: "puppies",
     recommendedPages: ["home", "training/puppy-foundation"],
     heroEligible: false,

@@ -129,7 +129,7 @@ const trainingPageMedia: Partial<
         type: "image",
         mediaId: "puppy-evaluations-vet-office-group",
         aspectRatio: "16 / 10",
-        objectFit: "contain",
+        objectFit: "cover",
       },
     ],
   },
