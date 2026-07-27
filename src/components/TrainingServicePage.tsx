@@ -104,12 +104,6 @@ const trainingPageMedia: Partial<
         aspectRatio: "16 / 10",
         objectFit: "contain",
       },
-      {
-        type: "video",
-        mediaId: "training-public-place-command-doctors-office",
-        aspectRatio: "16 / 9",
-        controls: true,
-      },
     ],
   },
   "puppy-foundation": {

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import AvailableLitters from "@/components/AvailableLitter";
 import Header from "@/components/Header";
@@ -20,6 +21,8 @@ const trustItems = [
 
 export default function HomePageClient() {
   const puppyPortrait = siteMediaById["puppy-black-tan-portrait-outdoors"];
+  const breedingProgramPuppy =
+    siteMediaById["puppy-early-socialization-training"];
   const publicStoreTraining = siteMediaById["training-public-down-stay-store"];
   const placeCommandOutdoors =
     siteMediaById["training-place-command-outdoors"];
@@ -135,14 +138,14 @@ export default function HomePageClient() {
               </Link>
             </div>
 
-            <div className="rounded-[2rem] border border-neutral-800 bg-neutral-900/70 p-4">
-              <ResponsiveMedia
-                src={puppyPortrait.src}
-                alt={puppyPortrait.alt}
+            <div className="self-start rounded-[2rem] border border-neutral-800 bg-neutral-900/70 p-4">
+              <Image
+                src={breedingProgramPuppy.src}
+                alt={breedingProgramPuppy.alt}
+                width={2880}
+                height={2160}
                 sizes="(min-width: 1024px) 42vw, 100vw"
-                aspectRatio="4 / 5"
-                objectFit="contain"
-                objectPosition="center top"
+                className="h-auto w-full rounded-[1.5rem] object-cover"
               />
             </div>
           </div>
