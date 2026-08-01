@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import TrainingServicePage from "@/components/TrainingServicePage";
 import {
+  OG_IMAGE_PATH,
+  buildTrainingServiceJsonLd,
+  getTrainingMetadata,
+  toJsonLd,
+} from "@/lib/seo";
+import {
   getTrainingService,
   trainingServices,
 } from "@/lib/trainingServices";
@@ -28,20 +34,22 @@ export async function generateMetadata({
     };
   }
 
+  const seoMetadata = getTrainingMetadata(service);
+
   return {
-    title: service.title,
-    description: service.shortDescription,
+    title: seoMetadata.title,
+    description: seoMetadata.description,
     alternates: {
       canonical: `/training/${service.slug}`,
     },
     openGraph: {
-      title: service.title,
-      description: service.shortDescription,
+      title: seoMetadata.title,
+      description: seoMetadata.description,
       url: `/training/${service.slug}`,
       type: "website",
       images: [
         {
-          url: "/images/branding/og-image.jpg",
+          url: OG_IMAGE_PATH,
           width: 1358,
           height: 1159,
           alt: "Patriot K9 Command German Shepherd breeding and training",
@@ -50,9 +58,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: service.title,
-      description: service.shortDescription,
-      images: ["/images/branding/og-image.jpg"],
+      title: seoMetadata.title,
+      description: seoMetadata.description,
+      images: [OG_IMAGE_PATH],
     },
   };
 }
@@ -65,5 +73,15 @@ export default async function TrainingSlugPage({
 
   if (!service) notFound();
 
-  return <TrainingServicePage service={service} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: toJsonLd(buildTrainingServiceJsonLd(service)),
+        }}
+      />
+      <TrainingServicePage service={service} />
+    </>
+  );
 }

@@ -1,28 +1,42 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import {
+  OG_IMAGE_PATH,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  buildBusinessJsonLd,
+  toJsonLd,
+} from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://patriotk9kennel.com"),
+  metadataBase: new URL(SITE_URL),
   manifest: "/site.webmanifest",
   title: {
-    default: "Patriot K9 Command",
-    template: "%s | Patriot K9 Command",
+    default: SITE_NAME,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "German Shepherd breeding and professional dog training based in Leetonia, Ohio, serving clients throughout Ohio and the surrounding tri-state region.",
+  description: SITE_DESCRIPTION,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   openGraph: {
-    title: "Patriot K9 Command",
-    description:
-      "German Shepherd breeding and professional dog training based in Leetonia, Ohio, serving clients throughout Ohio and the surrounding tri-state region.",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
     url: "/",
-    siteName: "Patriot K9 Command",
+    siteName: SITE_NAME,
     images: [
       {
-        url: "/images/branding/og-image.jpg",
+        url: OG_IMAGE_PATH,
         width: 1358,
         height: 1159,
-        alt: "Patriot K9 Command German Shepherd breeding and training",
+        alt: `${SITE_NAME} German Shepherd breeding and training`,
       },
     ],
     locale: "en_US",
@@ -30,10 +44,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Patriot K9 Command",
-    description:
-      "German Shepherd breeding and professional dog training based in Leetonia, Ohio, serving clients throughout Ohio and the surrounding tri-state region.",
-    images: ["/images/branding/og-image.jpg"],
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE_PATH],
   },
 };
 
@@ -46,6 +59,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: toJsonLd(buildBusinessJsonLd()) }}
+        />
         <Script
           id="google-ads-base-tag"
           src="https://www.googletagmanager.com/gtag/js?id=AW-18273570871"
