@@ -54,8 +54,8 @@ export const siteMedia: readonly SiteMediaItem[] = [
   {
     id: "puppy-evaluations-vet-office-group",
     type: "image",
-    src: "/images/training/puppy-foundation-training.jpg",
-    alt: "German Shepherd puppy beginning foundation training with Patriot K9 Command.",
+    src: "/images/training/ollie-puppy-socialization-training.jpg",
+    alt: "Young German Shepherd Ollie during puppy socialization and confidence training at Patriot K9 Command.",
     title: "Puppy Foundation Training",
     description:
       "Early foundation repetitions help build calm engagement, handling, and clearer puppy communication from the start.",
@@ -67,8 +67,8 @@ export const siteMedia: readonly SiteMediaItem[] = [
   {
     id: "puppy-early-socialization-training",
     type: "image",
-    src: "/images/training/puppy-foundation-training.jpg",
-    alt: "German Shepherd puppy beginning early socialization with Patriot K9 Command.",
+    src: "/media/breeding/ollie-german-shepherd-puppy-development.jpg",
+    alt: "Young German Shepherd Ollie interacting with another dog during early development at Patriot K9 Command.",
     title: "Purpose-Raised German Shepherd Puppies",
     description:
       "Early structure, socialization, and clear handling help us evaluate each puppy as an individual from the start.",

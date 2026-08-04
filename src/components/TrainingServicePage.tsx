@@ -36,6 +36,7 @@ const trainingPageMedia: Partial<
             mediaId: keyof typeof siteMediaById;
             aspectRatio?: number | string;
             objectFit?: "cover" | "contain";
+            objectPosition?: string;
           }
         | {
             type: "video";
@@ -124,6 +125,7 @@ const trainingPageMedia: Partial<
         mediaId: "puppy-evaluations-vet-office-group",
         aspectRatio: "16 / 10",
         objectFit: "cover",
+        objectPosition: "center 28%",
       },
     ],
   },
@@ -336,6 +338,7 @@ export default function TrainingServicePage({
                         sizes="(min-width: 1024px) 45vw, 100vw"
                         aspectRatio={item.aspectRatio}
                         objectFit={item.objectFit ?? "cover"}
+                        objectPosition={item.objectPosition ?? "center"}
                       />
                       <div className="p-2 pt-5">
                         <h3 className="text-xl font-semibold text-white">

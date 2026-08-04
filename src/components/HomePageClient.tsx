@@ -142,10 +142,10 @@ export default function HomePageClient() {
               <Image
                 src={breedingProgramPuppy.src}
                 alt={breedingProgramPuppy.alt}
-                width={2880}
-                height={2160}
+                width={3024}
+                height={4032}
                 sizes="(min-width: 1024px) 42vw, 100vw"
-                className="h-auto w-full rounded-[1.5rem] object-cover"
+                className="h-auto w-full rounded-[1.5rem] object-cover object-[center_32%]"
               />
             </div>
           </div>
