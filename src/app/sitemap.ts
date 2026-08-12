@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { dogProfiles } from "@/lib/dogs";
 import { SITE_URL } from "@/lib/seo";
 import { trainingServices } from "@/lib/trainingServices";
 
@@ -24,6 +25,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/our-dogs`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    ...dogProfiles.map((dog) => ({
+      url: `${SITE_URL}/our-dogs/${dog.slug}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     ...trainingServices.map((service) => ({
       url: `${SITE_URL}/training/${service.slug}`,
       lastModified,

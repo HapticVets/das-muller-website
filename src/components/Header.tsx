@@ -50,6 +50,9 @@ export default function Header() {
             <Link href="/#programs" className="transition hover:text-white">
               Programs
             </Link>
+            <Link href="/our-dogs" className="transition hover:text-white">
+              Our Dogs
+            </Link>
             <div className="group relative">
               <button
                 type="button"
@@ -130,6 +133,12 @@ export default function Header() {
                 className="block rounded-xl px-4 py-3 transition hover:bg-neutral-900 hover:text-white"
               >
                 Programs
+              </Link>
+              <Link
+                href="/our-dogs"
+                className="block rounded-xl px-4 py-3 transition hover:bg-neutral-900 hover:text-white"
+              >
+                Our Dogs
               </Link>
               <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40">
                 <button
