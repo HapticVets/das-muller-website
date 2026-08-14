@@ -283,7 +283,48 @@ export const dogProfiles: DogProfile[] = [
     ],
     producedOffspring: ["Ollie Major"],
     relatedOffspring: ["Ollie Major"],
-    photos: [],
+    photos: [
+      {
+        src: "/media/breeding/anna-mechtilde-das-muller-main.jpg",
+        alt: "Ana Mechtilde Das Muller standing in the snow, Panda-pattern German Shepherd dam at Patriot K9 Command.",
+        objectPosition: "center 28%",
+      },
+      {
+        src: "/media/breeding/anna-mechtilde-das-muller-full-body.jpg",
+        alt: "Ana Mechtilde Das Muller standing outdoors, showing her full body and Panda-pattern markings.",
+        objectPosition: "center 30%",
+      },
+      {
+        src: "/media/breeding/anna-mechtilde-das-muller-outdoors.jpg",
+        alt: "Ana Mechtilde Das Muller moving outdoors at Patriot K9 Command.",
+        objectPosition: "center 32%",
+      },
+      {
+        src: "/media/breeding/anna-mechtilde-das-muller-closeup.jpg",
+        alt: "Close-up of Ana Mechtilde Das Muller showing her distinctive Panda-pattern facial markings.",
+        objectPosition: "center 24%",
+      },
+      {
+        src: "/media/breeding/anna-mechtilde-das-muller-ball-drive-snow.jpg",
+        alt: "Ana Mechtilde Das Muller playing with a ball in the snow, showing her play and ball drive.",
+        objectPosition: "center 30%",
+      },
+      {
+        src: "/media/breeding/anna-mechtilde-das-muller-social-play.jpg",
+        alt: "Ana Mechtilde Das Muller playing outdoors with another German Shepherd.",
+        objectPosition: "center 30%",
+      },
+      {
+        src: "/media/breeding/anna-mechtilde-das-muller-with-young-dog.jpg",
+        alt: "Ana Mechtilde Das Muller outdoors with a younger German Shepherd.",
+        objectPosition: "center 30%",
+      },
+      {
+        src: "/media/breeding/anna-mechtilde-das-muller-side-profile.jpg",
+        alt: "Ana Mechtilde Das Muller standing outdoors, showing her side profile and distinctive coat markings.",
+        objectPosition: "center 28%",
+      },
+    ],
   },
 ] as const;
 
