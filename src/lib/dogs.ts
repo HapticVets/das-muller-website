@@ -215,7 +215,33 @@ export const dogProfiles: DogProfile[] = [
     ],
     producedOffspring: ["Ollie Major"],
     relatedOffspring: ["Ollie Major"],
-    photos: [],
+    photos: [
+      {
+        src: "/media/breeding/adolf-stephan-jenkins-main.jpg",
+        alt: "Adolf Stephan Jenkins, black and tan German Shepherd sire at Patriot K9 Command.",
+        objectPosition: "center 28%",
+      },
+      {
+        src: "/media/breeding/adolf-stephan-jenkins-ball-drive.jpg",
+        alt: "Adolf Stephan Jenkins relaxing with a ball, showing his strong ball drive.",
+        objectPosition: "center 30%",
+      },
+      {
+        src: "/media/breeding/adolf-stephan-jenkins-working-drive.jpg",
+        alt: "Adolf Stephan Jenkins carrying a training toy, showing his working drive and engagement.",
+        objectPosition: "center 32%",
+      },
+      {
+        src: "/media/breeding/adolf-stephan-jenkins-relaxed-outdoors.jpg",
+        alt: "Adolf Stephan Jenkins relaxing outdoors.",
+        objectPosition: "center 30%",
+      },
+      {
+        src: "/media/breeding/adolf-stephan-jenkins-winter-outdoors.jpg",
+        alt: "Adolf Stephan Jenkins outdoors in the snow.",
+        objectPosition: "center 28%",
+      },
+    ],
   },
   {
     slug: "anna",
