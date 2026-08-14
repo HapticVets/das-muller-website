@@ -16,7 +16,18 @@ const trustItems = [
   "Licensed Kennel",
   "AKC Registered Bloodlines",
   "Structured Puppy Development",
-  "Weekly Puppy Evaluations",
+  "Individual Puppy Evaluations",
+];
+
+const evaluationTraits = [
+  "Handler Engagement",
+  "Environmental Confidence",
+  "Recovery",
+  "Adaptability",
+  "Drive & Energy",
+  "Neutrality",
+  "Temperament",
+  "Responsiveness",
 ];
 
 export default function HomePageClient() {
@@ -118,14 +129,17 @@ export default function HomePageClient() {
               </h2>
               <p className="mt-6 max-w-[62ch] text-lg leading-8 text-neutral-300">
                 Our puppies are raised with structured handling, environmental
-                exposure, early engagement, and ongoing observation. Each puppy
-                is evaluated as an individual so placement decisions consider
-                temperament, household needs, and long-term goals.
+                exposure, early engagement, and ongoing observation informed
+                by professional training principles. Each puppy is evaluated as
+                an individual so placement decisions consider temperament,
+                household needs, and long-term goals.
               </p>
               <p className="mt-4 max-w-[62ch] text-base leading-8 text-neutral-400">
-                We do not match puppies by appearance alone. We pay close
-                attention to confidence, recovery, engagement, and how each
-                puppy responds to new experiences.
+                Puppy placement is about more than choosing a color or the
+                puppy that runs to you first. We consider individual
+                temperament, confidence, engagement, recovery, energy,
+                household structure, owner experience, lifestyle, and
+                long-term goals when helping families evaluate the best fit.
               </p>
               <div className="mt-8">
                 <AkcRegistrationBlock />
@@ -147,6 +161,106 @@ export default function HomePageClient() {
                 sizes="(min-width: 1024px) 42vw, 100vw"
                 className="h-auto w-full rounded-[1.5rem] object-cover object-[center_32%]"
               />
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-neutral-900 bg-neutral-900/35">
+          <div className="section-shell-tight">
+            <div className="grid gap-6 lg:grid-cols-[1.02fr_0.98fr]">
+              <article className="surface-card p-8">
+                <p className="section-eyebrow">Puppy Placement</p>
+                <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+                  How We Evaluate Puppies
+                </h2>
+                <p className="mt-6 max-w-[62ch] text-lg leading-8 text-neutral-300">
+                  Every puppy develops differently. We look beyond color and
+                  appearance when evaluating potential placements. Our
+                  observations focus on temperament, confidence, engagement,
+                  recovery, adaptability, drive, and how each puppy responds
+                  to new experiences and guidance.
+                </p>
+                <p className="mt-4 max-w-[62ch] text-base leading-8 text-neutral-400">
+                  These observations help us better understand the type of
+                  home, activity level, and training expectations that may suit
+                  each puppy.
+                </p>
+              </article>
+
+              <aside className="surface-card p-8">
+                <p className="section-eyebrow">Observed Traits</p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {evaluationTraits.map((trait) => (
+                    <span
+                      key={trait}
+                      className="rounded-full border border-neutral-700 bg-neutral-950/70 px-4 py-2 text-sm font-medium text-neutral-200"
+                    >
+                      {trait}
+                    </span>
+                  ))}
+                </div>
+                <p className="mt-6 text-sm leading-7 text-neutral-400">
+                  These are breeder and trainer observations used to help
+                  inform placement, not promises about a puppy&apos;s future role.
+                </p>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-neutral-900 bg-neutral-950">
+          <div className="section-shell-tight">
+            <div className="surface-card p-8">
+              <p className="section-eyebrow">Early Development</p>
+              <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+                Development Starts Before Go-Home
+              </h2>
+              <p className="mt-6 max-w-[68ch] text-lg leading-8 text-neutral-300">
+                Patriot K9 puppies begin age-appropriate development before
+                they leave for their new homes. The goal is not to create
+                finished obedience in a young puppy. The goal is to begin
+                building confidence, communication, adaptability, and healthy
+                structure from the start.
+              </p>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-950/80 p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">
+                    Handling
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-neutral-300">
+                    Structured handling, engagement with people, and beginning
+                    foundational communication.
+                  </p>
+                </div>
+                <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-950/80 p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">
+                    Exposure
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-neutral-300">
+                    Controlled exposure to appropriate surfaces, sounds, and
+                    environments that build confidence.
+                  </p>
+                </div>
+                <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-950/80 p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">
+                    Structure
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-neutral-300">
+                    Age-appropriate crate introduction and routines that reward
+                    calmness and neutrality rather than constant excitement.
+                  </p>
+                </div>
+                <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-950/80 p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">
+                    Observation
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-neutral-300">
+                    Ongoing observation of recovery, adaptability, and how each
+                    puppy responds to novelty and mild stress.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -185,13 +299,18 @@ export default function HomePageClient() {
               <p className="mt-6 max-w-[62ch] text-lg leading-8 text-neutral-300">
                 Patriot K9 Command provides structured in-person training
                 focused on communication, obedience, impulse control, public
-                manners, and behavior that carries into daily life.
+                manners, and behavior that carries into daily life. The goal
+                is not simply obedience. The goal is a calm, stable,
+                adaptable dog that can function reliably in the real world.
               </p>
               <p className="mt-4 max-w-[62ch] text-base leading-8 text-neutral-400">
-                In-person training is based in Leetonia, Ohio. Clients
-                traveling from other parts of Ohio or the surrounding region
-                may contact us to discuss scheduling, evaluation locations, and
-                available transportation arrangements.
+                Our training doctrine emphasizes clarity, structure,
+                engagement, environmental neutrality, emotional recovery, and
+                reliable behavior under real-world pressure. In-person
+                training is based in Leetonia, Ohio. Clients traveling from
+                other parts of Ohio or the surrounding region may contact us
+                to discuss scheduling, evaluation locations, and available
+                transportation arrangements.
               </p>
               <a
                 href="#pricing"
