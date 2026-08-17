@@ -141,10 +141,10 @@ export default async function AvailableLitters() {
               </p>
             </div>
 
-            <div className="mt-8 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {publishedPuppies.map(({ litter, puppy }) => (
                 <article
-                  className="overflow-hidden rounded-[2rem] border border-neutral-800 bg-neutral-950 shadow-[0_18px_48px_rgba(0,0,0,0.2)]"
+                  className="overflow-hidden rounded-[1.75rem] border border-neutral-800 bg-neutral-950 shadow-[0_18px_48px_rgba(0,0,0,0.2)]"
                   key={`${litter.slug}-${puppy.slug}`}
                 >
                   <PublicMediaFrame
@@ -154,41 +154,42 @@ export default async function AvailableLitters() {
                       `${puppy.publicName} from ${litter.title}`
                     }
                     type={puppy.primaryPhoto?.type ?? "image"}
-                    aspectRatio="4 / 3"
+                    aspectRatio="5 / 4"
                     objectFit="cover"
                     className="rounded-none border-x-0 border-t-0"
+                    mediaClassName="h-full w-full"
                   />
 
-                  <div className="p-8">
+                  <div className="p-5 sm:p-6">
                     {puppy.collarColor ? (
-                      <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">
+                      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-amber-300">
                         {puppy.collarColor} Collar
                       </p>
                     ) : null}
 
-                    <h3 className="mt-3 text-2xl font-semibold text-white">
+                    <h3 className="mt-2 text-xl font-semibold text-white sm:text-[1.35rem]">
                       {puppy.publicName}
                     </h3>
-                    <p className="mt-3 text-sm uppercase tracking-[0.2em] text-neutral-500">
+                    <p className="mt-2 text-[0.72rem] uppercase tracking-[0.18em] text-neutral-500 sm:text-xs">
                       {getLitterContext(litter)}
                     </p>
 
-                    <div className="mt-5 flex flex-wrap items-center gap-3">
+                    <div className="mt-4 flex flex-wrap items-center gap-2.5">
                       <PublicStatusBadge status={puppy.status} type="puppy" />
                       {puppy.sex ? (
-                        <span className="rounded-full border border-neutral-700 px-4 py-1 text-sm text-neutral-300">
+                        <span className="rounded-full border border-neutral-700 px-3 py-1 text-xs text-neutral-300">
                           {puppy.sex}
                         </span>
                       ) : null}
                       {puppy.color ? (
-                        <span className="rounded-full border border-neutral-700 px-4 py-1 text-sm text-neutral-300">
+                        <span className="rounded-full border border-neutral-700 px-3 py-1 text-xs text-neutral-300">
                           {puppy.color}
                         </span>
                       ) : null}
                     </div>
 
                     {puppy.price ? (
-                      <p className="mt-5 text-sm font-semibold uppercase tracking-[0.2em] text-amber-400">
+                      <p className="mt-4 text-sm font-semibold uppercase tracking-[0.18em] text-amber-400">
                         {typeof puppy.price === "string" &&
                         puppy.price.startsWith("$")
                           ? puppy.price
@@ -200,14 +201,14 @@ export default async function AvailableLitters() {
                       </p>
                     ) : null}
 
-                    <p className="mt-4 leading-8 text-neutral-300">
+                    <p className="mt-3 line-clamp-3 text-sm leading-6 text-neutral-300">
                       {puppy.summary ??
                         "Public puppy details will appear here when approved for the site."}
                     </p>
 
                     {puppy.development.length > 0 || puppy.media.length > 0 ? (
-                      <details className="mt-6 rounded-[1.5rem] border border-neutral-800 bg-neutral-900/60 p-5">
-                        <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">
+                      <details className="mt-4 rounded-[1.25rem] border border-neutral-800 bg-neutral-900/60 p-4">
+                        <summary className="cursor-pointer list-none text-xs font-semibold uppercase tracking-[0.22em] text-amber-300">
                           View Development
                         </summary>
                         <PuppyDevelopmentTimeline
@@ -217,17 +218,17 @@ export default async function AvailableLitters() {
                       </details>
                     ) : null}
 
-                    <div className="mt-6 flex flex-wrap gap-4">
+                    <div className="mt-4 flex flex-wrap gap-3">
                       <Link
                         href={`/litters/${litter.slug}`}
-                        className="inline-flex items-center justify-center rounded-2xl border border-neutral-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-900"
+                        className="inline-flex items-center justify-center rounded-2xl border border-neutral-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-neutral-900"
                       >
                         View Full Litter
                       </Link>
                       {puppy.status === "Available" ? (
                         <Link
                           href={buildPuppyApplicationHref(litter, puppy)}
-                          className="inline-flex items-center justify-center rounded-2xl bg-amber-500 px-5 py-3 text-sm font-semibold text-black transition hover:opacity-90"
+                          className="inline-flex items-center justify-center rounded-2xl bg-amber-500 px-4 py-2.5 text-sm font-semibold text-black transition hover:opacity-90"
                         >
                           Apply for This Puppy
                         </Link>
