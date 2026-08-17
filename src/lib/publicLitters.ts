@@ -41,7 +41,8 @@ export type PublicLitter = {
   status: string;
   birthDate?: string;
   goHomeDate?: string;
-  availablePuppyCount?: number;
+  publicPuppyCount?: number;
+  availableCount?: number;
   summary?: string;
   coverImage?: PublicMediaItem;
   puppies: PublicPuppy[];
@@ -143,6 +144,20 @@ function getRecord(record: UnknownRecord | null, keys: string[]) {
   }
 
   return null;
+}
+
+function getNestedArray(
+  record: UnknownRecord | null,
+  containerKeys: string[],
+  arrayKeys: string[]
+) {
+  const nestedRecord = getRecord(record, containerKeys);
+
+  if (!nestedRecord) {
+    return [];
+  }
+
+  return getArray(nestedRecord, arrayKeys);
 }
 
 function slugify(value: string) {
@@ -251,6 +266,22 @@ function normalizeMediaList(record: UnknownRecord | null, keys: string[]) {
   );
 }
 
+function normalizePrimaryMedia(
+  record: UnknownRecord | null,
+  recordKeys: string[],
+  urlKeys: string[]
+) {
+  const fromRecord = normalizeMediaItem(getRecord(record, recordKeys));
+
+  if (fromRecord) {
+    return fromRecord;
+  }
+
+  const directUrl = getString(record, urlKeys);
+
+  return directUrl ? normalizeMediaItem(directUrl) : null;
+}
+
 function normalizeDevelopmentEntry(
   value: unknown,
   index: number
@@ -317,15 +348,26 @@ function normalizePuppy(value: unknown): PublicPuppy | null {
   ]);
 
   const primaryPhoto =
-    normalizeMediaItem(
-      getRecord(record, [
+    normalizePrimaryMedia(
+      record,
+      [
         "primaryPhoto",
         "primary_photo",
         "publicPrimaryPhoto",
         "public_primary_photo",
         "coverImage",
         "cover_image",
-      ])
+      ],
+      [
+        "primaryPhotoUrl",
+        "primary_photo_url",
+        "publicPrimaryPhotoUrl",
+        "public_primary_photo_url",
+        "coverImageUrl",
+        "cover_image_url",
+        "publicImageUrl",
+        "public_image_url",
+      ]
     ) ?? normalizeMediaList(record, ["media", "publicMedia", "public_media"])[0];
 
   return {
@@ -383,8 +425,9 @@ function normalizeLitter(value: unknown): PublicLitter | null {
     .map((puppy) => normalizePuppy(puppy))
     .filter(isPresent);
   const coverImage =
-    normalizeMediaItem(
-      getRecord(record, [
+    normalizePrimaryMedia(
+      record,
+      [
         "coverImage",
         "cover_image",
         "heroImage",
@@ -393,7 +436,17 @@ function normalizeLitter(value: unknown): PublicLitter | null {
         "public_image",
         "featuredImage",
         "featured_image",
-      ])
+      ],
+      [
+        "coverImageUrl",
+        "cover_image_url",
+        "heroImageUrl",
+        "hero_image_url",
+        "publicImageUrl",
+        "public_image_url",
+        "featuredImageUrl",
+        "featured_image_url",
+      ]
     ) ??
     normalizeMediaList(record, [
       "media",
@@ -427,7 +480,14 @@ function normalizeLitter(value: unknown): PublicLitter | null {
       "estimatedGoHomeDate",
       "estimated_go_home_date",
     ]),
-    availablePuppyCount:
+    publicPuppyCount:
+      getNumber(record, [
+        "publicPuppyCount",
+        "public_puppy_count",
+        "publicCount",
+        "public_count",
+      ]) ?? puppies.length,
+    availableCount:
       getNumber(record, [
         "availablePuppyCount",
         "available_puppy_count",
@@ -482,7 +542,11 @@ export async function fetchPublicLitters(): Promise<
     const record = asRecord(json);
     const litterValues = Array.isArray(json)
       ? json
-      : getArray(record, ["litters", "data", "results"]);
+      : [
+          ...getArray(record, ["litters", "results"]),
+          ...getNestedArray(record, ["data"], ["litters", "results"]),
+          ...getArray(record, ["data"]),
+        ];
 
     return {
       data: litterValues
@@ -517,8 +581,12 @@ export async function fetchPublicLitter(
     }
 
     const record = asRecord(json);
-    const litter =
-      normalizeLitter(getRecord(record, ["litter", "data"]) ?? json) ?? null;
+    const detailRecord =
+      getRecord(record, ["litter"]) ??
+      getRecord(getRecord(record, ["data"]), ["litter"]) ??
+      getRecord(record, ["data"]) ??
+      json;
+    const litter = normalizeLitter(detailRecord) ?? null;
 
     return {
       data: litter,

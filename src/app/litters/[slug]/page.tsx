@@ -177,9 +177,17 @@ export default async function LitterDetailPage({ params }: LitterPageProps) {
               <h1 className="section-title max-w-[12ch]">{litter.title}</h1>
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <PublicStatusBadge status={litter.status} type="litter" />
-                {typeof litter.availablePuppyCount === "number" ? (
+                {typeof litter.publicPuppyCount === "number" ? (
                   <span className="rounded-full border border-neutral-700 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-300">
-                    {litter.availablePuppyCount} Available
+                    {litter.publicPuppyCount}{" "}
+                    {litter.publicPuppyCount === 1
+                      ? "Public Puppy"
+                      : "Public Puppies"}
+                  </span>
+                ) : null}
+                {typeof litter.availableCount === "number" ? (
+                  <span className="rounded-full border border-neutral-700 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-300">
+                    {litter.availableCount} Available
                   </span>
                 ) : null}
               </div>

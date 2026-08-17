@@ -88,9 +88,17 @@ export default async function AvailableLitters() {
                   <div className="p-8">
                     <div className="flex flex-wrap items-center gap-3">
                       <PublicStatusBadge status={litter.status} type="litter" />
-                      {typeof litter.availablePuppyCount === "number" ? (
+                      {typeof litter.publicPuppyCount === "number" ? (
                         <span className="rounded-full border border-neutral-700 px-4 py-1 text-sm text-neutral-300">
-                          {litter.availablePuppyCount} available
+                          {litter.publicPuppyCount}{" "}
+                          {litter.publicPuppyCount === 1
+                            ? "public puppy"
+                            : "public puppies"}
+                        </span>
+                      ) : null}
+                      {typeof litter.availableCount === "number" ? (
+                        <span className="rounded-full border border-neutral-700 px-4 py-1 text-sm text-neutral-300">
+                          {litter.availableCount} available
                         </span>
                       ) : null}
                     </div>
