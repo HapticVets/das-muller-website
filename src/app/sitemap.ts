@@ -1,10 +1,12 @@
 import type { MetadataRoute } from "next";
 import { dogProfiles } from "@/lib/dogs";
+import { fetchPublicLitters } from "@/lib/publicLitters";
 import { SITE_URL } from "@/lib/seo";
 import { trainingServices } from "@/lib/trainingServices";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
+  const { data: litters } = await fetchPublicLitters();
 
   return [
     {
@@ -42,6 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly" as const,
       priority: service.slug === "evaluation" ? 0.9 : 0.8,
+    })),
+    ...litters.map((litter) => ({
+      url: `${SITE_URL}/litters/${litter.slug}`,
+      lastModified,
+      changeFrequency: "daily" as const,
+      priority: 0.85,
     })),
   ];
 }
