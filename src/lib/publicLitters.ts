@@ -160,6 +160,21 @@ function getNestedArray(
   return getArray(nestedRecord, arrayKeys);
 }
 
+function withArrayOverride(
+  record: UnknownRecord | null,
+  key: string,
+  value: unknown[]
+): UnknownRecord | null {
+  if (!record) {
+    return null;
+  }
+
+  return {
+    ...record,
+    [key]: value,
+  };
+}
+
 function slugify(value: string) {
   return value
     .toLowerCase()
@@ -216,6 +231,8 @@ function normalizeMediaItem(value: unknown): PublicMediaItem | null {
   const url = getString(record, [
     "url",
     "src",
+    "mediaUrl",
+    "media_url",
     "publicUrl",
     "public_url",
     "signedUrl",
@@ -355,6 +372,10 @@ function normalizePuppy(value: unknown): PublicPuppy | null {
         "primary_photo",
         "publicPrimaryPhoto",
         "public_primary_photo",
+        "primaryImage",
+        "primary_image",
+        "publicPrimaryImage",
+        "public_primary_image",
         "coverImage",
         "cover_image",
       ],
@@ -363,6 +384,10 @@ function normalizePuppy(value: unknown): PublicPuppy | null {
         "primary_photo_url",
         "publicPrimaryPhotoUrl",
         "public_primary_photo_url",
+        "primaryImageUrl",
+        "primary_image_url",
+        "mediaUrl",
+        "media_url",
         "coverImageUrl",
         "cover_image_url",
         "publicImageUrl",
@@ -432,6 +457,8 @@ function normalizeLitter(value: unknown): PublicLitter | null {
         "cover_image",
         "heroImage",
         "hero_image",
+        "primaryImage",
+        "primary_image",
         "publicImage",
         "public_image",
         "featuredImage",
@@ -442,6 +469,10 @@ function normalizeLitter(value: unknown): PublicLitter | null {
         "cover_image_url",
         "heroImageUrl",
         "hero_image_url",
+        "primaryImageUrl",
+        "primary_image_url",
+        "mediaUrl",
+        "media_url",
         "publicImageUrl",
         "public_image_url",
         "featuredImageUrl",
@@ -455,6 +486,21 @@ function normalizeLitter(value: unknown): PublicLitter | null {
       "gallery",
       "images",
     ])[0];
+
+  const normalizedPublicPuppyCount =
+    getNumber(record, [
+      "publicPuppyCount",
+      "public_puppy_count",
+      "publicCount",
+      "public_count",
+    ]) ?? puppies.length;
+  const normalizedAvailableCount =
+    getNumber(record, [
+      "availablePuppyCount",
+      "available_puppy_count",
+      "availableCount",
+      "available_count",
+    ]) ?? puppies.filter((puppy) => puppy.status === "Available").length;
 
   return {
     slug: getString(record, ["slug", "publicSlug", "public_slug"]) ?? slugify(title),
@@ -480,20 +526,8 @@ function normalizeLitter(value: unknown): PublicLitter | null {
       "estimatedGoHomeDate",
       "estimated_go_home_date",
     ]),
-    publicPuppyCount:
-      getNumber(record, [
-        "publicPuppyCount",
-        "public_puppy_count",
-        "publicCount",
-        "public_count",
-      ]) ?? puppies.length,
-    availableCount:
-      getNumber(record, [
-        "availablePuppyCount",
-        "available_puppy_count",
-        "availableCount",
-        "available_count",
-      ]) ?? puppies.filter((puppy) => puppy.status === "Available").length,
+    publicPuppyCount: Math.max(normalizedPublicPuppyCount, puppies.length),
+    availableCount: normalizedAvailableCount,
     summary: getString(record, [
       "summary",
       "publicSummary",
@@ -502,7 +536,7 @@ function normalizeLitter(value: unknown): PublicLitter | null {
       "shortSummary",
       "short_summary",
     ]),
-    coverImage,
+    coverImage: coverImage ?? puppies[0]?.primaryPhoto,
     puppies,
   } satisfies PublicLitter;
 }
@@ -581,12 +615,33 @@ export async function fetchPublicLitter(
     }
 
     const record = asRecord(json);
-    const detailRecord =
+    const rootPuppies = getArray(record, [
+      "puppies",
+      "publicPuppies",
+      "public_puppies",
+      "publishedPuppies",
+      "published_puppies",
+    ]);
+    const dataRecord = getRecord(record, ["data"]);
+    const dataPuppies = getArray(dataRecord, [
+      "puppies",
+      "publicPuppies",
+      "public_puppies",
+      "publishedPuppies",
+      "published_puppies",
+    ]);
+    const litterRecord =
       getRecord(record, ["litter"]) ??
-      getRecord(getRecord(record, ["data"]), ["litter"]) ??
-      getRecord(record, ["data"]) ??
-      json;
-    const litter = normalizeLitter(detailRecord) ?? null;
+      getRecord(dataRecord, ["litter"]) ??
+      dataRecord ??
+      asRecord(json);
+    const mergedDetailRecord =
+      rootPuppies.length > 0
+        ? withArrayOverride(litterRecord, "puppies", rootPuppies)
+        : dataPuppies.length > 0
+          ? withArrayOverride(litterRecord, "puppies", dataPuppies)
+          : litterRecord;
+    const litter = normalizeLitter(mergedDetailRecord) ?? null;
 
     return {
       data: litter,
