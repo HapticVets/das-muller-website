@@ -20,6 +20,11 @@ type LitterPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+type DetailFact = {
+  label: string;
+  value: React.ReactNode;
+};
+
 function getMetadataDescription(litter: PublicLitter) {
   if (litter.summary) {
     return litter.summary;
@@ -159,6 +164,48 @@ export default async function LitterDetailPage({ params }: LitterPageProps) {
 
   const sireHref = getDogProfileHref(litter.sire);
   const damHref = getDogProfileHref(litter.dam);
+  const showLitterApplicationCta =
+    litter.availableCount !== undefined
+      ? litter.availableCount > 0
+      : litter.status === "Accepting Applications" || litter.status === "Available";
+  const detailFacts = [
+    litter.sire
+      ? {
+          label: "Sire",
+          value: sireHref ? (
+            <Link href={sireHref} className="transition hover:text-amber-300">
+              {litter.sire}
+            </Link>
+          ) : (
+            litter.sire
+          ),
+        }
+      : null,
+    litter.dam
+      ? {
+          label: "Dam",
+          value: damHref ? (
+            <Link href={damHref} className="transition hover:text-amber-300">
+              {litter.dam}
+            </Link>
+          ) : (
+            litter.dam
+          ),
+        }
+      : null,
+    litter.birthDate
+      ? {
+          label: "Birth Date",
+          value: formatPublicDate(litter.birthDate),
+        }
+      : null,
+    litter.expectedGoHomeDate
+      ? {
+          label: "Expected Go-Home Date",
+          value: formatPublicDate(litter.expectedGoHomeDate),
+        }
+      : null,
+  ].filter((fact) => fact !== null) as DetailFact[];
 
   return (
     <>
@@ -176,7 +223,13 @@ export default async function LitterDetailPage({ params }: LitterPageProps) {
               <p className="section-eyebrow">Public Litter</p>
               <h1 className="section-title max-w-[12ch]">{litter.title}</h1>
               <div className="mt-6 flex flex-wrap items-center gap-3">
-                <PublicStatusBadge status={litter.status} type="litter" />
+                {litter.status ? (
+                  <PublicStatusBadge status={litter.status} type="litter" />
+                ) : (
+                  <span className="rounded-full border border-neutral-700 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-300">
+                    Litter Update
+                  </span>
+                )}
                 {typeof litter.publicPuppyCount === "number" ? (
                   <span className="rounded-full border border-neutral-700 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-300">
                     {litter.publicPuppyCount}{" "}
@@ -192,52 +245,23 @@ export default async function LitterDetailPage({ params }: LitterPageProps) {
                 ) : null}
               </div>
 
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-2xl border border-neutral-800 bg-neutral-950/70 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-neutral-500">
-                    Sire
-                  </p>
-                  <p className="mt-3 text-base leading-7 text-neutral-200">
-                    {sireHref ? (
-                      <Link href={sireHref} className="transition hover:text-amber-300">
-                        {litter.sire}
-                      </Link>
-                    ) : (
-                      litter.sire ?? "Pending update"
-                    )}
-                  </p>
+              {detailFacts.length > 0 ? (
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  {detailFacts.map((fact) => (
+                    <div
+                      className="rounded-2xl border border-neutral-800 bg-neutral-950/70 p-4"
+                      key={fact.label}
+                    >
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-neutral-500">
+                        {fact.label}
+                      </p>
+                      <p className="mt-3 text-base leading-7 text-neutral-200">
+                        {fact.value}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-                <div className="rounded-2xl border border-neutral-800 bg-neutral-950/70 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-neutral-500">
-                    Dam
-                  </p>
-                  <p className="mt-3 text-base leading-7 text-neutral-200">
-                    {damHref ? (
-                      <Link href={damHref} className="transition hover:text-amber-300">
-                        {litter.dam}
-                      </Link>
-                    ) : (
-                      litter.dam ?? "Pending update"
-                    )}
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-neutral-800 bg-neutral-950/70 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-neutral-500">
-                    Birth Date
-                  </p>
-                  <p className="mt-3 text-base leading-7 text-neutral-200">
-                    {formatPublicDate(litter.birthDate) ?? "Pending update"}
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-neutral-800 bg-neutral-950/70 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-neutral-500">
-                    Expected Go-Home Date
-                  </p>
-                  <p className="mt-3 text-base leading-7 text-neutral-200">
-                    {formatPublicDate(litter.goHomeDate) ?? "Pending update"}
-                  </p>
-                </div>
-              </div>
+              ) : null}
 
               <p className="section-copy mt-8">
                 {litter.summary ??
@@ -248,9 +272,11 @@ export default async function LitterDetailPage({ params }: LitterPageProps) {
                 <Link href="/#litters" className="action-secondary">
                   Back to Available Litters
                 </Link>
-                <Link href={buildPuppyApplicationHref(litter)} className="action-primary">
-                  Apply for This Litter
-                </Link>
+                {showLitterApplicationCta ? (
+                  <Link href={buildPuppyApplicationHref(litter)} className="action-primary">
+                    Apply for This Litter
+                  </Link>
+                ) : null}
               </div>
             </div>
 
@@ -350,12 +376,17 @@ export default async function LitterDetailPage({ params }: LitterPageProps) {
                       </p>
                     )}
 
-                    <details className="mt-6 rounded-[1.5rem] border border-neutral-800 bg-neutral-900/60 p-5">
-                      <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">
-                        View Development
-                      </summary>
-                      <PuppyDevelopmentTimeline entries={puppy.development} />
-                    </details>
+                    {puppy.development.length > 0 || puppy.media.length > 0 ? (
+                      <details className="mt-6 rounded-[1.5rem] border border-neutral-800 bg-neutral-900/60 p-5">
+                        <summary className="cursor-pointer list-none text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">
+                          View Development
+                        </summary>
+                        <PuppyDevelopmentTimeline
+                          entries={puppy.development}
+                          media={puppy.media}
+                        />
+                      </details>
+                    ) : null}
 
                     {puppy.status === "Available" ? (
                       <Link

@@ -87,7 +87,9 @@ export default async function AvailableLitters() {
 
                   <div className="p-8">
                     <div className="flex flex-wrap items-center gap-3">
-                      <PublicStatusBadge status={litter.status} type="litter" />
+                      {litter.status ? (
+                        <PublicStatusBadge status={litter.status} type="litter" />
+                      ) : null}
                       {typeof litter.publicPuppyCount === "number" ? (
                         <span className="rounded-full border border-neutral-700 px-4 py-1 text-sm text-neutral-300">
                           {litter.publicPuppyCount}{" "}
@@ -113,8 +115,11 @@ export default async function AvailableLitters() {
                       {litter.birthDate ? (
                         <p>Birth Date: {formatPublicDate(litter.birthDate)}</p>
                       ) : null}
-                      {litter.goHomeDate ? (
-                        <p>Go-Home Date: {formatPublicDate(litter.goHomeDate)}</p>
+                      {litter.expectedGoHomeDate ? (
+                        <p>
+                          Go-Home Date:{" "}
+                          {formatPublicDate(litter.expectedGoHomeDate)}
+                        </p>
                       ) : null}
                     </div>
 

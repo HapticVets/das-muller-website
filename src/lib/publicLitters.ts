@@ -30,6 +30,7 @@ export type PublicPuppy = {
   price?: string;
   summary?: string;
   primaryPhoto?: PublicMediaItem;
+  media: PublicMediaItem[];
   development: PublicDevelopmentEntry[];
 };
 
@@ -38,9 +39,9 @@ export type PublicLitter = {
   title: string;
   sire?: string;
   dam?: string;
-  status: string;
+  status?: string;
   birthDate?: string;
-  goHomeDate?: string;
+  expectedGoHomeDate?: string;
   publicPuppyCount?: number;
   availableCount?: number;
   summary?: string;
@@ -416,7 +417,10 @@ function normalizePuppy(value: unknown): PublicPuppy | null {
       "short_summary",
     ]),
     primaryPhoto,
+    media: normalizeMediaList(record, ["media"]),
     development: getArray(record, [
+      "developmentSummaries",
+      "development_summaries",
       "developmentTimeline",
       "development_timeline",
       "weeklyUpdates",
@@ -507,9 +511,11 @@ function normalizeLitter(value: unknown): PublicLitter | null {
     title,
     sire: getString(record, ["sire", "sireName", "sire_name"]),
     dam: getString(record, ["dam", "damName", "dam_name"]),
-    status: normalizeStatus(
-      getString(record, ["status", "publicStatus", "public_status"])
-    ),
+    status: getString(record, ["status", "publicStatus", "public_status"])
+      ? normalizeStatus(
+          getString(record, ["status", "publicStatus", "public_status"])
+        )
+      : undefined,
     birthDate: getString(record, [
       "birthDate",
       "birth_date",
@@ -518,11 +524,11 @@ function normalizeLitter(value: unknown): PublicLitter | null {
       "whelpDate",
       "whelp_date",
     ]),
-    goHomeDate: getString(record, [
-      "goHomeDate",
-      "go_home_date",
+    expectedGoHomeDate: getString(record, [
       "expectedGoHomeDate",
       "expected_go_home_date",
+      "goHomeDate",
+      "go_home_date",
       "estimatedGoHomeDate",
       "estimated_go_home_date",
     ]),
@@ -576,11 +582,9 @@ export async function fetchPublicLitters(): Promise<
     const record = asRecord(json);
     const litterValues = Array.isArray(json)
       ? json
-      : [
-          ...getArray(record, ["litters", "results"]),
-          ...getNestedArray(record, ["data"], ["litters", "results"]),
-          ...getArray(record, ["data"]),
-        ];
+      : getArray(record, ["litters"]).length > 0
+        ? getArray(record, ["litters"])
+        : getNestedArray(record, ["data"], ["litters"]);
 
     return {
       data: litterValues
@@ -615,21 +619,9 @@ export async function fetchPublicLitter(
     }
 
     const record = asRecord(json);
-    const rootPuppies = getArray(record, [
-      "puppies",
-      "publicPuppies",
-      "public_puppies",
-      "publishedPuppies",
-      "published_puppies",
-    ]);
+    const rootPuppies = getArray(record, ["puppies"]);
     const dataRecord = getRecord(record, ["data"]);
-    const dataPuppies = getArray(dataRecord, [
-      "puppies",
-      "publicPuppies",
-      "public_puppies",
-      "publishedPuppies",
-      "published_puppies",
-    ]);
+    const dataPuppies = getArray(dataRecord, ["puppies"]);
     const litterRecord =
       getRecord(record, ["litter"]) ??
       getRecord(dataRecord, ["litter"]) ??
