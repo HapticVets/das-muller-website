@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import VeteranFooter from "@/components/veterans/VeteranFooter";
+import VeteranNav from "@/components/veterans/VeteranNav";
 import {
   VETERAN_SITE_DESCRIPTION,
   VETERAN_SITE_NAME,
@@ -18,5 +20,11 @@ export default function VeteransLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      <VeteranNav />
+      <main className="min-h-screen bg-neutral-950 text-white">{children}</main>
+      <VeteranFooter />
+    </>
+  );
 }

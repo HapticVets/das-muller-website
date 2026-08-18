@@ -1,21 +1,26 @@
 import type { Metadata } from "next";
-import { OG_IMAGE_PATH } from "@/lib/seo";
 import { VETERAN_SITE_URL, buildVeteranSiteUrl } from "@/lib/siteDomains";
 
 export const VETERAN_SITE_NAME = "Patriot K9 Command Veteran Outreach";
 export const VETERAN_SITE_DESCRIPTION =
   "Veteran outreach information from Patriot K9 Command.";
+export const VETERAN_OG_IMAGE_PATH =
+  "/images/veterans/branding/og-image1-v2.jpg";
 
 type VeteranMetadataOptions = {
   title: string;
   description?: string;
   path?: string;
+  imagePath?: string;
+  imageAlt?: string;
 };
 
 export function buildVeteranMetadata({
   title,
   description = VETERAN_SITE_DESCRIPTION,
   path = "/",
+  imagePath = VETERAN_OG_IMAGE_PATH,
+  imageAlt = "Patriot K9 Command Veteran Outreach",
 }: VeteranMetadataOptions): Metadata {
   const canonicalUrl = buildVeteranSiteUrl(path);
 
@@ -35,10 +40,10 @@ export function buildVeteranMetadata({
       type: "website",
       images: [
         {
-          url: OG_IMAGE_PATH,
+          url: imagePath,
           width: 1358,
           height: 1159,
-          alt: "Patriot K9 Command Veteran Outreach",
+          alt: imageAlt,
         },
       ],
     },
@@ -46,7 +51,7 @@ export function buildVeteranMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [OG_IMAGE_PATH],
+      images: [imagePath],
     },
   };
 }
