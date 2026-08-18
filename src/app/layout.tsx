@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { MAIN_SITE_URL } from "@/lib/siteDomains";
 import {
   OG_IMAGE_PATH,
   SITE_DESCRIPTION,
   SITE_NAME,
-  SITE_URL,
   buildBusinessJsonLd,
   toJsonLd,
 } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(MAIN_SITE_URL),
   manifest: "/site.webmanifest",
   title: {
     default: SITE_NAME,

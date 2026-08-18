@@ -1,13 +1,14 @@
 import type { TrainingService } from "@/lib/trainingServices";
+import { MAIN_SITE_URL, buildMainSiteUrl } from "@/lib/siteDomains";
 
-export const SITE_URL = "https://www.patriotk9kennel.com";
+export const SITE_URL = MAIN_SITE_URL;
 export const SITE_NAME = "Patriot K9 Command";
 export const SITE_DESCRIPTION =
   "German Shepherd breeding and professional dog training based in Leetonia, Ohio, serving clients throughout Ohio and the surrounding tri-state region.";
 export const OG_IMAGE_PATH = "/images/branding/og-image.jpg";
-export const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE_PATH}`;
+export const OG_IMAGE_URL = buildMainSiteUrl(OG_IMAGE_PATH);
 export const LOGO_PATH = "/logos/das-muller-icon.png";
-export const LOGO_URL = `${SITE_URL}${LOGO_PATH}`;
+export const LOGO_URL = buildMainSiteUrl(LOGO_PATH);
 export const CONTACT_EMAIL = "jreese@hapticvets.com";
 export const CONTACT_PHONE = "+1-813-299-6905";
 export const CONTACT_PHONE_DISPLAY = "(813) 299-6905";
@@ -87,7 +88,7 @@ export function getTrainingMetadata(service: TrainingService) {
 function getServiceOffers(
   service: TrainingService
 ): OfferShape | OfferShape[] | undefined {
-  const url = `${SITE_URL}/training/${service.slug}`;
+  const url = buildMainSiteUrl(`/training/${service.slug}`);
 
   switch (service.slug) {
     case "evaluation":
@@ -204,17 +205,17 @@ export function buildBusinessJsonLd() {
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": `${SITE_URL}/#website`,
+        "@id": `${buildMainSiteUrl("/")}/#website`,
         url: SITE_URL,
         name: SITE_NAME,
         description: SITE_DESCRIPTION,
         publisher: {
-          "@id": `${SITE_URL}/#organization`,
+          "@id": `${buildMainSiteUrl("/")}/#organization`,
         },
       },
       {
         "@type": "Organization",
-        "@id": `${SITE_URL}/#organization`,
+        "@id": `${buildMainSiteUrl("/")}/#organization`,
         name: SITE_NAME,
         url: SITE_URL,
         logo: LOGO_URL,
@@ -225,7 +226,7 @@ export function buildBusinessJsonLd() {
       },
       {
         "@type": "LocalBusiness",
-        "@id": `${SITE_URL}/#localbusiness`,
+        "@id": `${buildMainSiteUrl("/")}/#localbusiness`,
         name: SITE_NAME,
         url: SITE_URL,
         logo: LOGO_URL,
@@ -252,37 +253,37 @@ export function buildBusinessJsonLd() {
             {
               "@type": "OfferCatalog",
               name: "German Shepherd Puppies",
-              url: `${SITE_URL}/apply`,
+              url: buildMainSiteUrl("/apply"),
             },
             {
               "@type": "OfferCatalog",
               name: "Private Dog Training",
-              url: `${SITE_URL}/training/private-lessons`,
+              url: buildMainSiteUrl("/training/private-lessons"),
             },
             {
               "@type": "OfferCatalog",
               name: "Board & Train",
-              url: `${SITE_URL}/training/board-and-train`,
+              url: buildMainSiteUrl("/training/board-and-train"),
             },
             {
               "@type": "OfferCatalog",
               name: "Puppy Foundation Training",
-              url: `${SITE_URL}/training/puppy-foundation`,
+              url: buildMainSiteUrl("/training/puppy-foundation"),
             },
             {
               "@type": "OfferCatalog",
               name: "Behavior Modification",
-              url: `${SITE_URL}/training/behavior-modification`,
+              url: buildMainSiteUrl("/training/behavior-modification"),
             },
             {
               "@type": "OfferCatalog",
               name: "Day Training",
-              url: `${SITE_URL}/training/day-training`,
+              url: buildMainSiteUrl("/training/day-training"),
             },
             {
               "@type": "OfferCatalog",
               name: "Service Dog Foundations",
-              url: `${SITE_URL}/training/service-dog-foundations`,
+              url: buildMainSiteUrl("/training/service-dog-foundations"),
             },
           ],
         },
@@ -295,7 +296,7 @@ export function buildTrainingServiceJsonLd(service: TrainingService) {
   const normalizedPurpose = normalizeSeoText(service.purpose);
   const normalizedShortDescription = normalizeSeoText(service.shortDescription);
   const normalizedPrice = normalizeSeoText(service.price);
-  const serviceUrl = `${SITE_URL}/training/${service.slug}`;
+  const serviceUrl = buildMainSiteUrl(`/training/${service.slug}`);
 
   return {
     "@context": "https://schema.org",
@@ -306,7 +307,7 @@ export function buildTrainingServiceJsonLd(service: TrainingService) {
     description: `${normalizedShortDescription} ${normalizedPurpose}`.trim(),
     url: serviceUrl,
     provider: {
-      "@id": `${SITE_URL}/#localbusiness`,
+      "@id": `${buildMainSiteUrl("/")}/#localbusiness`,
     },
     areaServed: {
       "@type": "Place",

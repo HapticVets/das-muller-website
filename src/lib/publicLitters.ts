@@ -1,6 +1,6 @@
 import { dogProfiles } from "@/lib/dogs";
-import { SITE_URL } from "@/lib/seo";
 import { ONLINE_TRAINING_APP_URL } from "@/lib/siteUrls";
+import { buildMainSiteUrl } from "@/lib/siteDomains";
 
 export const PUBLIC_LITTERS_REVALIDATE_SECONDS = 60;
 const PUBLIC_LITTERS_API_URL = `${ONLINE_TRAINING_APP_URL}/api/public/litters`;
@@ -694,7 +694,7 @@ export function getDogProfileHref(name?: string) {
 }
 
 export function buildLitterPageUrl(slug: string) {
-  return `${SITE_URL}/litters/${slug}`;
+  return buildMainSiteUrl(`/litters/${slug}`);
 }
 
 export function buildPuppyApplicationHref(litter: PublicLitter, puppy?: PublicPuppy) {

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/seo";
+import { MAIN_SITE_URL, buildMainSiteUrl } from "@/lib/siteDomains";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -25,7 +25,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: "/api/",
       },
     ],
-    sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
+    sitemap: buildMainSiteUrl("/sitemap.xml"),
+    host: MAIN_SITE_URL,
   };
 }

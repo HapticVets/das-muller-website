@@ -13,6 +13,7 @@ import {
   getDogProfileHref,
   type PublicLitter,
 } from "@/lib/publicLitters";
+import { MAIN_SITE_URL } from "@/lib/siteDomains";
 import { OG_IMAGE_PATH, SITE_NAME, toJsonLd } from "@/lib/seo";
 import { siteMediaById } from "@/lib/siteMedia";
 
@@ -49,7 +50,7 @@ function buildLitterJsonLd(litter: PublicLitter) {
     description: getMetadataDescription(litter),
     isPartOf: {
       "@type": "WebSite",
-      url: "https://www.patriotk9kennel.com",
+      url: MAIN_SITE_URL,
       name: SITE_NAME,
     },
     mainEntity:
