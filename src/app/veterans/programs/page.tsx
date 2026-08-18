@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import VeteranLink from "@/components/veterans/VeteranLink";
 import VeteranSection from "@/components/veterans/VeteranSection";
 import ResponsiveMedia from "@/components/media/ResponsiveMedia";
 import { buildVeteranMetadata } from "@/lib/veteranSeo";
@@ -107,12 +107,12 @@ export default function VeteransProgramsPage() {
             page remains central to the Veteran Outreach story.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/veterans/partners" className="action-primary">
+            <VeteranLink href="/veterans/partners" className="action-primary">
               View Support Priorities
-            </Link>
-            <Link href="/veterans/contact" className="action-secondary">
+            </VeteranLink>
+            <VeteranLink href="/veterans/contact" className="action-secondary">
               Ask a Program Question
-            </Link>
+            </VeteranLink>
           </div>
         </div>
       </VeteranSection>

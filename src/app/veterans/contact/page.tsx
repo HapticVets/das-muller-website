@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import VeteranLink from "@/components/veterans/VeteranLink";
 import VeteranSection from "@/components/veterans/VeteranSection";
 import { MAIN_SITE_URL } from "@/lib/siteDomains";
 import { buildVeteranMetadata } from "@/lib/veteranSeo";
@@ -97,9 +97,12 @@ export default function VeteransContactPage() {
               >
                 Visit Patriot K9 Command
               </a>
-              <Link href="/veterans/partners" className="action-primary">
+              <VeteranLink
+                href="/veterans/partners"
+                className="action-primary"
+              >
                 View Support Opportunities
-              </Link>
+              </VeteranLink>
             </div>
           </aside>
         </div>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import VeteranLink from "@/components/veterans/VeteranLink";
 import VeteranSection from "@/components/veterans/VeteranSection";
 import { buildVeteranMetadata } from "@/lib/veteranSeo";
 import {
@@ -32,9 +32,9 @@ export default function VeteransPartnersPage() {
             recreating donation or payment behavior.
           </p>
           <div className="mt-8">
-            <Link href="/veterans/contact" className="action-primary">
+            <VeteranLink href="/veterans/contact" className="action-primary">
               Start a Partnership Conversation
-            </Link>
+            </VeteranLink>
           </div>
         </div>
       </section>
@@ -186,9 +186,9 @@ export default function VeteransPartnersPage() {
             step is a direct conversation.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/veterans/contact" className="action-primary">
+            <VeteranLink href="/veterans/contact" className="action-primary">
               Contact Veteran Outreach
-            </Link>
+            </VeteranLink>
             <a
               href="mailto:jreese@hapticvets.com?subject=Veteran%20Outreach%20Partnership"
               className="action-secondary"

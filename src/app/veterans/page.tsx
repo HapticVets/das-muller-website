@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import VeteranSection from "@/components/veterans/VeteranSection";
+import VeteranLink from "@/components/veterans/VeteranLink";
 import ResponsiveMedia from "@/components/media/ResponsiveMedia";
 import { buildVeteranMetadata } from "@/lib/veteranSeo";
 import {
@@ -47,12 +47,12 @@ export default function VeteransPage() {
             homestead systems, and long-term purpose after service.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link href="/veterans/partners" className="action-primary">
+            <VeteranLink href="/veterans/partners" className="action-primary">
               Support the Mission
-            </Link>
-            <Link href="/veterans/contact" className="action-secondary">
+            </VeteranLink>
+            <VeteranLink href="/veterans/contact" className="action-secondary">
               Contact Veteran Outreach
-            </Link>
+            </VeteranLink>
           </div>
         </div>
       </section>
@@ -247,12 +247,12 @@ export default function VeteransPage() {
             the mission, start with the partnership and contact pages.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/veterans/partners" className="action-primary">
+            <VeteranLink href="/veterans/partners" className="action-primary">
               View Support Opportunities
-            </Link>
-            <Link href="/veterans/contact" className="action-secondary">
+            </VeteranLink>
+            <VeteranLink href="/veterans/contact" className="action-secondary">
               Contact Veteran Outreach
-            </Link>
+            </VeteranLink>
           </div>
         </div>
       </VeteranSection>

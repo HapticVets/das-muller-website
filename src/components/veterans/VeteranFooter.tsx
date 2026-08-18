@@ -1,4 +1,4 @@
-import Link from "next/link";
+import VeteranLink from "@/components/veterans/VeteranLink";
 import { MAIN_SITE_URL } from "@/lib/siteDomains";
 
 export default function VeteranFooter() {
@@ -22,27 +22,30 @@ export default function VeteranFooter() {
             Explore
           </p>
           <div className="mt-4 flex flex-col gap-3 text-sm text-neutral-400">
-            <Link href="/veterans/about" className="transition hover:text-white">
+            <VeteranLink
+              href="/veterans/about"
+              className="transition hover:text-white"
+            >
               About
-            </Link>
-            <Link
+            </VeteranLink>
+            <VeteranLink
               href="/veterans/programs"
               className="transition hover:text-white"
             >
               Programs
-            </Link>
-            <Link
+            </VeteranLink>
+            <VeteranLink
               href="/veterans/partners"
               className="transition hover:text-white"
             >
               Partners
-            </Link>
-            <Link
+            </VeteranLink>
+            <VeteranLink
               href="/veterans/contact"
               className="transition hover:text-white"
             >
               Contact
-            </Link>
+            </VeteranLink>
           </div>
         </div>
 

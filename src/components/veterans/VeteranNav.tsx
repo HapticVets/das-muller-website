@@ -1,7 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import VeteranLink from "@/components/veterans/VeteranLink";
+import { useVeteranRouteMode } from "@/components/veterans/VeteranRouteProvider";
+import {
+  getComparableVeteranPath,
+  getVeteranHref,
+} from "@/lib/veteranRouting";
 import { MAIN_SITE_URL } from "@/lib/siteDomains";
 
 const veteranNavLinks = [
@@ -14,6 +19,8 @@ const veteranNavLinks = [
 
 export default function VeteranNav() {
   const pathname = usePathname();
+  const useSubdomainPaths = useVeteranRouteMode();
+  const comparablePath = getComparableVeteranPath(pathname, useSubdomainPaths);
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-800/90 bg-neutral-950/95 backdrop-blur">
@@ -23,12 +30,12 @@ export default function VeteranNav() {
             <p className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-amber-400">
               Patriot K9 Command
             </p>
-            <Link
+            <VeteranLink
               href="/veterans"
               className="mt-2 inline-block text-xl font-semibold tracking-[0.03em] text-white transition hover:text-amber-300 sm:text-2xl"
             >
               Veteran Outreach
-            </Link>
+            </VeteranLink>
             <p className="mt-2 max-w-2xl text-sm leading-7 text-neutral-400">
               Transition support shaped around practical skills, canine
               development, homestead systems, and long-term structure.
@@ -48,12 +55,14 @@ export default function VeteranNav() {
           className="mt-5 flex flex-wrap gap-2 text-sm text-neutral-300"
         >
           {veteranNavLinks.map((item) => {
+            const resolvedHref = getVeteranHref(item.href, useSubdomainPaths);
             const isActive =
-              pathname === item.href ||
-              (item.href !== "/veterans" && pathname.startsWith(`${item.href}/`));
+              comparablePath === resolvedHref ||
+              (resolvedHref !== "/" &&
+                comparablePath.startsWith(`${resolvedHref}/`));
 
             return (
-              <Link
+              <VeteranLink
                 key={item.href}
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
@@ -64,7 +73,7 @@ export default function VeteranNav() {
                 }`}
               >
                 {item.label}
-              </Link>
+              </VeteranLink>
             );
           })}
         </nav>
