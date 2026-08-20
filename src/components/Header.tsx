@@ -27,7 +27,7 @@ export default function Header() {
         <div className="flex items-center justify-between gap-4">
           <Link href="/" className="flex min-w-0 items-center gap-3">
             <Image
-              src="/logos/das-muller-icon.png"
+              src="/icon.png"
               alt="Patriot K9 Command logo"
               width={44}
               height={44}
