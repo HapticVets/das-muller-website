@@ -118,8 +118,17 @@ export async function POST(req: Request) {
       <p><strong>Final Notes:</strong><br/>${String(body.finalNotes || "").replace(/\n/g, "<br/>")}</p>
     `;
 
+    const fromEmail = process.env.RESEND_FROM_EMAIL?.trim();
+    if (!fromEmail) {
+      console.error("Puppy application email configuration error: RESEND_FROM_EMAIL is missing.");
+      return Response.json(
+        { success: false, error: "Application submission is unavailable. Please try again later." },
+        { status: 503 }
+      );
+    }
+
     const data = await resend.emails.send({
-      from: "Patriot K9 Command Applications <applications@updates.hapticvets.com>",
+      from: fromEmail,
       to: ["jreese@hapticvets.com"],
       replyTo: body.email ? String(body.email) : undefined,
       subject: `New Puppy Application from ${body.name || "Website"}`,
