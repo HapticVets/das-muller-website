@@ -278,12 +278,12 @@ export const dogProfiles: DogProfile[] = [
     pedigreeDocumentType: "image",
     pedigreeAltText: "AKC Certified Pedigree for Ana Mechtilde Das Muller.",
     healthSummary:
-      "Embark DNA Health is pending. OFA testing is not currently planned for Anna.",
+      "Embark DNA Health testing is completed. OFA testing is not currently planned for Anna.",
     healthTests: [
       {
         label: "Embark DNA Health",
-        status: "Pending",
-        details: "Pending",
+        status: "Completed",
+        details: "Testing completed. View Ana’s Embark profile below.",
         externalProfile: {
           url: "https://my.embarkvet.com/dog/annamechtildedasmuller",
           label: "View Ana’s Embark Profile",
