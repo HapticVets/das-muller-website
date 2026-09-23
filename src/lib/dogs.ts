@@ -211,11 +211,6 @@ export const dogProfiles: DogProfile[] = [
           "11 breed-relevant conditions included in this health summary.",
           "Not expected to develop signs and symptoms from the specific tested variants listed in the Embark report.",
         ],
-        documentPath:
-          "/images/media/breeding/health/adolf-embark-dna-health-summary.png",
-        documentType: "image",
-        documentAltText: "Embark DNA Health Summary for Adolf Stephan Jenkins.",
-        documentLabel: "View Embark Health Summary",
         externalProfile: {
           url: "https://my.embarkvet.com/dog/adolfstephendasmullerhundhas",
           label: "View Adolf’s Embark Profile",
