@@ -31,6 +31,7 @@ export type HealthTest = {
   documentType?: "pdf" | "image";
   documentAltText?: string;
   documentLabel?: string;
+  externalProfile?: { url: string; label: string };
 };
 
 export type DogProfile = {
@@ -102,6 +103,10 @@ export const dogProfiles: DogProfile[] = [
         label: "Embark DNA Health",
         status: "Planned",
         details: "Planned / Not Yet Completed",
+        externalProfile: {
+          url: "https://my.embarkvet.com/dog/olliemajor2",
+          label: "View Ollie Major’s Embark Profile",
+        },
       },
       {
         label: "OFA Hips",
@@ -279,6 +284,10 @@ export const dogProfiles: DogProfile[] = [
         label: "Embark DNA Health",
         status: "Pending",
         details: "Pending",
+        externalProfile: {
+          url: "https://my.embarkvet.com/dog/annamechtildedasmuller",
+          label: "View Ana’s Embark Profile",
+        },
       },
     ],
     producedOffspring: ["Ollie Major"],

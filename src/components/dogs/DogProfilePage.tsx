@@ -251,6 +251,16 @@ export default function DogProfilePage({ dog }: { dog: DogProfile }) {
                         buttonLabel={test.documentLabel ?? "View Document"}
                       />
                     ) : null}
+                    {test.externalProfile ? (
+                      <a
+                        href={test.externalProfile.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="action-primary mt-5"
+                      >
+                        {test.externalProfile.label}
+                      </a>
+                    ) : null}
                   </div>
                 ))}
               </div>
