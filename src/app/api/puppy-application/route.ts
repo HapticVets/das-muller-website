@@ -21,46 +21,52 @@ export async function POST(req: Request) {
       );
     }
 
-    if (!token || typeof token !== "string") {
+    if (typeof token !== "string" || !token.trim() || token.length > 2048) {
+      console.error("Turnstile verification rejected:", { reason: "invalid-token" });
       return Response.json(
         { success: false, error: "Captcha token missing." },
         { status: 400 }
       );
     }
 
-    const ipHeader =
-      req.headers.get("x-forwarded-for") ||
-      req.headers.get("x-real-ip") ||
-      "";
-    const remoteip = ipHeader.split(",")[0].trim();
-
-    const verifyFormData = new FormData();
-    verifyFormData.append("secret", process.env.TURNSTILE_SECRET_KEY || "");
-    verifyFormData.append("response", token);
-
-    if (remoteip) {
-      verifyFormData.append("remoteip", remoteip);
+    const secret = process.env.TURNSTILE_SECRET_KEY?.trim();
+    if (!secret) {
+      console.error("Turnstile configuration error: TURNSTILE_SECRET_KEY is missing.");
+      return Response.json(
+        { success: false, error: "Captcha verification is unavailable. Please try again later." },
+        { status: 503 }
+      );
     }
 
-    const turnstileRes = await fetch(
-      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-      {
-        method: "POST",
-        body: verifyFormData,
-      }
-    );
-
-    const turnstileData = (await turnstileRes.json()) as TurnstileResponse;
-
-    if (!turnstileData.success) {
-      console.error("Turnstile verification failed:", turnstileData);
-      return Response.json(
+    try {
+      const turnstileRes = await fetch(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
         {
-          success: false,
-          error: "Captcha verification failed.",
-          details: turnstileData["error-codes"] || [],
-        },
-        { status: 403 }
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({ secret, response: token }),
+          signal: AbortSignal.timeout(10000),
+          cache: "no-store",
+        }
+      );
+      const turnstileData = (await turnstileRes.json()) as TurnstileResponse;
+
+      if (!turnstileRes.ok || turnstileData?.success !== true) {
+        // Log only verification diagnostics, never the request credentials/token.
+        console.error("Turnstile Siteverify rejected:", {
+          status: turnstileRes.status,
+          errorCodes: turnstileData?.["error-codes"] || [],
+        });
+        return Response.json(
+          { success: false, error: "Captcha verification failed. Please complete the new captcha and try again." },
+          { status: turnstileRes.ok ? 403 : 502 }
+        );
+      }
+    } catch {
+      console.error("Turnstile Siteverify request failed: network, timeout, or invalid JSON response.");
+      return Response.json(
+        { success: false, error: "Captcha verification is unavailable. Please try again." },
+        { status: 503 }
       );
     }
 
@@ -119,6 +125,14 @@ export async function POST(req: Request) {
       subject: `New Puppy Application from ${body.name || "Website"}`,
       html,
     });
+
+    if (data.error) {
+      console.error("Puppy application email rejected:", { name: data.error.name });
+      return Response.json(
+        { success: false, error: "Failed to send application. Please try again." },
+        { status: 502 }
+      );
+    }
 
     return Response.json({ success: true, data });
   } catch (error) {

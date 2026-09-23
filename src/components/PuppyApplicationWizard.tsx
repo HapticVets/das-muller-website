@@ -228,6 +228,7 @@ export default function PuppyApplicationWizard() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting) return;
     if (!siteKey) {
       alert("Captcha is not configured for this deployment yet.");
       return;
@@ -262,9 +263,6 @@ export default function PuppyApplicationWizard() {
         setTurnstileToken("");
         setStep(0);
 
-        if (window.turnstile && widgetId.current) {
-          window.turnstile.reset?.(widgetId.current);
-        }
       } else {
         alert(result.error || "Something went wrong submitting the application.");
         console.error(result);
@@ -273,6 +271,11 @@ export default function PuppyApplicationWizard() {
       console.error(error);
       alert("Something went wrong submitting the application.");
     } finally {
+      // Tokens are single-use, even when a later step (such as email) fails.
+      setTurnstileToken("");
+      if (window.turnstile && widgetId.current) {
+        window.turnstile.reset?.(widgetId.current);
+      }
       setSubmitting(false);
     }
   }
@@ -980,7 +983,7 @@ export default function PuppyApplicationWizard() {
           <button
             type="button"
             onClick={goPrevious}
-            disabled={step === 0}
+            disabled={step === 0 || submitting}
             className="action-secondary disabled:cursor-not-allowed disabled:opacity-50"
           >
             Previous
