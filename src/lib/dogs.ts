@@ -216,6 +216,10 @@ export const dogProfiles: DogProfile[] = [
         documentType: "image",
         documentAltText: "Embark DNA Health Summary for Adolf Stephan Jenkins.",
         documentLabel: "View Embark Health Summary",
+        externalProfile: {
+          url: "https://my.embarkvet.com/dog/adolfstephendasmullerhundhas",
+          label: "View Adolf’s Embark Profile",
+        },
       },
     ],
     producedOffspring: ["Ollie Major"],
