@@ -97,12 +97,12 @@ export const dogProfiles: DogProfile[] = [
     pedigreeDocumentType: "image",
     pedigreeAltText: "AKC Certified Pedigree for Ollie Major.",
     healthSummary:
-      "Embark DNA Health and OFA evaluations are planned. Results will be added as testing is completed.",
+      "Embark DNA Health testing is completed. OFA hips and elbows evaluations are planned.",
     healthTests: [
       {
         label: "Embark DNA Health",
-        status: "Planned",
-        details: "Planned / Not Yet Completed",
+        status: "Completed",
+        details: "Testing completed. View Ollie Major’s Embark profile below.",
         externalProfile: {
           url: "https://my.embarkvet.com/dog/olliemajor2",
           label: "View Ollie Major’s Embark Profile",
