@@ -107,11 +107,11 @@ export default function Header() {
             </button>
 
             <Link
-              href="/apply"
-              aria-label="Apply for a Puppy"
+              href="/inquire"
+              aria-label="Schedule training or boarding"
               className="hidden rounded-xl bg-amber-500 px-4 py-2 text-sm font-semibold text-black transition hover:opacity-90 md:inline-flex"
             >
-              Apply for a Puppy
+              Schedule / Inquire
             </Link>
           </div>
         </div>
@@ -185,6 +185,12 @@ export default function Header() {
                 className="block rounded-xl px-4 py-3 transition hover:bg-neutral-900 hover:text-white"
               >
                 AI Dog Trainer
+              </Link>
+              <Link
+                href="/inquire"
+                className="block rounded-xl bg-white px-4 py-3 font-semibold text-black transition hover:bg-neutral-200"
+              >
+                Schedule Training or Boarding
               </Link>
               <Link
                 href="/apply"
