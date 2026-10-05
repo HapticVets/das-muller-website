@@ -54,9 +54,6 @@ export default function Header() {
             <Link href="/our-dogs" className="transition hover:text-white">
               Our Dogs
             </Link>
-            <Link href="/veterans" className="transition hover:text-white">
-              Veterans Outreach
-            </Link>
             <div className="group relative">
               <button
                 type="button"
@@ -105,7 +102,7 @@ export default function Header() {
             <Link
               href="/inquire"
               aria-label="Request training or boarding availability"
-              className="inline-flex min-h-11 items-center rounded-xl bg-amber-500 px-3 py-2 text-sm font-semibold text-black transition hover:opacity-90 lg:px-4"
+              className="inline-flex min-h-11 items-center whitespace-nowrap rounded-xl bg-amber-500 px-3 py-2 text-sm font-semibold text-black transition hover:opacity-90 lg:px-4"
             >
               <span className="lg:hidden">Inquire</span>
               <span className="hidden lg:inline">Request Availability</span>
