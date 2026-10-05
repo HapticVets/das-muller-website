@@ -4,16 +4,6 @@ import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 import { contactMethods, inquiryServices } from "@/lib/trainingInquiry";
 
-declare global {
-  interface Window {
-    turnstile?: {
-      render: (container: HTMLElement, options: { sitekey: string; action: string; callback: (token: string) => void; "expired-callback": () => void; "error-callback": () => void }) => string;
-      remove?: (widgetId: string) => void;
-      reset?: (widgetId?: string) => void;
-    };
-  }
-}
-
 export default function TrainingInquiryForm({ defaultService = "" }: { defaultService?: string }) {
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
   const widgetRef = useRef<string | null>(null);
@@ -26,13 +16,14 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
     const render = () => {
       const container = document.getElementById("training-inquiry-turnstile");
       if (!container || !window.turnstile || widgetRef.current !== null) return;
-      widgetRef.current = window.turnstile.render(container, {
+      const options = {
         sitekey: siteKey,
         action: "training_inquiry",
         callback: setTurnstileToken,
         "expired-callback": () => setTurnstileToken(""),
         "error-callback": () => setTurnstileToken(""),
-      });
+      };
+      widgetRef.current = window.turnstile.render(container, options);
     };
     render();
     const interval = window.setInterval(render, 300);
