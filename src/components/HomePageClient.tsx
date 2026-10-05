@@ -557,6 +557,12 @@ export default function HomePageClient() {
                     Apply for a Puppy
                   </Link>
                   <Link
+                    href="/inquire"
+                    className="inline-flex w-full items-center justify-center rounded-2xl bg-white px-6 py-3.5 font-semibold text-black transition hover:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-white"
+                  >
+                    Training &amp; Boarding Inquiry
+                  </Link>
+                  <Link
                     href="/training/evaluation"
                     className="inline-flex w-full items-center justify-center rounded-2xl border border-neutral-700 px-6 py-3.5 font-semibold text-white transition hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-400"
                   >
