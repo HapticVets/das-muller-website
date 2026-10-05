@@ -6,12 +6,14 @@ type PricingFeatureBlock = {
   price: string;
   features: string[];
   outcome?: string;
+  guide: string;
 };
 
 const corePhases: PricingFeatureBlock[] = [
   {
     title: "Foundation & Communication",
     price: "$1,000",
+    guide: "Best starting point",
     features: [
       "Leash control and heel work",
       "Sit, down, place, and stay",
@@ -23,6 +25,7 @@ const corePhases: PricingFeatureBlock[] = [
   {
     title: "Control Around Distractions",
     price: "$1,000",
+    guide: "For distraction challenges",
     features: [
       "Outdoor training environments",
       "Distraction proofing",
@@ -34,6 +37,7 @@ const corePhases: PricingFeatureBlock[] = [
   {
     title: "Real-World Reliability",
     price: "$1,000",
+    guide: "For advanced carryover",
     features: [
       "Public training sessions",
       "Advanced obedience work",
@@ -145,6 +149,9 @@ export default function Pricing() {
               <h3 className="mt-6 text-2xl font-semibold text-white">
                 {phase.title}
               </h3>
+              <p className="mt-3 text-sm font-semibold text-amber-300">
+                {phase.guide}
+              </p>
               <p className="mt-4 text-sm leading-7 text-neutral-300">
                 {phase.outcome}
               </p>
@@ -155,7 +162,7 @@ export default function Pricing() {
 
         <div className="mt-8 flex flex-col gap-5 rounded-[1.75rem] border border-neutral-800 bg-neutral-950/75 p-7 md:flex-row md:items-center md:justify-between md:p-8">
           <div className="max-w-2xl">
-            <p className="section-eyebrow">Full Program Commitment</p>
+            <p className="section-eyebrow">Best Value · Full Program Commitment</p>
             <h3 className="mt-4 text-3xl font-semibold text-white">$2,700</h3>
             <p className="mt-4 text-base leading-8 text-neutral-300">
               Save $300 when committing to the full three-phase system upfront.
@@ -200,6 +207,9 @@ export default function Pricing() {
                         {program.price}
                       </p>
                     </div>
+                    <p className="mt-3 text-sm font-semibold text-amber-300">
+                      {program.title.startsWith("4 Week") ? "Most immersive option" : "Focused immersive option"}
+                    </p>
                     <FeatureList features={program.features} />
                   </article>
                 ))}

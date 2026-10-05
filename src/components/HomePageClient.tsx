@@ -4,7 +4,6 @@ import AvailableLitters from "@/components/AvailableLitter";
 import Header from "@/components/Header";
 import KennelSponsor from "@/components/KennelSponsor";
 import Pricing from "@/components/Pricing";
-import AiTrainerPath from "@/components/AiTrainerPath";
 import AkcRegistrationBlock from "@/components/AkcRegistrationBlock";
 import ResponsiveMedia from "@/components/media/ResponsiveMedia";
 import { siteMediaById } from "@/lib/siteMedia";
@@ -63,17 +62,23 @@ export default function HomePageClient() {
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
-                  href="/inquire"
+                  href="/inquire?service=Training%20evaluation"
                   className="inline-flex items-center justify-center rounded-2xl bg-amber-500 px-6 py-3.5 font-semibold text-black transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-amber-300"
                 >
-                  Request Training or Boarding Availability
+                  Request Dog Training
                 </Link>
-                <a
-                  href="#litters"
+                <Link
+                  href="/boarding"
                   className="inline-flex items-center justify-center rounded-2xl border border-neutral-700 px-6 py-3.5 font-semibold text-white transition hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-400"
                 >
-                  Explore Our Puppies
-                </a>
+                  Check Boarding Availability
+                </Link>
+                <Link
+                  href="/apply"
+                  className="inline-flex items-center justify-center rounded-2xl border border-neutral-700 px-6 py-3.5 font-semibold text-white transition hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-400"
+                >
+                  Apply for a Puppy
+                </Link>
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -114,6 +119,54 @@ export default function HomePageClient() {
                   />
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section aria-label="Trust and reviews" className="border-b border-neutral-800 bg-neutral-900/70">
+          <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-5 text-sm font-semibold text-neutral-200 sm:px-8 md:flex-row md:items-center md:justify-center md:gap-8 lg:px-12">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Patriot%20K9%20Command%20Leetonia%20OH"
+              target="_blank"
+              rel="noreferrer"
+              className="text-amber-300 transition hover:text-amber-200"
+            >
+              5.0 ★ · 8 Google reviews
+            </a>
+            <span>Veteran-Owned</span>
+            <span>Licensed Ohio Kennel</span>
+            <span>AKC Registered Bloodlines</span>
+          </div>
+        </section>
+
+        <section aria-labelledby="choose-path-title" className="border-b border-neutral-900 bg-neutral-950">
+          <div className="section-shell-tight">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="section-eyebrow">How Can We Help?</p>
+              <h2 id="choose-path-title" className="section-title">Choose the Right Next Step</h2>
+              <p className="section-copy mx-auto">
+                Start with the service that matches what you need today. Every request is reviewed before anything is scheduled or charged.
+              </p>
+            </div>
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              <article className="surface-card flex flex-col p-7">
+                <p className="section-eyebrow">Local Training</p>
+                <h3 className="mt-4 text-2xl font-semibold text-white">Build Better Everyday Behavior</h3>
+                <p className="mt-4 flex-1 text-sm leading-7 text-neutral-300">Get help with obedience, distractions, manners, and real-world reliability.</p>
+                <Link href="/inquire?service=Training%20evaluation" className="action-primary mt-6">Request Dog Training</Link>
+              </article>
+              <article className="surface-card flex flex-col border-amber-500/30 p-7">
+                <p className="section-eyebrow">Overnight Boarding</p>
+                <h3 className="mt-4 text-2xl font-semibold text-white">Dependable Care While You Are Away</h3>
+                <p className="mt-4 flex-1 text-sm leading-7 text-neutral-300">Request boarding-only care, with training available separately when it fits your goals.</p>
+                <Link href="/boarding" className="action-primary mt-6">Check Boarding Availability</Link>
+              </article>
+              <article className="surface-card flex flex-col p-7">
+                <p className="section-eyebrow">German Shepherd Puppies</p>
+                <h3 className="mt-4 text-2xl font-semibold text-white">Find the Right Puppy and Placement</h3>
+                <p className="mt-4 flex-1 text-sm leading-7 text-neutral-300">Learn about upcoming litters and tell us about your household, experience, and goals.</p>
+                <Link href="/apply" className="action-primary mt-6">Apply for a Puppy</Link>
+              </article>
             </div>
           </div>
         </section>
@@ -329,16 +382,6 @@ export default function HomePageClient() {
                 objectFit="contain"
               />
             </div>
-          </div>
-        </section>
-
-        <section className="border-b border-neutral-900 bg-neutral-950">
-          <div className="section-shell-tight">
-            <AiTrainerPath
-              eyebrow="Train Online"
-              title="Prefer to Train Your Dog Yourself?"
-              body="Use the Patriot K9 AI Trainer for personalized guidance, training plans, saved progress, and structured help you can follow at home."
-            />
           </div>
         </section>
 

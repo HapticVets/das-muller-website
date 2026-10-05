@@ -69,6 +69,12 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
       <div className="mb-7 rounded-2xl border border-amber-500/20 bg-amber-500/10 p-5 text-sm leading-7 text-neutral-200">
         <p className="font-semibold text-white">A quick request—not a commitment.</p>
         <p className="mt-1">Tell us what you need. We will review fit and availability, then contact you before anything is scheduled or charged.</p>
+        <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-neutral-300">
+          <li>Usually takes about 2 minutes</li>
+          <li>No payment required</li>
+          <li>No obligation</li>
+          <li>We normally respond by your preferred contact method</li>
+        </ul>
       </div>
       <div className="grid gap-6 md:grid-cols-2">
         <Field label="Full name" name="name" autoComplete="name" required />
