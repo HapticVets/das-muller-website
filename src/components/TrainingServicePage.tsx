@@ -186,12 +186,7 @@ export default function TrainingServicePage({
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
-                <a
-                  href="mailto:jreese@hapticvets.com?subject=Training%20Inquiry"
-                  className="action-primary"
-                >
-                  Email About Training
-                </a>
+                <Link href={`/inquire?service=${encodeURIComponent(service.title === "Board & Train" ? "Board & Train" : service.title === "Evaluation" ? "Training evaluation" : service.title)}`} className="action-primary">Request Training or Boarding</Link>
                 <a href="tel:8132996905" className="action-secondary">
                   Call or Text: (813) 299-6905
                 </a>
@@ -428,12 +423,7 @@ export default function TrainingServicePage({
                   depending on the service, distance, and scheduling.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <a
-                    href="mailto:jreese@hapticvets.com?subject=Training%20Inquiry"
-                    className="action-primary"
-                  >
-                    Email About Training
-                  </a>
+                  <Link href={`/inquire?service=${encodeURIComponent(service.title === "Board & Train" ? "Board & Train" : service.title === "Evaluation" ? "Training evaluation" : service.title)}`} className="action-primary">Send an Inquiry</Link>
                   <a href="tel:8132996905" className="action-secondary">
                     Call or Text: (813) 299-6905
                   </a>
@@ -499,12 +489,7 @@ export default function TrainingServicePage({
               outcomes.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <a
-                href="mailto:jreese@hapticvets.com?subject=Training%20Inquiry"
-                className="action-primary"
-              >
-                Email About Training
-              </a>
+              <Link href={`/inquire?service=${encodeURIComponent(service.title === "Board & Train" ? "Board & Train" : service.title === "Evaluation" ? "Training evaluation" : service.title)}`} className="action-primary">Send an Inquiry</Link>
               <a href="tel:8132996905" className="action-secondary">
                 Call or Text: (813) 299-6905
               </a>
