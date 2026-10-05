@@ -61,7 +61,7 @@ export async function POST(req: Request) {
     const rows = inquiryEmailRows(parsed.data);
     const html = `<h1>New Patriot K9 Training &amp; Boarding Inquiry</h1>${rows.map(([label, value]) => `<p><strong>${escapeHtml(label)}:</strong><br/>${escapeHtml(value || "Not provided").replace(/\r?\n/g, "<br/>")}</p>`).join("")}`;
     const text = rows.map(([label, value]) => `${label}: ${value || "Not provided"}`).join("\n");
-    const sent = await resend.emails.send({ from: fromEmail, to: [toEmail], replyTo: parsed.data.email, subject: `New ${parsed.data.service} inquiry from ${parsed.data.name}`, html, text });
+    const sent = await resend.emails.send({ from: fromEmail, to: [toEmail], ...(parsed.data.email ? { replyTo: parsed.data.email } : {}), subject: `New ${parsed.data.service} inquiry from ${parsed.data.name}`, html, text });
     if (sent.error) return jsonError("Failed to send inquiry. Please try again.", 502);
     return Response.json({ success: true });
   } catch {

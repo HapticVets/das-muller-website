@@ -66,11 +66,15 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
     {siteKey ? <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" strategy="afterInteractive" /> : null}
     <form onSubmit={submit} className="surface-card p-6 md:p-8">
       <input name="companyFax" className="hidden" autoComplete="off" tabIndex={-1} aria-hidden="true" />
+      <div className="mb-7 rounded-2xl border border-amber-500/20 bg-amber-500/10 p-5 text-sm leading-7 text-neutral-200">
+        <p className="font-semibold text-white">A quick request—not a commitment.</p>
+        <p className="mt-1">Tell us what you need. We will review fit and availability, then contact you before anything is scheduled or charged.</p>
+      </div>
       <div className="grid gap-6 md:grid-cols-2">
         <Field label="Full name" name="name" autoComplete="name" required />
-        <Field label="Email" name="email" type="email" autoComplete="email" required />
-        <Field label="Phone" name="phone" type="tel" autoComplete="tel" required />
-        <Field label="City and state" name="cityState" autoComplete="address-level2" required />
+        <Field label="Email (or provide a phone number)" name="email" type="email" autoComplete="email" />
+        <Field label="Phone (or provide an email address)" name="phone" type="tel" autoComplete="tel" />
+        <Field label="City and state" name="cityState" autoComplete="address-level2" />
         <Field label="Dog's name" name="dogName" required />
         <Field label="Breed" name="breed" />
         <Field label="Dog's age" name="dogAge" />
@@ -79,10 +83,10 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
         <label className="block text-sm font-medium text-neutral-200">Preferred contact *<select name="preferredContact" required defaultValue="Text" className="field-base mt-2">{contactMethods.map((method) => <option key={method}>{method}</option>)}</select></label>
         <label className="block text-sm font-medium text-neutral-200 md:col-span-2">Goals, behavior concerns, or care needs *<textarea name="goals" required maxLength={2000} rows={5} className="field-base mt-2" placeholder="Tell us what you need help with and anything important about your dog." /></label>
       </div>
-      <p className="form-hint mt-6">Submitting this form does not reserve boarding dates or guarantee acceptance into a training program. We will contact you to confirm availability and the right next step.</p>
+      <p className="form-hint mt-6">Submitting this form does not reserve boarding dates or guarantee acceptance into a training program. We will contact you to confirm availability and the right next step. Your information is used only to respond to your request and is not sold. <a href="/privacy" className="underline hover:text-white">Privacy policy</a>.</p>
       <div className="mt-6" id="training-inquiry-turnstile" />
       {status ? <p role="alert" className="mt-4 text-sm leading-7 text-amber-300">{status}</p> : null}
-      <button type="submit" disabled={submitting || !siteKey || !turnstileToken} className="action-primary mt-6 disabled:opacity-60">{submitting ? "Sending..." : "Send Training & Boarding Inquiry"}</button>
+      <button type="submit" disabled={submitting || !siteKey || !turnstileToken} className="action-primary mt-6 disabled:opacity-60">{submitting ? "Sending..." : "Request Training or Boarding Availability"}</button>
     </form>
   </>;
 }

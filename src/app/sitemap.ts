@@ -22,6 +22,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: buildMainSiteUrl("/privacy"),
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: buildMainSiteUrl("/boarding"),
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: buildMainSiteUrl("/ai-dog-trainer"),
       lastModified,
       changeFrequency: "weekly",

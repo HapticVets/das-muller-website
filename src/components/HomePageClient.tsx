@@ -8,6 +8,7 @@ import AkcRegistrationBlock from "@/components/AkcRegistrationBlock";
 import ResponsiveMedia from "@/components/media/ResponsiveMedia";
 import { siteMediaById } from "@/lib/siteMedia";
 import { AI_TRAINER_PRICE_LINE, ONLINE_TRAINING_APP_URL } from "@/lib/siteUrls";
+import GoogleReviews from "@/components/GoogleReviews";
 
 const trustItems = [
   "Veteran-Owned",
@@ -60,12 +61,12 @@ export default function HomePageClient() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href="#pricing"
+                <Link
+                  href="/inquire"
                   className="inline-flex items-center justify-center rounded-2xl bg-amber-500 px-6 py-3.5 font-semibold text-black transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-amber-300"
                 >
-                  View Training Programs
-                </a>
+                  Request Training or Boarding Availability
+                </Link>
                 <a
                   href="#litters"
                   className="inline-flex items-center justify-center rounded-2xl border border-neutral-700 px-6 py-3.5 font-semibold text-white transition hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-400"
@@ -340,6 +341,8 @@ export default function HomePageClient() {
           </div>
         </section>
 
+        <GoogleReviews />
+
         <Pricing />
 
         <section className="border-b border-neutral-900 bg-neutral-900/35">
@@ -560,7 +563,7 @@ export default function HomePageClient() {
                     href="/inquire"
                     className="inline-flex w-full items-center justify-center rounded-2xl bg-white px-6 py-3.5 font-semibold text-black transition hover:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-white"
                   >
-                    Training &amp; Boarding Inquiry
+                    Request Training or Boarding Availability
                   </Link>
                   <Link
                     href="/training/evaluation"

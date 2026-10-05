@@ -16,7 +16,7 @@ export default async function InquiryPage({ searchParams }: { searchParams: Prom
       <section className="section-shell-tight">
         <p className="section-eyebrow">Training &amp; Boarding</p>
         <h1 className="section-title">Tell us what your dog needs</h1>
-        <p className="section-copy">Request boarding dates, a training evaluation, private lessons, Board &amp; Train, or help choosing the right service. Patriot K9 Command is based in Leetonia, Ohio.</p>
+        <p className="section-copy">Request boarding dates, a training evaluation, private lessons, Board &amp; Train, or help choosing the right service. This request does not commit you to a program. Patriot K9 Command is based in Leetonia, Ohio.</p>
         <div className="mt-10"><TrainingInquiryForm defaultService={service} /></div>
         <p className="form-hint mt-6">Prefer to text? Contact (813) 299-6905. Visits are by appointment only.</p>
       </section>

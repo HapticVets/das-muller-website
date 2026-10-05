@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { boardingCare, boardingPrice } from "@/lib/boarding";
 
 type PricingFeatureBlock = {
   title: string;
@@ -84,7 +85,6 @@ const privateSessions = [
 
 const additionalServices = [
   { label: "Daycare / Training Day", price: "$80/day" },
-  { label: "Boarding", price: "$600/week" },
 ];
 
 function FeatureList({ features }: { features: string[] }) {
@@ -108,14 +108,27 @@ export default function Pricing() {
     >
       <div className="section-shell">
         <div className="max-w-3xl">
-          <p className="section-eyebrow">In-Person Dog Training</p>
+          <p className="section-eyebrow">Dog Training &amp; Overnight Boarding</p>
           <h2 className="section-title">A Progressive Training System</h2>
           <p className="section-copy">
             Training progresses from foundational communication to distraction
             control and real-world reliability. Each phase builds on the work
             completed before it.
           </p>
+          <p className="form-hint mt-4">Each phase is priced separately. Session frequency, timeline, and the right starting phase are confirmed after we discuss your dog and goals.</p>
         </div>
+
+        <article className="surface-card mt-8 border-amber-500/30 p-7 md:p-8">
+          <p className="section-eyebrow">Overnight Care</p>
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+            <h3 className="text-2xl font-semibold text-white">Boarding Without Training</h3>
+            <p className="text-xl font-semibold text-amber-300">{boardingPrice}</p>
+          </div>
+          <p className="mt-4 text-neutral-300">Going away and need a place for your dog to stay? Overnight boarding provides daily care, potty breaks, supervised outdoor time, and a consistent routine. Formal training is booked separately.</p>
+          <FeatureList features={boardingCare} />
+          <p className="form-hint mt-4">Availability, handling needs, and the total price for your dates are confirmed before booking.</p>
+          <Link href="/boarding" className="action-primary mt-6">View Boarding &amp; Request Availability</Link>
+        </article>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {corePhases.map((phase, index) => (
@@ -148,8 +161,8 @@ export default function Pricing() {
               Save $300 when committing to the full three-phase system upfront.
             </p>
           </div>
-          <Link href="/training/evaluation" className="action-primary">
-            Schedule a Training Evaluation
+          <Link href="/inquire?service=Training%20evaluation" className="action-primary">
+            Request Training Availability
           </Link>
         </div>
 

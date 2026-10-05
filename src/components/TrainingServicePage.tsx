@@ -12,7 +12,7 @@ const trainingBannerImages: Record<TrainingService["slug"], string> = {
   "puppy-foundation": "/images/training/puppy-foundation-banner.png",
   "private-lessons": "/images/training/private-lessons-banner.png",
   "day-training": "/images/training/day-training-banner.png",
-  "board-and-train": "/images/training/board-and-train-banner.png",
+  "board-and-train": siteMediaById["training-public-down-stay-store"].src,
   "behavior-modification": "/images/training/behavior-modification-banner.png",
   "service-dog-foundations":
     "/images/training/service-dog-foundations-banner.png",
@@ -186,7 +186,7 @@ export default function TrainingServicePage({
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
-                <Link href={`/inquire?service=${encodeURIComponent(service.title === "Board & Train" ? "Board & Train" : service.title === "Evaluation" ? "Training evaluation" : service.title)}`} className="action-primary">Request Training or Boarding</Link>
+                <Link href={`/inquire?service=${encodeURIComponent(service.title === "Board & Train" ? "Board & Train" : service.title === "Evaluation" ? "Training evaluation" : service.title)}`} className="action-primary">Request Training or Boarding Availability</Link>
                 <a href="tel:8132996905" className="action-secondary">
                   Call or Text: (813) 299-6905
                 </a>
@@ -294,6 +294,53 @@ export default function TrainingServicePage({
             />
           </div>
         </section>
+
+        <section className="border-y border-neutral-900 bg-neutral-900/35">
+          <div className="section-shell-tight">
+            <div className="max-w-3xl">
+              <p className="section-eyebrow">What Happens Next</p>
+              <h2 className="section-title">A Clear Path From Inquiry to Training</h2>
+            </div>
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {[
+                ["1", "Tell us about your dog", "Share the service you need, your goals, and any behavior or care concerns."],
+                ["2", "We confirm fit and availability", "We review your request, answer questions, and confirm the appropriate program and current pricing."],
+                ["3", "Schedule the next step", "After direct confirmation, we arrange the evaluation, lesson, or drop-off details."],
+              ].map(([step, title, copy]) => (
+                <article className="surface-card p-7" key={step}>
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-amber-500 font-bold text-black">{step}</span>
+                  <h3 className="mt-5 text-xl font-semibold text-white">{title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-neutral-300">{copy}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {service.slug === "board-and-train" ? (
+          <section className="border-b border-neutral-900 bg-neutral-950">
+            <div className="section-shell-tight">
+              <div className="max-w-3xl">
+                <p className="section-eyebrow">Care &amp; Safety</p>
+                <h2 className="section-title">Know What Is Reviewed Before Drop-Off</h2>
+                <p className="section-copy">Every stay begins with a direct conversation about the dog, the training plan, and the care information needed for a safe and productive program.</p>
+              </div>
+              <div className="mt-10 grid gap-5 md:grid-cols-2">
+                {[
+                  "Vaccination records, feeding instructions, medication, and veterinary details",
+                  "Behavior history, bite history, reactivity, escape behavior, and handling needs",
+                  "Daily structure that includes training, appropriate outdoor work, crate rest, and routine care",
+                  "An owner handoff lesson and clear expectations for maintaining progress at home",
+                ].map((item) => (
+                  <div className="surface-card flex gap-3 p-6 text-neutral-200" key={item}>
+                    <span className="text-amber-400">✓</span>
+                    <span className="leading-7">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         {pageMedia ? (
           <section className="border-t border-neutral-900 bg-neutral-950">
@@ -423,7 +470,7 @@ export default function TrainingServicePage({
                   depending on the service, distance, and scheduling.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <Link href={`/inquire?service=${encodeURIComponent(service.title === "Board & Train" ? "Board & Train" : service.title === "Evaluation" ? "Training evaluation" : service.title)}`} className="action-primary">Send an Inquiry</Link>
+                  <Link href={`/inquire?service=${encodeURIComponent(service.title === "Board & Train" ? "Board & Train" : service.title === "Evaluation" ? "Training evaluation" : service.title)}`} className="action-primary">Request Availability</Link>
                   <a href="tel:8132996905" className="action-secondary">
                     Call or Text: (813) 299-6905
                   </a>
@@ -489,7 +536,7 @@ export default function TrainingServicePage({
               outcomes.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link href={`/inquire?service=${encodeURIComponent(service.title === "Board & Train" ? "Board & Train" : service.title === "Evaluation" ? "Training evaluation" : service.title)}`} className="action-primary">Send an Inquiry</Link>
+              <Link href={`/inquire?service=${encodeURIComponent(service.title === "Board & Train" ? "Board & Train" : service.title === "Evaluation" ? "Training evaluation" : service.title)}`} className="action-primary">Request Availability</Link>
               <a href="tel:8132996905" className="action-secondary">
                 Call or Text: (813) 299-6905
               </a>

@@ -53,12 +53,15 @@ export function parseTrainingInquiry(value: unknown):
   const token = clean(input.turnstileToken, 4_096);
   const honeypot = clean(input.companyFax, 200);
 
-  if (!data.name || !data.email || !data.phone || !data.cityState || !data.dogName || !data.service || !data.goals || !data.preferredContact) {
+  if (!data.name || !data.dogName || !data.service || !data.goals || !data.preferredContact) {
     return { success: false, error: "Please complete all required fields." };
   }
-  if (!/^\S+@\S+\.\S+$/.test(data.email)) return { success: false, error: "Please enter a valid email address." };
+  if (!data.email && !data.phone) return { success: false, error: "Please provide an email address or phone number." };
+  if (data.email && !/^\S+@\S+\.\S+$/.test(data.email)) return { success: false, error: "Please enter a valid email address." };
   if (!inquiryServices.includes(data.service)) return { success: false, error: "Please choose a valid service." };
   if (!contactMethods.includes(data.preferredContact)) return { success: false, error: "Please choose a valid contact method." };
+  if (data.preferredContact === "Email" && !data.email) return { success: false, error: "Please provide an email address for email contact." };
+  if (data.preferredContact !== "Email" && !data.phone) return { success: false, error: "Please provide a phone number for calls or texts." };
   if (!token) return { success: false, error: "Please complete verification before submitting." };
   return { success: true, data, token, honeypot };
 }

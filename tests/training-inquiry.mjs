@@ -29,9 +29,11 @@ const complete = (overrides = {}) => ({
 
 test('training inquiry validation accepts supported services and rejects tampering', () => {
   assert.equal(schema.parseTrainingInquiry(complete()).success, true);
-  for (const override of [{ email: 'bad' }, { service: 'Unknown' }, { preferredContact: 'Carrier pigeon' }, { goals: '' }, { turnstileToken: '' }]) {
+  for (const override of [{ email: 'bad' }, { email: '', phone: '' }, { email: '', preferredContact: 'Email' }, { phone: '', preferredContact: 'Text' }, { service: 'Unknown' }, { preferredContact: 'Carrier pigeon' }, { goals: '' }, { turnstileToken: '' }]) {
     assert.equal(schema.parseTrainingInquiry(complete(override)).success, false);
   }
+  assert.equal(schema.parseTrainingInquiry(complete({ email: '', preferredContact: 'Text' })).success, true);
+  assert.equal(schema.parseTrainingInquiry(complete({ phone: '', preferredContact: 'Email' })).success, true);
 });
 
 test('email rows contain service, dates, contact preference, and dog details', () => {
@@ -68,7 +70,7 @@ test('valid inquiry verifies captcha and sends an escaped email', async () => {
 
 test('invalid, spam, captcha-rejected, and provider-failed inquiries do not report success', async () => {
   const invalid = routeHarness();
-  assert.equal((await invalid.POST(request(complete({ phone: '' })))).status, 400);
+  assert.equal((await invalid.POST(request(complete({ phone: '', email: '' })))).status, 400);
   assert.equal((await invalid.POST(request(complete({ companyFax: 'spam' })))).status, 400);
   assert.equal(invalid.verificationCount(), 0);
   assert.equal(invalid.sent.length, 0);
