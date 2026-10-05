@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AvailableLitters from "@/components/AvailableLitter";
 import Header from "@/components/Header";
+import KennelSponsor from "@/components/KennelSponsor";
 import Pricing from "@/components/Pricing";
 import AiTrainerPath from "@/components/AiTrainerPath";
 import AkcRegistrationBlock from "@/components/AkcRegistrationBlock";
@@ -344,6 +345,8 @@ export default function HomePageClient() {
         <GoogleReviews />
 
         <Pricing />
+
+        <KennelSponsor />
 
         <section className="border-b border-neutral-900 bg-neutral-900/35">
           <div className="section-shell-tight">
