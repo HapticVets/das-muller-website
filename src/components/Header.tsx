@@ -44,7 +44,7 @@ export default function Header() {
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-7 text-sm text-neutral-300 lg:flex">
+          <nav className="hidden items-center gap-4 text-sm text-neutral-300 lg:flex">
             <Link href="/" className="transition hover:text-white">
               Home
             </Link>
@@ -96,6 +96,9 @@ export default function Header() {
             <Link href="/apply" className="transition hover:text-white">
               Apply
             </Link>
+            <a href="https://shop.patriotk9kennel.com" className="whitespace-nowrap font-semibold text-amber-400 transition hover:text-amber-300">
+              Shop Merch
+            </a>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -203,6 +206,12 @@ export default function Header() {
               >
                 Apply for a Puppy
               </Link>
+              <a
+                href="https://shop.patriotk9kennel.com"
+                className="block rounded-xl border border-amber-500/60 px-4 py-3 font-semibold text-amber-400 transition hover:bg-amber-500/10 focus:outline-none focus:ring-2 focus:ring-amber-300"
+              >
+                Shop Merch
+              </a>
             </div>
           </nav>
         ) : null}

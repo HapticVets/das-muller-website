@@ -79,6 +79,12 @@ export default function HomePageClient() {
                 >
                   Apply for a Puppy
                 </Link>
+                <a
+                  href="https://shop.patriotk9kennel.com"
+                  className="inline-flex items-center justify-center rounded-2xl border border-amber-500/60 px-6 py-3.5 font-semibold text-amber-400 transition hover:bg-amber-500/10 focus:outline-none focus:ring-2 focus:ring-amber-300"
+                >
+                  Shop Merch
+                </a>
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
