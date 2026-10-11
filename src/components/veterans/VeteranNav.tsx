@@ -13,6 +13,7 @@ const veteranNavLinks = [
   { href: "/veterans", label: "Home" },
   { href: "/veterans/about", label: "About" },
   { href: "/veterans/programs", label: "Programs" },
+  { href: "/veterans/adventures", label: "Adventures" },
   { href: "/veterans/partners", label: "Partners" },
   { href: "/veterans/contact", label: "Contact" },
 ];

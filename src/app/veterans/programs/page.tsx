@@ -30,6 +30,23 @@ export default function VeteransProgramsPage() {
       </section>
 
       <VeteranSection
+        eyebrow="Annual Veteran Adventures"
+        title="Mission Hocking Hills"
+      >
+        <div className="surface-card p-7 md:p-8">
+          <p className="max-w-3xl text-lg leading-8 text-neutral-200">
+            Our first planned veteran adventure trip brings veterans together
+            through time outdoors, shared experiences, and community. It begins
+            an annual adventure effort alongside our longer-term trade and
+            outreach programs.
+          </p>
+          <VeteranLink href="/veterans/adventures" className="action-primary mt-6">
+            View Mission Hocking Hills
+          </VeteranLink>
+        </div>
+      </VeteranSection>
+
+      <VeteranSection
         eyebrow="Program Concepts"
         title="Current, developing, and planned tracks from the source project."
       >

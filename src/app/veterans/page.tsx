@@ -76,6 +76,9 @@ export default function VeteransPage() {
             shared here as plans are confirmed.
           </p>
           <div className="mt-7 flex flex-wrap gap-4">
+            <VeteranLink href="/veterans/adventures" className="action-secondary">
+              View Adventure Trip Details
+            </VeteranLink>
             <a href="https://shop.patriotk9kennel.com/" className="action-primary">
               Shop to Support Veteran Adventures
             </a>
