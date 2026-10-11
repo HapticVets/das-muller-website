@@ -576,6 +576,17 @@ export default function HomePageClient() {
                 and continued support as dogs grow into their roles at home and
                 in the community.
               </p>
+              <p className="mt-4 text-base leading-7 text-neutral-300">
+                Explore our veteran outreach vision, from planned trade pathways
+                to annual adventures that bring veterans together, beginning
+                with Mission Hocking Hills.
+              </p>
+              <Link
+                href="/veterans"
+                className="mt-6 inline-flex min-h-11 items-center rounded-xl bg-amber-500 px-6 py-3 font-semibold text-black transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-amber-300"
+              >
+                Explore Veteran Outreach
+              </Link>
             </div>
           </div>
         </section>

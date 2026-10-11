@@ -57,6 +57,35 @@ export default function VeteransPage() {
         </div>
       </section>
 
+      <VeteranSection eyebrow="Annual Veteran Adventures" title="Mission Hocking Hills: The First Adventure">
+        <div className="surface-card p-7 md:p-8">
+          <p className="max-w-3xl text-lg leading-8 text-neutral-200">
+            We are planning an annual adventure trip that brings veterans
+            together through time outdoors, shared experiences, and community.
+            Mission Hocking Hills is our first planned trip.
+          </p>
+          <p className="mt-5 max-w-3xl text-base leading-7 text-neutral-300">
+            100% of net profits from Patriot K9 merchandise will help fund these
+            annual veteran adventures. Net profits are what remains after
+            production, payment fees, and other merchandise-related costs.
+            This trip effort is part of our broader outreach vision, alongside
+            the trade school and other programs being developed in stages.
+          </p>
+          <p className="mt-5 max-w-3xl text-sm leading-7 text-neutral-400">
+            Trip dates, participation details, and funding updates will be
+            shared here as plans are confirmed.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-4">
+            <a href="https://shop.patriotk9kennel.com/" className="action-primary">
+              Shop to Support Veteran Adventures
+            </a>
+            <VeteranLink href="/veterans/contact" className="action-secondary">
+              Ask About the Adventure Trip
+            </VeteranLink>
+          </div>
+        </div>
+      </VeteranSection>
+
       <VeteranSection eyebrow="Structure" title="What We&apos;re Building">
         <div className="grid gap-6 md:grid-cols-2">
           {veteranHomePillars.map((item) => (

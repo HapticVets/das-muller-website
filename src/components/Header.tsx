@@ -44,7 +44,7 @@ export default function Header() {
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-4 text-sm text-neutral-300 lg:flex">
+          <nav className="hidden items-center gap-3 text-sm text-neutral-300 xl:flex">
             <Link href="/" className="transition hover:text-white">
               Home
             </Link>
@@ -53,6 +53,9 @@ export default function Header() {
             </Link>
             <Link href="/our-dogs" className="transition hover:text-white">
               Our Dogs
+            </Link>
+            <Link href="/veterans" className="transition hover:text-white">
+              Veterans
             </Link>
             <div className="group relative">
               <button
@@ -107,12 +110,12 @@ export default function Header() {
               aria-label="Request training or boarding availability"
               className="inline-flex min-h-11 items-center whitespace-nowrap rounded-xl bg-amber-500 px-3 py-2 text-sm font-semibold text-black transition hover:opacity-90 lg:px-4"
             >
-              <span className="lg:hidden">Inquire</span>
-              <span className="hidden lg:inline">Request Availability</span>
+              <span className="xl:hidden">Inquire</span>
+              <span className="hidden xl:inline">Request Availability</span>
             </Link>
             <button
               type="button"
-              className="min-h-11 rounded-xl border border-neutral-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-neutral-900 lg:hidden"
+              className="min-h-11 rounded-xl border border-neutral-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-neutral-900 xl:hidden"
               onClick={() => setIsMobileMenuOpen((open) => !open)}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-nav"
@@ -126,7 +129,7 @@ export default function Header() {
         {isMobileMenuOpen ? (
           <nav
             id="mobile-nav"
-            className="mt-4 rounded-3xl border border-neutral-800 bg-neutral-950 p-4 lg:hidden"
+            className="mt-4 rounded-3xl border border-neutral-800 bg-neutral-950 p-4 xl:hidden"
           >
             <div className="space-y-2 text-sm text-neutral-300">
               <Link
@@ -151,7 +154,7 @@ export default function Header() {
                 href="/veterans"
                 className="block rounded-xl px-4 py-3 transition hover:bg-neutral-900 hover:text-white"
               >
-                Veterans Outreach
+                Veteran Outreach
               </Link>
               <div className="rounded-2xl border border-neutral-800 bg-neutral-900/40">
                 <button
