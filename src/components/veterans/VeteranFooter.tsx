@@ -22,6 +22,9 @@ export default function VeteranFooter() {
             Explore
           </p>
           <div className="mt-4 flex flex-col gap-3 text-sm text-neutral-400">
+            <VeteranLink href="/veterans/adventures/hocking-hills" className="inline-flex min-h-11 items-center font-semibold text-amber-300 transition hover:text-white">
+              Sponsor Hocking Hills
+            </VeteranLink>
             <VeteranLink
               href="/veterans/about"
               className="transition hover:text-white"

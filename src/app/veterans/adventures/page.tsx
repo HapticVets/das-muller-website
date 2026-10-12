@@ -1,4 +1,5 @@
 import VeteranLink from "@/components/veterans/VeteranLink";
+import HockingHillsSponsorProgress from "@/components/veterans/HockingHillsSponsorProgress";
 import VeteranSection from "@/components/veterans/VeteranSection";
 import { buildVeteranMetadata } from "@/lib/veteranSeo";
 
@@ -18,8 +19,9 @@ export default function VeteranAdventuresPage() {
           <h1 className="section-title max-w-4xl">Mission Hocking Hills</h1>
           <p className="section-copy mt-6 max-w-3xl">
             Our first planned adventure trip brings veterans together through
-            time outdoors, shared experiences, and community. Mission Hocking
-            Hills is the beginning of an annual veteran adventure effort.
+            time outdoors, shared experiences, practical learning and community.
+            Our goal is for veterans to return home with new connections,
+            useful resources and tools that support their next opportunity.
           </p>
           <p className="mt-6 max-w-3xl rounded-xl border border-amber-500/30 bg-amber-500/5 p-5 text-sm leading-7 text-neutral-200">
             Planning target: April 2028 · Hocking Hills, Ohio. Exact dates,
@@ -35,6 +37,7 @@ export default function VeteranAdventuresPage() {
               </div>
             ))}
           </div>
+          <HockingHillsSponsorProgress />
           <div className="surface-card mt-8 border-amber-500/30 p-6">
             <h2 className="text-2xl font-semibold">Help veterans take the mission home.</h2>
             <p className="mt-3 max-w-3xl leading-7 text-neutral-300">Explore our sponsor page for proposed classes, laptop resource kits, fishing kits, funding progress and ways your business can help.</p>
@@ -80,6 +83,16 @@ export default function VeteranAdventuresPage() {
         </div>
       </VeteranSection>
 
+      <VeteranSection eyebrow="Connection. Recreation. Opportunity." title="Practical learning and tools to take home.">
+        <div className="grid gap-5 md:grid-cols-3">
+          <article className="surface-card p-6"><h3 className="text-xl font-semibold">Classes selected by team vote</h3><p className="mt-3 leading-7 text-neutral-300">Proposed topics include veteran benefits, employment and resumes, budgeting, business, trades and apprenticeships, technology, outdoor skills, first aid and personal development. The team will vote on the final classes and assign an instructor, organizer or subject-matter resource to each approved workshop.</p></article>
+          <article className="surface-card p-6"><h3 className="text-xl font-semibold">Laptop resource kit goal</h3><p className="mt-3 leading-7 text-neutral-300">We want each participating veteran to leave with a laptop containing veteran-service links, employment and resume resources, trade and education information, budgeting tools, workshop materials and outreach contacts.</p></article>
+          <article className="surface-card p-6"><h3 className="text-xl font-semibold">Fishing kit goal</h3><p className="mt-3 leading-7 text-neutral-300">Our goal is a personal rod, reel, tackle and starter equipment for each participating veteran so they can continue enjoying the outdoors after the trip.</p></article>
+        </div>
+        <p className="mt-6 max-w-3xl leading-7 text-neutral-400">Classes, equipment and quantities remain subject to team approval and available support. Resource kits are goals, not guaranteed items. Kit costs must be confirmed within the final budget.</p>
+        <VeteranLink href="/veterans/adventures/hocking-hills" className="action-primary mt-6">Explore Classes, Kits and Sponsorship Options</VeteranLink>
+      </VeteranSection>
+
       <VeteranSection eyebrow="Working Costs" title="A transparent $20,000 planning target.">
         <p className="mb-6 max-w-3xl leading-8 text-neutral-300">
           These preliminary estimates come from the Outreach event outline.
@@ -87,6 +100,7 @@ export default function VeteranAdventuresPage() {
           Current quotes, taxes, insurance, transportation and the final lodging
           duration must be checked before commitments.
         </p>
+        <p className="mb-6 max-w-3xl rounded-xl border border-amber-500/30 bg-amber-500/5 p-5 leading-7 text-neutral-200">Frontline Chimney is confirmed as our food sponsor and has committed to covering food for the trip. The food estimate below remains part of the preliminary cost plan; the commitment’s dollar value and payment or delivery details have not yet been reconciled into funding totals.</p>
         <div className="overflow-x-auto rounded-xl border border-neutral-800">
           <table className="w-full min-w-[480px] text-left text-sm">
             <caption className="sr-only">Mission Hocking Hills preliminary budget in US dollars</caption>
@@ -115,7 +129,7 @@ export default function VeteranAdventuresPage() {
         <div className="grid gap-5 md:grid-cols-2">
           <div className="surface-card p-6">
             <h3 className="text-xl font-semibold">Financial or in-kind support</h3>
-            <p className="mt-3 leading-7 text-neutral-300">Discuss supporting lodging, food, a veteran flight (approximately $600), activities, apparel or transportation. Donated goods and services can reduce the cash needed. Scope and recognition are agreed individually; no sponsorship package is committed by this page.</p>
+            <p className="mt-3 leading-7 text-neutral-300">Discuss supporting a veteran’s trip, lodging, airfare, activities, a laptop resource kit, a fishing kit, an approved workshop, apparel or transportation. Frontline Chimney has committed to covering food. Donated goods and services can reduce cash needs; additional support and recognition are coordinated individually.</p>
           </div>
           <div className="surface-card p-6">
             <h3 className="text-xl font-semibold">Recognition and reporting</h3>
@@ -123,7 +137,7 @@ export default function VeteranAdventuresPage() {
           </div>
         </div>
         <p className="mt-6 max-w-3xl leading-8 text-neutral-300">The full proposed stay includes Days 5–7 team review and personal/family time. Direct veteran costs, necessary team support and personal/family costs must be allocated separately. Sponsor funds are used only for agreed purposes; this plan does not authorize sponsors to fund family leisure. Cash and in-kind contributions are recorded separately. No tax-deductibility claim is made.</p>
-        <VeteranLink href="/veterans/contact" className="action-primary mt-6">Discuss Mission Sponsorship</VeteranLink>
+        <VeteranLink href="/veterans/adventures/hocking-hills" className="action-primary mt-6">View Sponsor Opportunities and Contact Our Team</VeteranLink>
       </VeteranSection>
 
       <VeteranSection eyebrow="Taking Part" title="Attendee selection will be announced before registration opens.">

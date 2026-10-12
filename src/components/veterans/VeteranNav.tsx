@@ -14,6 +14,7 @@ const veteranNavLinks = [
   { href: "/veterans/about", label: "About" },
   { href: "/veterans/programs", label: "Programs" },
   { href: "/veterans/adventures", label: "Adventures" },
+  { href: "/veterans/adventures/hocking-hills", label: "Sponsor Hocking Hills" },
   { href: "/veterans/partners", label: "Partners" },
   { href: "/veterans/contact", label: "Contact" },
 ];
@@ -59,7 +60,7 @@ export default function VeteranNav() {
             const resolvedHref = getVeteranHref(item.href, useSubdomainPaths);
             const isActive =
               comparablePath === resolvedHref ||
-              (resolvedHref !== "/" &&
+              (item.href !== "/veterans/adventures" && resolvedHref !== "/" &&
                 comparablePath.startsWith(`${resolvedHref}/`));
 
             return (
