@@ -12,8 +12,8 @@ export const hockingHillsSponsorProgress: {
   raisedCommitted: null,
   laptopsNeeded: null,
   fishingKitsNeeded: null,
-  confirmedSponsors: null,
-  updatedAt: null,
+  confirmedSponsors: ["Frontline Chimney — committed to covering food for the trip"],
+  updatedAt: "October 12, 2026",
 };
 
 export function hockingHillsInquiry(subject: string) {
