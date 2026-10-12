@@ -46,7 +46,7 @@ export default function VeteranAdventuresPage() {
         </div>
       </section>
 
-      <VeteranSection eyebrow="The Mission" title="An adventure. A connection. A reason to get outside.">
+      <VeteranSection eyebrow="The Mission" title="Adventure, practical skills and opportunities after the trip.">
         <div className="surface-card p-7 md:p-8">
           <p className="max-w-3xl text-lg leading-8 text-neutral-200">
             We want veterans to have opportunities to meet, spend time outdoors,
@@ -58,10 +58,13 @@ export default function VeteranAdventuresPage() {
         </div>
       </VeteranSection>
 
-      <VeteranSection eyebrow="The Proposed Experience" title="Veteran connection through shared adventure.">
+      <VeteranSection eyebrow="The Proposed Experience" title="Connect outdoors. Learn together. Take useful tools home.">
         <p className="mb-6 max-w-3xl leading-8 text-neutral-300">
           The goal is a sponsor-supported experience centered on camaraderie,
-          outdoor activities and time together. The plan includes airfare for
+          outdoor activities, practical classes, resource sessions and time together.
+          Veterans will have opportunities to explore benefits, employment,
+          financial skills, trades and technology, with final classes selected
+          by team vote. The plan includes airfare for
           four selected veterans and additional local veteran attendees. The
           approximately 15-person group includes the support team; it is not
           a promise of 15 veteran places. Activities remain subject to pricing,
@@ -69,10 +72,10 @@ export default function VeteranAdventuresPage() {
         </p>
         <div className="grid gap-5 md:grid-cols-2">
           {[
-            ['Day 1 — Team arrival and setup', 'The core team prepares the lodge, groceries, rooms and supplies, and confirms transportation, reservations, emergency information and the itinerary.'],
-            ['Day 2 — Veteran arrival and Wreck-It Day', 'Four fly-in veterans arrive through Cleveland with designated airport pickup. Local attendees meet the group for a proposed Wreck-It / Rage Room experience, followed by travel to Hocking Hills, dinner, introductions and lodge time.'],
-            ['Day 3 — Hocking Hills nature day', 'Explore trails, caves, waterfalls and sightseeing, with meals and evening group time at the lodge. Paintball is optional and depends on pricing, timing, available budget and suitability.'],
-            ['Day 4 — Zipline and veteran departure', 'A proposed group zipline adventure, final meal and time together, followed by veteran departures and airport transportation for fly-in attendees.'],
+            ['Day 1 — Team and workshop preparation', 'The core team prepares the lodge, meals and supplies, coordinates instructors and approved class materials, and organizes laptop resources and fishing equipment as available. Transportation, emergency information and the final schedule are checked before veterans arrive.'],
+            ['Day 2 — Welcome, connection and resource orientation', 'Four fly-in veterans arrive through Cleveland with designated pickup, alongside local attendees. The proposed day combines the Wreck-It / Rage Room experience, travel to Hocking Hills, dinner and introductions with an orientation to available veteran resources and the planned classes.'],
+            ['Day 3 — Practical classes and outdoor experiences', 'The proposed schedule makes room for educational workshops and hands-on resource sessions alongside trails, caves, waterfalls and fishing. Potential classes cover benefits, employment and resumes, budgeting, trades, technology, outdoor skills and first aid. Final classes, instructors and timing will be voted on and confirmed. Optional paintball remains subject to budget, timing and suitability.'],
+            ['Day 4 — Resource kits, next steps and departure', 'Alongside a proposed zipline adventure and final meal, the plan includes reviewing what veterans learned, sharing follow-up contacts and helping participants use their take-home resources. Our goal is for each veteran to leave with a resource-loaded laptop and a personal fishing kit, subject to sponsorship and availability. Veteran departures and airport transportation follow.'],
             ['Days 5–7 — Team review and family time', 'After veteran attendees depart, the proposed remaining lodge stay includes team review, veteran feedback, cost and sponsor reporting, future planning and personal/family time. Local core-team families may join. This portion is separate from the veteran activity days.'],
           ].map(([title, text]) => (
             <article key={title} className="surface-card p-6">
@@ -81,6 +84,7 @@ export default function VeteranAdventuresPage() {
             </article>
           ))}
         </div>
+        <p className="mt-6 max-w-3xl rounded-xl border border-amber-500/30 bg-amber-500/5 p-5 leading-7 text-neutral-200">This is a proposed program layout, not a finalized class timetable. The team will vote on the classes and assign someone to organize or teach each approved session. Recreation, learning and take-home resources are all part of the trip’s purpose.</p>
       </VeteranSection>
 
       <VeteranSection eyebrow="Connection. Recreation. Opportunity." title="Practical learning and tools to take home.">
@@ -98,7 +102,9 @@ export default function VeteranAdventuresPage() {
           These preliminary estimates come from the Outreach event outline.
           The target is a ceiling, not a requirement to spend the full amount.
           Current quotes, taxes, insurance, transportation and the final lodging
-          duration must be checked before commitments.
+          duration must be checked before commitments. Laptop kits, fishing
+          kits and workshop costs are now listed below as pending estimates;
+          they have not yet been priced into the original cost subtotal.
         </p>
         <p className="mb-6 max-w-3xl rounded-xl border border-amber-500/30 bg-amber-500/5 p-5 leading-7 text-neutral-200">Frontline Chimney is confirmed as our food sponsor and has committed to covering food for the trip. The food estimate below remains part of the preliminary cost plan; the commitment’s dollar value and payment or delivery details have not yet been reconciled into funding totals.</p>
         <div className="overflow-x-auto rounded-xl border border-neutral-800">
@@ -114,11 +120,15 @@ export default function VeteranAdventuresPage() {
                 ['Event shirts', '$700', 'Event apparel'],
                 ['Fuel / local transport', '$500', 'Personal vehicles, airport pickup and activity travel'],
                 ['Wreck-It Room', '$350', 'Arrival-day group activity'],
+                ['Laptop resource kits', 'To be priced', 'Goal: one laptop per participating veteran with organized benefits, employment, education, budgeting and workshop resources; quantity, equipment, preparation and donated units to be confirmed'],
+                ['Fishing kits', 'To be priced', 'Goal: one rod, reel, tackle and starter kit per participating veteran; final quantity, kit contents and donated equipment to be confirmed'],
+                ['Classes / workshop materials', 'To be priced', 'Materials, instructional support and supplies for classes selected by team vote; instructors and costs to be confirmed'],
               ].map(([category, amount, basis]) => <tr key={category}><th scope="row" className="p-4 font-medium text-white">{category}</th><td className="whitespace-nowrap p-4">{amount}</td><td className="p-4 leading-6">{basis}</td></tr>)}
             </tbody>
             <tfoot className="border-t border-neutral-700 bg-neutral-900 text-white">
-              <tr><th scope="row" className="p-4">Listed estimates</th><td className="p-4">$17,850</td><td className="p-4">Not an expenditure report</td></tr>
-              <tr><th scope="row" className="p-4">Remaining headroom</th><td className="p-4">$2,150</td><td className="p-4">Possible paintball, supplies and contingency; paintball price TBD</td></tr>
+              <tr><th scope="row" className="p-4">Priced items subtotal</th><td className="p-4">$17,850</td><td className="p-4">Excludes unpriced laptop kits, fishing kits and workshops; not an expenditure report</td></tr>
+              <tr><th scope="row" className="p-4">Unallocated headroom before unpriced needs</th><td className="p-4">$2,150</td><td className="p-4">Not confirmed coverage for kits or classes. Reconcile these priorities, optional activities and contingency before approving the final budget.</td></tr>
+              <tr><th scope="row" className="p-4">Complete program cost</th><td className="p-4">Pending</td><td className="p-4">Finalize quantities, quotes and in-kind support for resource kits and approved classes</td></tr>
               <tr><th scope="row" className="p-4">Working ceiling</th><td className="p-4">$20,000</td><td className="p-4">Final spending requires separate approval</td></tr>
             </tfoot>
           </table>
