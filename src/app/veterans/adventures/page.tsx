@@ -35,6 +35,11 @@ export default function VeteranAdventuresPage() {
               </div>
             ))}
           </div>
+          <div className="surface-card mt-8 border-amber-500/30 p-6">
+            <h2 className="text-2xl font-semibold">Help veterans take the mission home.</h2>
+            <p className="mt-3 max-w-3xl leading-7 text-neutral-300">Explore our sponsor page for proposed classes, laptop resource kits, fishing kits, funding progress and ways your business can help.</p>
+            <VeteranLink href="/veterans/adventures/hocking-hills" className="action-primary mt-5">Sponsor the Hocking Hills Veteran Adventure</VeteranLink>
+          </div>
         </div>
       </section>
 
