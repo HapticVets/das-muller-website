@@ -1,5 +1,6 @@
 import VeteranLink from "@/components/veterans/VeteranLink";
 import HockingHillsSponsorProgress from "@/components/veterans/HockingHillsSponsorProgress";
+import HockingHillsSponsorBenefits from "@/components/veterans/HockingHillsSponsorBenefits";
 import VeteranSection from "@/components/veterans/VeteranSection";
 import { buildVeteranMetadata } from "@/lib/veteranSeo";
 
@@ -150,6 +151,7 @@ export default function VeteranAdventuresPage() {
         <VeteranLink href="/veterans/adventures/hocking-hills" className="action-primary mt-6">View Sponsor Opportunities and Contact Our Team</VeteranLink>
       </VeteranSection>
 
+      <HockingHillsSponsorBenefits />
       <VeteranSection eyebrow="Taking Part" title="Attendee selection will be announced before registration opens.">
         <div className="surface-card p-7">
           <p className="leading-8 text-neutral-300">Applications or nominations, eligibility, accessibility needs, travel coordination, emergency contacts and activity expectations will be established before registration opens. The current plan is four selected fly-in veterans plus local attendees. Membership does not guarantee a place. Please keep personal, medical and service records out of public channels.</p>

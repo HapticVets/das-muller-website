@@ -1,4 +1,5 @@
 import HockingHillsSponsorProgress from "@/components/veterans/HockingHillsSponsorProgress";
+import HockingHillsSponsorBenefits from "@/components/veterans/HockingHillsSponsorBenefits";
 import VeteranLink from "@/components/veterans/VeteranLink";
 import VeteranSection from "@/components/veterans/VeteranSection";
 import { buildVeteranMetadata } from "@/lib/veteranSeo";
@@ -44,7 +45,7 @@ export default function HockingHillsSponsorPage() {
         <p className="mt-6 max-w-3xl text-sm leading-7 text-neutral-400">Planning target: April 2028. Exact dates, bookings and attendee selection remain to be confirmed; registration is not open. Classes and resource kits are planning goals, subject to team approval and available support.</p>
         <HockingHillsSponsorProgress />
         <nav aria-label="Sponsor page sections" className="mt-7 flex flex-wrap gap-x-5 gap-y-3 text-sm text-amber-300">
-          {[['#purpose','Trip purpose'],['#workshops','Classes'],['#resource-kits','Take-home kits'],['#sponsor-options','Sponsorship'],['#funding','Fund usage'],['#contact','Contact']].map(([href,label]) => <a key={href} href={href} className="inline-flex min-h-11 items-center underline underline-offset-4">{label}</a>)}
+          {[['#purpose','Trip purpose'],['#workshops','Classes'],['#resource-kits','Take-home kits'],['#sponsor-options','Sponsorship'],['#sponsor-benefits','Sponsor benefits'],['#funding','Fund usage'],['#contact','Contact']].map(([href,label]) => <a key={href} href={href} className="inline-flex min-h-11 items-center underline underline-offset-4">{label}</a>)}
         </nav>
       </div>
     </section>
@@ -64,6 +65,7 @@ export default function HockingHillsSponsorPage() {
       <p className="mb-6 max-w-3xl leading-8 text-neutral-300">Businesses, organizations and individuals can support a specific outcome or the overall adventure. Package amounts will be finalized with the approved budget; contact us to discuss a contribution that fits.</p>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{sponsorships.map(([title, text]) => <article key={title} className="surface-card flex flex-col p-6"><h3 className="text-xl font-semibold">{title}</h3><p className="mt-3 flex-1 leading-7 text-neutral-300">{text}</p><p className="mt-4 text-sm text-amber-300">Target amount: to be finalized</p><a className="mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-amber-300 underline underline-offset-4" href={hockingHillsInquiry(title)}>Discuss {title}</a></article>)}</div>
     </VeteranSection></div>
+    <HockingHillsSponsorBenefits />
     <VeteranSection eyebrow="In-kind donations" title="Businesses can help with equipment, skills and services.">
       <p className="max-w-3xl leading-8 text-neutral-300">Financial sponsorship is one way to participate. We also welcome donated goods, professional services, equipment and gift cards that directly support participating veterans. Please coordinate with our team before delivering items.</p>
       <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{["Laptops and technology support", "Fishing rods, tackle and outdoor gear", "Food and grocery gift cards", "Fuel cards and transportation assistance", "Printing, shirts and apparel", "Workshop supplies and educational materials", "Trade tools and safety equipment", "Professional instruction and services"].map(item => <li key={item} className="surface-card p-5 text-neutral-200">{item}</li>)}</ul>
