@@ -91,6 +91,32 @@ export const siteMedia: readonly SiteMediaItem[] = [
     autoplayEligible: false,
   },
   {
+    id: "facility-family-dogs-training-yard",
+    type: "image",
+    src: "/media/facility/patriot-k9-family-dogs-training-yard.webp",
+    alt: "Patriot K9 family members and dogs spending time together in the open rural training yard.",
+    title: "Dogs Raised Around Real Life",
+    description:
+      "Open space, family interaction, and supervised time around other dogs are part of everyday life at Patriot K9.",
+    category: "facility",
+    recommendedPages: ["home", "facility", "breeding"],
+    heroEligible: false,
+    autoplayEligible: false,
+  },
+  {
+    id: "facility-dogs-rural-yard",
+    type: "image",
+    src: "/media/facility/patriot-k9-dogs-rural-yard.webp",
+    alt: "A group of dogs sitting attentively in the spacious rural yard at Patriot K9 Command.",
+    title: "Room for Structured Dog Work",
+    description:
+      "The rural property provides room for supervised group routines, outdoor engagement, and controlled training work.",
+    category: "facility",
+    recommendedPages: ["home", "facility", "training"],
+    heroEligible: false,
+    autoplayEligible: false,
+  },
+  {
     id: "facility-kennel-room",
     type: "image",
     src: "/media/facility/facility-kennel-room.JPG",

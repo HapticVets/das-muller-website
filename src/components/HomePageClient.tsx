@@ -37,6 +37,9 @@ export default function HomePageClient() {
   const placeCommandOutdoors =
     siteMediaById["training-place-command-outdoors"];
   const facilityOverview = siteMediaById["facility-drone-property-overview"];
+  const familyTrainingYard =
+    siteMediaById["facility-family-dogs-training-yard"];
+  const dogsInRuralYard = siteMediaById["facility-dogs-rural-yard"];
   const kennelRoom = siteMediaById["facility-kennel-room"];
   const communityImage = siteMediaById["team-veterans-with-service-dogs"];
 
@@ -495,6 +498,71 @@ export default function HomePageClient() {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="everyday-life"
+          className="scroll-mt-24 border-b border-neutral-900 bg-neutral-950"
+        >
+          <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12 lg:py-16">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-amber-400">
+                Everyday Life at Patriot K9
+              </p>
+              <h2 className="mt-4 text-3xl font-bold text-white md:text-5xl">
+                Dogs Raised and Trained in the Real World
+              </h2>
+              <p className="mt-6 max-w-[68ch] text-lg leading-8 text-neutral-300">
+                Our dogs are part of daily life—not kept separate from it. They
+                spend time outdoors, around family, and in supervised group
+                settings where we can observe engagement, confidence,
+                neutrality, and response to structure.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-6 lg:grid-cols-[1.45fr_0.75fr]">
+              <figure className="overflow-hidden rounded-[2rem] border border-neutral-800 bg-neutral-900/70 p-4">
+                <ResponsiveMedia
+                  src={familyTrainingYard.src}
+                  alt={familyTrainingYard.alt}
+                  sizes="(min-width: 1024px) 58vw, 100vw"
+                  aspectRatio="4 / 3"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+                <figcaption className="px-2 pb-2 pt-5">
+                  <h3 className="text-xl font-semibold text-white">
+                    Space for Dogs and Families
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-neutral-300">
+                    Open space and everyday family interaction help dogs learn
+                    to settle, engage, and work around normal movement and
+                    activity.
+                  </p>
+                </figcaption>
+              </figure>
+
+              <figure className="overflow-hidden rounded-[2rem] border border-neutral-800 bg-neutral-900/70 p-4">
+                <ResponsiveMedia
+                  src={dogsInRuralYard.src}
+                  alt={dogsInRuralYard.alt}
+                  sizes="(min-width: 1024px) 30vw, 100vw"
+                  aspectRatio="3 / 4"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+                <figcaption className="px-2 pb-2 pt-5">
+                  <h3 className="text-xl font-semibold text-white">
+                    Supervised Group Routines
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-neutral-300">
+                    Thoughtful supervision and responsible management support
+                    safer group time and clearer behavior around other dogs.
+                  </p>
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
