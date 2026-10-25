@@ -702,6 +702,12 @@ export default function HomePageClient() {
                   >
                     Schedule a Training Evaluation
                   </Link>
+                  <div className="rounded-2xl border border-neutral-700 p-5">
+                    <h3 className="text-xl font-semibold text-white">Join our dog community</h3>
+                    <p className="mt-2 text-sm leading-7 text-neutral-300">Meet other Patriot K9 dog owners, show us your dog, and share training progress in our Discord community.</p>
+                    <a href="https://discord.gg/Mmb4KSp9Y8" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex min-h-11 items-center rounded-xl bg-amber-500 px-5 py-3 font-semibold text-black hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-amber-300">Join Patriot K9 on Discord</a>
+                    <p className="mt-3 text-xs leading-6 text-neutral-400">Community membership is separate from paid training and AI Trainer access.</p>
+                  </div>
                   <div className="pt-2 text-sm leading-7 text-neutral-400">
                     <p>
                       Email:{" "}
@@ -754,6 +760,7 @@ export default function HomePageClient() {
               >
                 AI Dog Trainer
               </Link>
+              <a href="https://discord.gg/Mmb4KSp9Y8" target="_blank" rel="noopener noreferrer" className="transition hover:text-white">Dog Community on Discord</a>
               <Link href="/apply" className="transition hover:text-white">
                 Apply for a Puppy
               </Link>
