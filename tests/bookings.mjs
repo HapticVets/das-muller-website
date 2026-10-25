@@ -41,7 +41,7 @@ test('notification retry uses an idempotency key and an uncertain send stays lea
   let patched=false;let message;
   const lib=load('src/lib/bookings.ts',{}, {process:{env},fetch:async(url,options)=>{
     if(url.includes('booking_claim_mail'))return Response.json([{id,kind:'approved'}]);
-    if(url.includes('booking_requests?'))return Response.json([{id,slot_id:id,details:{name:'Test',email:'test@example.com',dogName:'Dog'}}]);
+    if(url.includes('booking_requests?'))return Response.json([{id,slot_id:id,amount_paid_cents:12000,invoice_number:'TEST-001',details:{name:'Test',email:'test@example.com',dogName:'Dog'}}]);
     if(url.includes('booking_slots?'))return Response.json([{starts_at:'2026-11-02T15:00:00Z',ends_at:'2026-11-02T16:00:00Z'}]);
     if(url.includes('api.resend.com')){message=options;return Response.json({error:'down'},{status:503});}
     if(options.method==='PATCH')patched=true;
@@ -53,5 +53,6 @@ test('notification retry uses an idempotency key and an uncertain send stays lea
   assert.ok(text.includes('https://app.patriotk9kennel.com/client-start'));
   assert.ok(text.includes('Do not buy a separate AI subscription'));
   assert.ok(text.includes('log your sessions'));
-  assert.ok(text.includes('Payment and package arrangements are confirmed directly with John'));
+  assert.ok(text.includes('Your single-session invoice is paid'));
+  assert.ok(text.includes('Payment received: $120.00 USD'));
 });

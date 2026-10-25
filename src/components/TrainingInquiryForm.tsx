@@ -113,7 +113,7 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
         <label className="block text-sm font-medium text-neutral-200">Service needed *<select name="service" required value={inquiryServices.includes(service as never) ? service : ''} onChange={e=>{setService(e.target.value);setBookingSlot('');submissionRef.current='';}} className="field-base mt-2"><option value="">Select a service</option>{inquiryServices.map((service) => <option key={service}>{service}</option>)}</select></label>
         {service === 'Private training' ? <fieldset className="md:col-span-2 rounded-xl border border-neutral-700 p-5">
           <legend className="px-2 font-semibold">Request a 60-minute private training appointment</legend>
-          <p className="text-sm text-neutral-300">Monday–Friday: 9 a.m.–5 p.m. · Saturday: 10 a.m.–1 p.m. · Sunday: closed. All times are Eastern time. Choose a date and time below; your appointment is pending until John confirms it.</p>
+          <p className="text-sm text-neutral-300">Monday–Friday: 9 a.m.–5 p.m. · Saturday: 10 a.m.–1 p.m. · Sunday: closed. All times are Eastern time. Single session: $120, paid in full before arrival. Choose a date and time; after John approves your request, you will receive a Stripe invoice. Pay within 24 hours, or before the appointment if sooner, to confirm. If you have prepaid lessons or a package, contact John before paying again.</p>
           {availabilityStatus ? <p className="mt-3 text-sm" role="status">{availabilityStatus}</p> : null}
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <div><label id="appointment-date-label" className="block">Appointment date</label>
