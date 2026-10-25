@@ -22,6 +22,8 @@ export type TrainingInquiryData = {
   requestedDates: string;
   goals: string;
   preferredContact: (typeof contactMethods)[number];
+  bookingSlot: string;
+  submissionId: string;
 };
 
 const limits: Record<keyof TrainingInquiryData, number> = {
@@ -36,6 +38,8 @@ const limits: Record<keyof TrainingInquiryData, number> = {
   requestedDates: 240,
   goals: 2_000,
   preferredContact: 40,
+  bookingSlot: 36,
+  submissionId: 36,
 };
 
 function clean(value: unknown, maxLength: number) {
@@ -63,6 +67,12 @@ export function parseTrainingInquiry(value: unknown):
   if (data.preferredContact === "Email" && !data.email) return { success: false, error: "Please provide an email address for email contact." };
   if (data.preferredContact !== "Email" && !data.phone) return { success: false, error: "Please provide a phone number for calls or texts." };
   if (!token) return { success: false, error: "Please complete verification before submitting." };
+  if (data.bookingSlot) {
+    const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+    if (!uuid.test(data.bookingSlot) || !uuid.test(data.submissionId)) return { success: false, error: "Please select a valid appointment time." };
+    if (!data.email) return { success: false, error: "An email address is required for appointment confirmation." };
+    if (data.service !== 'Private training') return { success: false, error: "Appointment times are for private training. For other services, send an inquiry without a time." };
+  }
   return { success: true, data, token, honeypot };
 }
 

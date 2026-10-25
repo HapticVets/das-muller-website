@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 import { inquiryEmailRows, parseTrainingInquiry } from "@/lib/trainingInquiry";
+import { requestBooking, sendBookingMail } from '@/lib/bookings';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const MAX_BODY_BYTES = 20_000;
@@ -58,6 +59,16 @@ export async function POST(req: Request) {
     const fromEmail = process.env.RESEND_FROM_EMAIL?.trim();
     const toEmail = process.env.TRAINING_INQUIRY_TO_EMAIL?.trim() || "jreese@hapticvets.com";
     if (!fromEmail) return jsonError("Inquiry submission is unavailable. Please try again later.", 503);
+    if (parsed.data.bookingSlot) {
+      try {
+        const booking = await requestBooking(parsed.data.bookingSlot, parsed.data.submissionId, parsed.data);
+        // The request is saved even if email is temporarily down. Never ask for a duplicate request.
+        await sendBookingMail(booking.id).catch(() => false);
+        return Response.json({success:true, pending:true});
+      } catch (error) {
+        return jsonError(error instanceof Error ? error.message : 'Unable to request that time.',409);
+      }
+    }
     const rows = inquiryEmailRows(parsed.data);
     const html = `<h1>New Patriot K9 Training &amp; Boarding Inquiry</h1>${rows.map(([label, value]) => `<p><strong>${escapeHtml(label)}:</strong><br/>${escapeHtml(value || "Not provided").replace(/\r?\n/g, "<br/>")}</p>`).join("")}`;
     const text = rows.map(([label, value]) => `${label}: ${value || "Not provided"}`).join("\n");

@@ -48,6 +48,7 @@ function routeHarness({ captcha = true, emailFailure = false } = {}) {
   let verifications = 0;
   const route = loadTypeScript('src/app/api/training-inquiry/route.ts', {
     '@/lib/trainingInquiry': schema,
+    '@/lib/bookings': {requestBooking:async()=>({id:'test'}),sendBookingMail:async()=>true},
     resend: { Resend: class { emails = { send: async (message) => { sent.push(message); return { error: emailFailure ? { name: 'test-rejection' } : null }; } }; } },
   }, {
     process: { env: { TURNSTILE_SECRET_KEY: 'secret', TURNSTILE_EXPECTED_HOSTNAME: 'example.com', RESEND_FROM_EMAIL: 'kennel@example.com', TRAINING_INQUIRY_TO_EMAIL: 'owner@example.com' } },

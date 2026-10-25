@@ -10,6 +10,24 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
   const [turnstileToken, setTurnstileToken] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState("");
+  const [service, setService] = useState(defaultService);
+  const [slots, setSlots] = useState<{id:string;starts_at:string;ends_at:string}[]>([]);
+  const [availabilityStatus, setAvailabilityStatus] = useState('Loading available times…');
+  const [day, setDay] = useState('');
+  const [bookingSlot, setBookingSlot] = useState('');
+  const submissionRef = useRef('');
+  const refreshAvailability = async () => {
+    try {
+      const response = await fetch('/api/booking-availability',{cache:'no-store'});
+      if (!response.ok) throw new Error();
+      const result = await response.json();
+      setSlots(result.slots);
+      setAvailabilityStatus(result.slots.length ? '' : 'No appointment times are currently posted. Send an inquiry below and we will arrange a time with you.');
+    } catch { setAvailabilityStatus('Available times could not be loaded. Send an inquiry below or call/text us.'); }
+  };
+  useEffect(() => { void refreshAvailability(); }, []);
+  const slotDay = (value:string) => new Intl.DateTimeFormat('en-CA',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(value));
+  const days = [...new Set(slots.map(s=>slotDay(s.starts_at)))];
 
   useEffect(() => {
     if (!siteKey) return;
@@ -44,11 +62,12 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
     setSubmitting(true);
     setStatus("");
     const data = Object.fromEntries(new FormData(event.currentTarget));
+    if (!submissionRef.current) submissionRef.current = crypto.randomUUID();
     try {
       const response = await fetch("/api/training-inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...data, turnstileToken }),
+        body: JSON.stringify({ ...data, bookingSlot, submissionId:submissionRef.current, turnstileToken }),
         signal: AbortSignal.timeout(30_000),
       });
       const result = await response.json();
@@ -59,6 +78,7 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
       setTurnstileToken("");
       if (widgetRef.current !== null) window.turnstile?.reset?.(widgetRef.current);
       setSubmitting(false);
+      void refreshAvailability();
     }
   }
 
@@ -78,13 +98,22 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
       </div>
       <div className="grid gap-6 md:grid-cols-2">
         <Field label="Full name" name="name" autoComplete="name" required />
-        <Field label="Email (or provide a phone number)" name="email" type="email" autoComplete="email" />
+        <Field label={bookingSlot ? 'Email for appointment confirmation' : 'Email (or provide a phone number)'} name="email" type="email" autoComplete="email" required={!!bookingSlot} />
         <Field label="Phone (or provide an email address)" name="phone" type="tel" autoComplete="tel" />
         <Field label="City and state" name="cityState" autoComplete="address-level2" />
         <Field label="Dog's name" name="dogName" required />
         <Field label="Breed" name="breed" />
         <Field label="Dog's age" name="dogAge" />
-        <label className="block text-sm font-medium text-neutral-200">Service needed *<select name="service" required defaultValue={inquiryServices.includes(defaultService as never) ? defaultService : ""} className="field-base mt-2"><option value="">Select a service</option>{inquiryServices.map((service) => <option key={service}>{service}</option>)}</select></label>
+        <label className="block text-sm font-medium text-neutral-200">Service needed *<select name="service" required value={inquiryServices.includes(service as never) ? service : ''} onChange={e=>{setService(e.target.value);setBookingSlot('');submissionRef.current='';}} className="field-base mt-2"><option value="">Select a service</option>{inquiryServices.map((service) => <option key={service}>{service}</option>)}</select></label>
+        {service === 'Private training' ? <fieldset className="md:col-span-2 rounded-xl border border-neutral-700 p-5">
+          <legend className="px-2 font-semibold">Request a 60-minute private training appointment</legend>
+          <p className="text-sm text-neutral-300">All times are Eastern time. Your appointment is pending until John approves it. You may also leave the time blank and ask us to arrange one.</p>
+          {availabilityStatus ? <p className="mt-3 text-sm" role="status">{availabilityStatus}</p> : null}
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            <label>Available day<select className="field-base mt-2" value={day} onChange={e=>{setDay(e.target.value);setBookingSlot('');submissionRef.current='';}}><option value="">Choose a day (optional)</option>{days.map(d=><option key={d} value={d}>{new Date(`${d}T12:00:00Z`).toLocaleDateString('en-US',{timeZone:'America/New_York',weekday:'long',month:'long',day:'numeric',year:'numeric'})}</option>)}</select></label>
+            <label>Available time<select className="field-base mt-2" disabled={!day} value={bookingSlot} onChange={e=>{setBookingSlot(e.target.value);submissionRef.current='';}}><option value="">Arrange a time with us</option>{slots.filter(s=>slotDay(s.starts_at)===day).map(s=><option key={s.id} value={s.id}>{new Date(s.starts_at).toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'})} – {new Date(s.ends_at).toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit',timeZoneName:'short'})}</option>)}</select></label>
+          </div>
+        </fieldset> : null}
         <Field label="Requested boarding dates" name="requestedDates" placeholder="If applicable" />
         <label className="block text-sm font-medium text-neutral-200">Preferred contact *<select name="preferredContact" required defaultValue="Text" className="field-base mt-2">{contactMethods.map((method) => <option key={method}>{method}</option>)}</select></label>
         <label className="block text-sm font-medium text-neutral-200 md:col-span-2">Goals, behavior concerns, or care needs *<textarea name="goals" required maxLength={2000} rows={5} className="field-base mt-2" placeholder="Tell us what you need help with and anything important about your dog." /></label>
