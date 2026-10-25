@@ -17,7 +17,7 @@ export default function VeteranAdventuresPage() {
       <section className="border-b border-neutral-900 bg-neutral-950">
         <div className="section-shell">
           <p className="section-eyebrow">Annual Veteran Adventures · Planned</p>
-          <h1 className="section-title max-w-4xl">Mission Hocking Hills</h1>
+          <h1 className="section-title max-w-4xl" style={{ maxWidth: "56rem" }}>Mission Hocking Hills</h1>
           <p className="section-copy mt-6 max-w-3xl">
             Our first planned adventure trip brings veterans together through
             time outdoors, shared experiences, practical learning and community.
@@ -52,8 +52,8 @@ export default function VeteranAdventuresPage() {
           <p className="max-w-3xl text-lg leading-8 text-neutral-200">
             We want veterans to have opportunities to meet, spend time outdoors,
             and build connections through shared adventures. This trip effort
-            sits alongside our broader Veteran Outreach vision: planned trade
-            school pathways, canine development, homestead systems, and
+            sits alongside our broader Veteran Outreach vision: future skills
+            workshops, canine development, homestead systems, and
             long-term purpose after service.
           </p>
         </div>
@@ -176,14 +176,10 @@ export default function VeteranAdventuresPage() {
       <VeteranSection eyebrow="Trip Updates" title="Details will follow as plans are confirmed.">
         <div className="surface-card p-7 md:p-8">
           <p className="max-w-3xl text-base leading-8 text-neutral-300">
-            This page reflects the saved Outreach event outline and October 9
-            board vote packet, reviewed October 12, 2026. The latest verified
-            October 10 tally was five Yes votes for trip scope and six Yes votes
-            each for the budget, cost allocation, membership policy and sponsor
-            reporting. The polls were scheduled to close October 16; these
-            tallies are not certified final decisions. Live vote changes have
-            not yet been rechecked. We will publish confirmed dates, approved
-            results and reconciled funding updates as they become available.
+            This is a working project plan. Final dates, participant arrangements,
+            the complete budget, and reconciled funding totals will be published
+            as they are confirmed. Contact our team for the latest project
+            information or sponsorship documentation.
           </p>
           <VeteranLink href="/veterans/contact" className="action-primary mt-6">
             Ask About Mission Hocking Hills

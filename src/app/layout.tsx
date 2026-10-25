@@ -5,8 +5,6 @@ import {
   OG_IMAGE_PATH,
   SITE_DESCRIPTION,
   SITE_NAME,
-  buildBusinessJsonLd,
-  toJsonLd,
 } from "@/lib/seo";
 import "./globals.css";
 
@@ -59,10 +57,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: toJsonLd(buildBusinessJsonLd()) }}
-        />
         <Script
           id="google-ads-base-tag"
           src="https://www.googletagmanager.com/gtag/js?id=AW-18273570871"

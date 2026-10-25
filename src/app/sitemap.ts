@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { dogProfiles } from "@/lib/dogs";
 import { fetchPublicLitters } from "@/lib/publicLitters";
-import { MAIN_SITE_URL, buildMainSiteUrl } from "@/lib/siteDomains";
+import { MAIN_SITE_URL, buildMainSiteUrl, buildVeteranSiteUrl } from "@/lib/siteDomains";
 import { trainingServices } from "@/lib/trainingServices";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -9,6 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { data: litters } = await fetchPublicLitters();
 
   return [
+    ...["/", "/about", "/programs", "/adventures", "/adventures/hocking-hills", "/partners", "/contact"].map(path => ({url:buildVeteranSiteUrl(path), changeFrequency:"monthly" as const, priority:path === "/" ? 0.8 : 0.6})),
     {
       url: MAIN_SITE_URL,
       lastModified,

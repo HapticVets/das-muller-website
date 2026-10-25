@@ -2,14 +2,16 @@
 // Keep in-kind equipment separate from cash; committed funds are not necessarily received.
 export const hockingHillsSponsorProgress: {
   totalGoal: number | null;
-  raisedCommitted: number | null;
+  cashReceived: number | null;
+  committedValue: number | null;
   laptopsNeeded: number | null;
   fishingKitsNeeded: number | null;
   confirmedSponsors: string[] | null;
   updatedAt: string | null;
 } = {
   totalGoal: null,
-  raisedCommitted: null,
+  cashReceived: null,
+  committedValue: null,
   laptopsNeeded: null,
   fishingKitsNeeded: null,
   confirmedSponsors: ["Frontline Chimney — committed to covering food for the trip"],

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { VETERAN_SITE_URL, buildVeteranSiteUrl } from "@/lib/siteDomains";
 
-export const VETERAN_SITE_NAME = "Patriot K9 Command Veteran Outreach";
+export const VETERAN_SITE_NAME = "Haptic Veteran Outreach";
 export const VETERAN_SITE_DESCRIPTION =
-  "Veteran outreach information from Patriot K9 Command.";
+  "Haptic Veteran Outreach is an Ohio nonprofit developing veteran connection, practical resources, shared adventures, and future skills workshops.";
 export const VETERAN_OG_IMAGE_PATH =
   "/images/veterans/branding/og-image1-v2.jpg";
 
@@ -20,7 +20,7 @@ export function buildVeteranMetadata({
   description = VETERAN_SITE_DESCRIPTION,
   path = "/",
   imagePath = VETERAN_OG_IMAGE_PATH,
-  imageAlt = "Patriot K9 Command Veteran Outreach",
+  imageAlt = "Haptic Veteran Outreach",
 }: VeteranMetadataOptions): Metadata {
   const canonicalUrl = buildVeteranSiteUrl(path);
 

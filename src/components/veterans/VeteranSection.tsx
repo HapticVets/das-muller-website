@@ -13,7 +13,7 @@ export default function VeteranSection({
     <section className={`border-t border-neutral-900 ${className}`.trim()}>
       <div className="section-shell-tight">
         {eyebrow ? <p className="section-eyebrow">{eyebrow}</p> : null}
-        <h2 className="section-title max-w-4xl">{title}</h2>
+        <h2 className="section-title max-w-4xl" style={{ maxWidth: "56rem" }}>{title}</h2>
         <div className="mt-8 md:mt-10">{children}</div>
       </div>
     </section>

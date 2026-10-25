@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildBusinessJsonLd, toJsonLd } from "@/lib/seo";
 import HomePageClient from "@/components/HomePageClient";
 
 export const metadata: Metadata = {
@@ -31,5 +32,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <HomePageClient />;
+  return <><script type="application/ld+json" dangerouslySetInnerHTML={{__html:toJsonLd(buildBusinessJsonLd())}}/><HomePageClient /></>;
 }
