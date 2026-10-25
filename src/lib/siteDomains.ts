@@ -7,7 +7,7 @@ const normalizePath = (path: string) => {
 };
 
 export const MAIN_SITE_URL = "https://www.patriotk9kennel.com";
-export const VETERAN_SITE_URL = "https://veterans.patriotk9kennel.com";
+export const VETERAN_SITE_URL = "https://www.patriotk9kennel.com/veterans";
 
 export function buildAbsoluteSiteUrl(baseUrl: string, path = "/") {
   return `${baseUrl}${normalizePath(path)}`;
