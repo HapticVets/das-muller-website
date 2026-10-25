@@ -9,8 +9,8 @@ function load(file,imports={},globals={}) {
   vm.runInNewContext(code,{exports,require:n=>{if(n in imports)return imports[n];throw new Error(n);},console,Request,Response,URL,URLSearchParams,TextEncoder,AbortSignal,Date,...globals});return exports;
 }
 const env={NEXT_PUBLIC_SUPABASE_URL:'https://db.example',SUPABASE_SERVICE_ROLE_KEY:'server-secret',RESEND_API_KEY:'mail-secret',RESEND_FROM_EMAIL:'kennel@example.com'};
-test('public availability excludes approved slots and never returns customer details',async()=>{
-  const lib=load('src/lib/bookings.ts',{}, {process:{env},fetch:async()=>Response.json([{id:'open',starts_at:'2026-11-01T15:00:00Z',ends_at:'2026-11-01T16:00:00Z',booking_requests:[{status:'pending',details:{email:'private@example.com'}}]},{id:'taken',booking_requests:[{status:'approved'}]}])});
+test('public availability reads the database schedule and only exposes date/time identifiers',async()=>{
+  const lib=load('src/lib/bookings.ts',{}, {process:{env},fetch:async(url,options)=>{assert.ok(url.endsWith('/rpc/booking_available'));assert.equal(options.method,'POST');return Response.json([{id:'open',starts_at:'2026-11-01T15:00:00Z',ends_at:'2026-11-01T16:00:00Z',details:{email:'private@example.com'}}]);}});
   const slots=await lib.availableSlots();assert.equal(slots.length,1);assert.equal(slots[0].id,'open');assert.ok(!JSON.stringify(slots).includes('private'));assert.deepEqual(Object.keys(slots[0]).sort(),['ends_at','id','starts_at']);
 });
 test('database conflicts give a useful message without leaking database errors',async()=>{
@@ -24,7 +24,7 @@ const id='10000000-0000-4000-8000-000000000001';
 const input={name:'Test',dogName:'Dog',service:'Private training',goals:'Private lesson',email:'test@example.com',phone:'123',preferredContact:'Email',turnstileToken:'verified',bookingSlot:id,submissionId:id};
 test('appointment requests require email, private training, and valid identifiers',()=>{
   assert.equal(schema.parseTrainingInquiry(input).success,true);
-  for(const override of [{email:''},{service:'Boarding only'},{submissionId:''},{bookingSlot:'bad'}]) assert.equal(schema.parseTrainingInquiry({...input,...override}).success,false);
+  for(const override of [{email:''},{service:'Boarding only'},{submissionId:''},{bookingSlot:'bad'},{bookingSlot:''}]) assert.equal(schema.parseTrainingInquiry({...input,...override}).success,false);
 });
 test('saved booking succeeds even if its notification fails; stale slots do not succeed',async()=>{
   let saved=0;

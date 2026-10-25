@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import AppointmentCalendar from "@/components/AppointmentCalendar";
 import { useEffect, useRef, useState } from "react";
 import { contactMethods, inquiryServices } from "@/lib/trainingInquiry";
 
@@ -14,6 +15,7 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
   const [slots, setSlots] = useState<{id:string;starts_at:string;ends_at:string}[]>([]);
   const [availabilityStatus, setAvailabilityStatus] = useState('Loading available times…');
   const [day, setDay] = useState('');
+  const [calendarOpen, setCalendarOpen] = useState(false);
   const [bookingSlot, setBookingSlot] = useState('');
   const submissionRef = useRef('');
   const refreshAvailability = async () => {
@@ -22,7 +24,7 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
       if (!response.ok) throw new Error();
       const result = await response.json();
       setSlots(result.slots);
-      setAvailabilityStatus(result.slots.length ? '' : 'No appointment times are currently posted. Send an inquiry below and we will arrange a time with you.');
+      setAvailabilityStatus(result.slots.length ? '' : 'No appointment times are currently available. Please call or text us to arrange a time.');
     } catch { setAvailabilityStatus('Available times could not be loaded. Send an inquiry below or call/text us.'); }
   };
   useEffect(() => { void refreshAvailability(); }, []);
@@ -55,6 +57,10 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (submitting) return;
+    if (service === 'Private training' && !bookingSlot) {
+      setStatus('Please choose a calendar date and an available time for your appointment.');
+      return;
+    }
     if (!siteKey || !turnstileToken) {
       setStatus(siteKey ? "Please complete verification before submitting." : "Online inquiries are temporarily unavailable. Please call or text us.");
       return;
@@ -107,21 +113,24 @@ export default function TrainingInquiryForm({ defaultService = "" }: { defaultSe
         <label className="block text-sm font-medium text-neutral-200">Service needed *<select name="service" required value={inquiryServices.includes(service as never) ? service : ''} onChange={e=>{setService(e.target.value);setBookingSlot('');submissionRef.current='';}} className="field-base mt-2"><option value="">Select a service</option>{inquiryServices.map((service) => <option key={service}>{service}</option>)}</select></label>
         {service === 'Private training' ? <fieldset className="md:col-span-2 rounded-xl border border-neutral-700 p-5">
           <legend className="px-2 font-semibold">Request a 60-minute private training appointment</legend>
-          <p className="text-sm text-neutral-300">All times are Eastern time. Your appointment is pending until John approves it. You may also leave the time blank and ask us to arrange one.</p>
+          <p className="text-sm text-neutral-300">Monday–Friday: 9 a.m.–5 p.m. · Saturday: 10 a.m.–1 p.m. · Sunday: closed. All times are Eastern time. Choose a date and time below; your appointment is pending until John confirms it.</p>
           {availabilityStatus ? <p className="mt-3 text-sm" role="status">{availabilityStatus}</p> : null}
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            <label>Available day<select className="field-base mt-2" value={day} onChange={e=>{setDay(e.target.value);setBookingSlot('');submissionRef.current='';}}><option value="">Choose a day (optional)</option>{days.map(d=><option key={d} value={d}>{new Date(`${d}T12:00:00Z`).toLocaleDateString('en-US',{timeZone:'America/New_York',weekday:'long',month:'long',day:'numeric',year:'numeric'})}</option>)}</select></label>
-            <label>Available time<select className="field-base mt-2" disabled={!day} value={bookingSlot} onChange={e=>{setBookingSlot(e.target.value);submissionRef.current='';}}><option value="">Arrange a time with us</option>{slots.filter(s=>slotDay(s.starts_at)===day).map(s=><option key={s.id} value={s.id}>{new Date(s.starts_at).toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'})} – {new Date(s.ends_at).toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit',timeZoneName:'short'})}</option>)}</select></label>
+            <div><label id="appointment-date-label" className="block">Appointment date</label>
+              <button type="button" aria-labelledby="appointment-date-label" aria-expanded={calendarOpen} onClick={()=>setCalendarOpen(!calendarOpen)} className="field-base mt-2 flex items-center justify-between text-left"><span>{day ? new Date(day+'T12:00:00Z').toLocaleDateString('en-US',{timeZone:'UTC',weekday:'short',month:'short',day:'numeric',year:'numeric'}) : 'Choose a date'}</span><span aria-hidden="true">▾</span></button>
+              {calendarOpen?<AppointmentCalendar days={days} day={day} onChange={value=>{setDay(value);setBookingSlot('');setCalendarOpen(false);submissionRef.current='';}}/>:null}
+            </div>
+            <label>Available time<select className="field-base mt-2" disabled={!day} value={bookingSlot} onChange={e=>{setBookingSlot(e.target.value);submissionRef.current='';}}><option value="">Choose a time</option>{slots.filter(s=>slotDay(s.starts_at)===day).map(s=><option key={s.id} value={s.id}>{new Date(s.starts_at).toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit'})} – {new Date(s.ends_at).toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'numeric',minute:'2-digit',timeZoneName:'short'})}</option>)}</select></label>
           </div>
         </fieldset> : null}
-        <Field label="Requested boarding dates" name="requestedDates" placeholder="If applicable" />
+        {service === "Boarding only" || service === "Board & Train" ? <Field label="Requested boarding dates" name="requestedDates" placeholder="Arrival and departure dates" /> : null}
         <label className="block text-sm font-medium text-neutral-200">Preferred contact *<select name="preferredContact" required defaultValue="Text" className="field-base mt-2">{contactMethods.map((method) => <option key={method}>{method}</option>)}</select></label>
         <label className="block text-sm font-medium text-neutral-200 md:col-span-2">Goals, behavior concerns, or care needs *<textarea name="goals" required maxLength={2000} rows={5} className="field-base mt-2" placeholder="Tell us what you need help with and anything important about your dog." /></label>
       </div>
       <p className="form-hint mt-6">Submitting this form does not reserve boarding dates or guarantee acceptance into a training program. We will contact you to confirm availability and the right next step. Your information is used only to respond to your request and is not sold. <a href="/privacy" className="underline hover:text-white">Privacy policy</a>.</p>
       <div className="mt-6" id="training-inquiry-turnstile" />
       {status ? <p role="alert" className="mt-4 text-sm leading-7 text-amber-300">{status}</p> : null}
-      <button type="submit" disabled={submitting || !siteKey || !turnstileToken} className="action-primary mt-6 disabled:opacity-60">{submitting ? "Sending..." : "Request Training or Boarding Availability"}</button>
+      <button type="submit" disabled={submitting || !siteKey || !turnstileToken} className="action-primary mt-6 disabled:opacity-60">{submitting ? "Sending..." : service === 'Private training' ? 'Request this appointment' : "Request Training or Boarding Availability"}</button>
     </form>
   </>;
 }

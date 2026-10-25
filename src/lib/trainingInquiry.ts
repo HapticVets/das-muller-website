@@ -67,6 +67,7 @@ export function parseTrainingInquiry(value: unknown):
   if (data.preferredContact === "Email" && !data.email) return { success: false, error: "Please provide an email address for email contact." };
   if (data.preferredContact !== "Email" && !data.phone) return { success: false, error: "Please provide a phone number for calls or texts." };
   if (!token) return { success: false, error: "Please complete verification before submitting." };
+  if (data.service === 'Private training' && !data.bookingSlot) return { success: false, error: 'Please choose a calendar date and an available time for your appointment.' };
   if (data.bookingSlot) {
     const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
     if (!uuid.test(data.bookingSlot) || !uuid.test(data.submissionId)) return { success: false, error: "Please select a valid appointment time." };
