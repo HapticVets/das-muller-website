@@ -48,4 +48,10 @@ test('notification retry uses an idempotency key and an uncertain send stays lea
     return Response.json([{kind:'approved'}]);
   }});
   assert.equal(await lib.sendBookingMail(id),false);assert.equal(patched,false);assert.equal(message.headers['Idempotency-Key'],`booking-${id}`);assert.ok(JSON.parse(message.body).text.includes('confirmed'));
+  const text=JSON.parse(message.body).text;
+  assert.ok(text.includes('4277 Lisbon Road'));
+  assert.ok(text.includes('https://app.patriotk9kennel.com/client-start'));
+  assert.ok(text.includes('Do not buy a separate AI subscription'));
+  assert.ok(text.includes('log your sessions'));
+  assert.ok(text.includes('Payment and package arrangements are confirmed directly with John'));
 });
