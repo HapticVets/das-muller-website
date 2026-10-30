@@ -3,6 +3,7 @@ import Link from "next/link";
 import DogImageCard from "@/components/dogs/DogImageCard";
 import HealthStatusBadge from "@/components/dogs/HealthStatusBadge";
 import Header from "@/components/Header";
+import AnnaBreedingUpdate from "@/components/dogs/AnnaBreedingUpdate";
 import type { DogProfile, HealthTest } from "@/lib/dogs";
 
 function DetailRow({
@@ -106,6 +107,7 @@ export default function DogProfilePage({ dog }: { dog: DogProfile }) {
       <Header />
 
       <main className="min-h-screen bg-neutral-950 text-white">
+        {dog.slug === "anna" ? <div className="section-shell"><AnnaBreedingUpdate /></div> : null}
         <section className="border-b border-neutral-900 bg-[linear-gradient(180deg,rgba(23,23,23,0.96)_0%,rgba(10,10,10,1)_100%)]">
           <div className="section-shell grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
             <div className="space-y-6">

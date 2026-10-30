@@ -1,5 +1,6 @@
 import Link from "next/link";
 import PuppyDevelopmentTimeline from "@/components/litters/PuppyDevelopmentTimeline";
+import AnnaBreedingUpdate from "@/components/dogs/AnnaBreedingUpdate";
 import PublicMediaFrame from "@/components/litters/PublicMediaFrame";
 import PublicStatusBadge from "@/components/litters/PublicStatusBadge";
 import {
@@ -90,6 +91,8 @@ export default async function AvailableLitters() {
             no public puppies have been published yet.
           </p>
         </div>
+
+        <AnnaBreedingUpdate />
 
         {error ? (
           <div className="mt-12 rounded-[2rem] border border-neutral-800 bg-neutral-950 p-8">
