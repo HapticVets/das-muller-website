@@ -144,7 +144,7 @@ export default function VeteranFooter() {
 
       <div className="mx-auto max-w-7xl border-t border-neutral-800 px-5 py-6 text-xs leading-6 text-neutral-400 sm:px-8 lg:px-12">
 
-        Haptic Veteran Outreach · Ohio nonprofit · EIN 43-2568035. IRS recognition under section 501(c)(3) is pending; tax-deductibility is not promised. Program availability and sponsorship arrangements are confirmed individually.
+        Haptic Veteran Outreach · Ohio nonprofit · EIN 43-2568035. IRS-recognized 501(c)(3) public charity, effective October 21, 2026. Contributions are tax-deductible to the extent allowed by law. Program availability and sponsorship arrangements are confirmed individually.
 
       </div>
 
