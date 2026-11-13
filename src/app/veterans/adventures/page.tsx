@@ -154,7 +154,7 @@ export default function VeteranAdventuresPage() {
       <HockingHillsSponsorBenefits />
       <VeteranSection eyebrow="Taking Part" title="Attendee selection will be announced before registration opens.">
         <div className="surface-card p-7">
-          <p className="leading-8 text-neutral-300">Applications or nominations, eligibility, accessibility needs, travel coordination, emergency contacts and activity expectations will be established before registration opens. The current plan is four selected fly-in veterans plus local attendees. Membership does not guarantee a place. Please keep personal, medical and service records out of public channels.</p>
+          <p className="leading-8 text-neutral-300">Applications or nominations, eligibility, accessibility needs, travel coordination, emergency contacts and activity expectations will be established before registration opens. The current plan is four selected fly-in veterans plus local attendees. Please keep personal, medical and service records out of public channels.</p>
           <VeteranLink href="/veterans/contact" className="action-secondary mt-6">Ask About Participation</VeteranLink>
         </div>
       </VeteranSection>

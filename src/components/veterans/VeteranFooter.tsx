@@ -52,13 +52,13 @@ export default function VeteranFooter() {
 
             <VeteranLink
 
-              href="/veterans/membership"
+              href="/veterans/about"
 
               className="transition hover:text-white"
 
             >
 
-              Membership
+              About
 
             </VeteranLink>
 

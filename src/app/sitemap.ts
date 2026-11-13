@@ -9,7 +9,7 @@ import { trainingServices } from "@/lib/trainingServices";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
   const h = await headers();
-  const outreachPages = ["/", "/about", "/programs", "/adventures", "/adventures/hocking-hills", "/partners", "/contact", "/membership", "/donate", "/privacy"].map(path => ({url:buildVeteranSiteUrl(path), changeFrequency:"monthly" as const, priority:path === "/" ? 1 : 0.6}));
+  const outreachPages = ["/", "/about", "/programs", "/adventures", "/adventures/hocking-hills", "/partners", "/contact", "/donate", "/privacy"].map(path => ({url:buildVeteranSiteUrl(path), changeFrequency:"monthly" as const, priority:path === "/" ? 1 : 0.6}));
   if (isVeteranHostname(h.get("x-forwarded-host") ?? h.get("host"))) return outreachPages;
   const { data: litters } = await fetchPublicLitters();
 

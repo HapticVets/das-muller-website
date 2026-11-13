@@ -15,7 +15,6 @@ const veteranNavLinks = [
   { href: "/veterans/adventures", label: "Adventures" },
   { href: "/veterans/adventures/hocking-hills", label: "Sponsor Hocking Hills" },
   { href: "/veterans/partners", label: "Get Involved" },
-  { href: "/veterans/membership", label: "Membership" },
   { href: "/veterans/contact", label: "Contact" },
 ];
 
