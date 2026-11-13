@@ -54,7 +54,7 @@ export default function Header() {
             <Link href="/our-dogs" className="transition hover:text-white">
               Our Dogs
             </Link>
-            <Link href="/veterans" className="transition hover:text-white">
+            <Link href="https://hapticvets.com" className="transition hover:text-white">
               Veterans
             </Link>
             <div className="group relative">
@@ -151,7 +151,7 @@ export default function Header() {
                 Our Dogs
               </Link>
               <Link
-                href="/veterans"
+                href="https://hapticvets.com"
                 className="block rounded-xl px-4 py-3 transition hover:bg-neutral-900 hover:text-white"
               >
                 Veteran Outreach

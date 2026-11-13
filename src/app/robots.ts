@@ -1,7 +1,12 @@
 import type { MetadataRoute } from "next";
-import { MAIN_SITE_URL, buildMainSiteUrl } from "@/lib/siteDomains";
+import { headers } from "next/headers";
+import { isVeteranHostname } from "@/lib/veteranRouting";
+import { VETERAN_SITE_URL } from "@/lib/siteDomains";
+import { MAIN_SITE_URL } from "@/lib/siteDomains";
 
-export default function robots(): MetadataRoute.Robots {
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const h = await headers();
+  const site = isVeteranHostname(h.get("x-forwarded-host") ?? h.get("host")) ? VETERAN_SITE_URL : MAIN_SITE_URL;
   return {
     rules: [
       {
@@ -25,7 +30,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: "/api/",
       },
     ],
-    sitemap: buildMainSiteUrl("/sitemap.xml"),
-    host: MAIN_SITE_URL,
+    sitemap: `${site}/sitemap.xml`,
+    host: site,
   };
 }

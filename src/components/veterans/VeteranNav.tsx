@@ -7,7 +7,6 @@ import {
   getComparableVeteranPath,
   getVeteranHref,
 } from "@/lib/veteranRouting";
-import { MAIN_SITE_URL } from "@/lib/siteDomains";
 
 const veteranNavLinks = [
   { href: "/veterans", label: "Home" },
@@ -16,6 +15,7 @@ const veteranNavLinks = [
   { href: "/veterans/adventures", label: "Adventures" },
   { href: "/veterans/adventures/hocking-hills", label: "Sponsor Hocking Hills" },
   { href: "/veterans/partners", label: "Get Involved" },
+  { href: "/veterans/membership", label: "Membership" },
   { href: "/veterans/contact", label: "Contact" },
 ];
 
@@ -44,12 +44,12 @@ export default function VeteranNav() {
             </p>
           </div>
 
-          <a
-            href={MAIN_SITE_URL}
+          <VeteranLink
+            href="/veterans/donate"
             className="hidden min-h-11 items-center justify-center rounded-2xl lg:inline-flex border border-neutral-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
           >
-            Patriot K9 Command
-          </a>
+            Support the Mission
+          </VeteranLink>
         </div>
 
         <nav

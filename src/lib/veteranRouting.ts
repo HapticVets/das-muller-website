@@ -3,6 +3,8 @@ export const VETERAN_HOSTNAME = "veterans.patriotk9kennel.com";
 export const VETERAN_LOCAL_HOSTNAME = "veterans.localhost";
 
 const veteranHostnames = new Set([
+  "hapticvets.com",
+  "www.hapticvets.com",
   VETERAN_HOSTNAME,
   VETERAN_LOCAL_HOSTNAME,
 ]);

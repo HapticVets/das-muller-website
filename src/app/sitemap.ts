@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+import { headers } from "next/headers";
+import { isVeteranHostname } from "@/lib/veteranRouting";
 import { dogProfiles } from "@/lib/dogs";
 import { fetchPublicLitters } from "@/lib/publicLitters";
 import { MAIN_SITE_URL, buildMainSiteUrl, buildVeteranSiteUrl } from "@/lib/siteDomains";
@@ -6,10 +8,12 @@ import { trainingServices } from "@/lib/trainingServices";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
+  const h = await headers();
+  const outreachPages = ["/", "/about", "/programs", "/adventures", "/adventures/hocking-hills", "/partners", "/contact", "/membership", "/donate", "/privacy"].map(path => ({url:buildVeteranSiteUrl(path), changeFrequency:"monthly" as const, priority:path === "/" ? 1 : 0.6}));
+  if (isVeteranHostname(h.get("x-forwarded-host") ?? h.get("host"))) return outreachPages;
   const { data: litters } = await fetchPublicLitters();
 
   return [
-    ...["/", "/about", "/programs", "/adventures", "/adventures/hocking-hills", "/partners", "/contact"].map(path => ({url:buildVeteranSiteUrl(path), changeFrequency:"monthly" as const, priority:path === "/" ? 0.8 : 0.6})),
     {
       url: MAIN_SITE_URL,
       lastModified,

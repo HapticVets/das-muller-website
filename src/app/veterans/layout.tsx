@@ -17,6 +17,8 @@ export const metadata: Metadata = {
     absolute: VETERAN_SITE_NAME,
   },
   description: VETERAN_SITE_DESCRIPTION,
+  manifest: "/outreach.webmanifest",
+  icons: { icon: "/outreach-icon.svg", apple: "/outreach-icon.svg" },
 };
 
 export default async function VeteransLayout({

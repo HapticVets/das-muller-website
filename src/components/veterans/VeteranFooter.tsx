@@ -52,13 +52,13 @@ export default function VeteranFooter() {
 
             <VeteranLink
 
-              href="/veterans/about"
+              href="/veterans/membership"
 
               className="transition hover:text-white"
 
             >
 
-              About
+              Membership
 
             </VeteranLink>
 
@@ -126,7 +126,7 @@ export default function VeteranFooter() {
 
             >
 
-              Main Website
+              Patriot K9 Command (separate business)
 
             </a>
 
@@ -134,7 +134,7 @@ export default function VeteranFooter() {
 
             <a href="tel:8132996905" className="transition hover:text-white">(813) 299-6905</a>
 
-            <a href={`${MAIN_SITE_URL}/privacy`} className="transition hover:text-white">Website privacy policy</a>
+            <a href="https://hapticvets.com/privacy" className="transition hover:text-white">Website privacy policy</a>
 
           </div>
 

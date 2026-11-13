@@ -13,6 +13,10 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (["/favicon.ico", "/icon.png", "/apple-icon.png"].includes(request.nextUrl.pathname)) {
+    return NextResponse.rewrite(new URL("/outreach-icon.svg", request.url));
+  }
+
   const rewritePath = getVeteranRewritePath(request.nextUrl.pathname);
 
   if (!rewritePath) {
@@ -27,6 +31,7 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
+    "/favicon.ico", "/icon.png", "/apple-icon.png",
     "/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|site.webmanifest|.*\\..*).*)",
   ],
 };

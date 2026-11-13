@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { headers } from "next/headers";
+import { isVeteranHostname } from "@/lib/veteranRouting";
 import { MAIN_SITE_URL } from "@/lib/siteDomains";
 import {
   OG_IMAGE_PATH,
@@ -48,16 +50,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const requestHeaders = await headers();
+  const outreachHost = isVeteranHostname(requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host"));
   return (
     <html lang="en">
       <body>
         {children}
-        <Script
+        {!outreachHost && <><Script
           id="google-ads-base-tag"
           src="https://www.googletagmanager.com/gtag/js?id=AW-18273570871"
           strategy="afterInteractive"
@@ -70,6 +74,7 @@ export default function RootLayout({
             gtag('config', 'AW-18273570871');
           `}
         </Script>
+        </>}
       </body>
     </html>
   );
