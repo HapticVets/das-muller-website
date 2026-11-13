@@ -8,7 +8,7 @@ export default function VeteranFooter() {
 
   return (
 
-    <footer className="border-t border-neutral-900 bg-black">
+    <footer className="outreach-footer border-t border-neutral-900 bg-black">
 
       <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[1.1fr_0.9fr_0.8fr] lg:px-12">
 

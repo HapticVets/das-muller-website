@@ -1,5 +1,38 @@
 @import "tailwindcss";
 
+.outreach-content {
+  overflow-wrap: anywhere;
+}
+
+.outreach-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+@media (max-width: 639px) {
+  .outreach-content .section-shell,
+  .outreach-content .section-shell-tight {
+    padding-inline: 1.25rem;
+    padding-block: 3rem;
+  }
+
+  .outreach-content .surface-card {
+    padding: 1.25rem;
+  }
+
+  .outreach-content .surface-card.overflow-hidden {
+    padding: 0;
+  }
+
+  .outreach-content .action-primary,
+  .outreach-content .action-secondary {
+    width: 100%;
+    min-height: 48px;
+    text-align: center;
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

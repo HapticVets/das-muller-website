@@ -108,7 +108,8 @@ export default function VeteranAdventuresPage() {
           they have not yet been priced into the original cost subtotal.
         </p>
         <p className="mb-6 max-w-3xl rounded-xl border border-amber-500/30 bg-amber-500/5 p-5 leading-7 text-neutral-200">Frontline Chimney is confirmed as our food sponsor and has committed to covering food for the trip. The food estimate below remains part of the preliminary cost plan; the commitment’s dollar value and payment or delivery details have not yet been reconciled into funding totals.</p>
-        <div className="overflow-x-auto rounded-xl border border-neutral-800">
+        <p className="mb-3 text-sm text-neutral-400 sm:hidden">Swipe across the budget to see every column.</p>
+        <div role="region" aria-label="Preliminary event budget, scroll horizontally for more columns" tabIndex={0} className="overflow-x-auto rounded-xl border border-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300">
           <table className="w-full min-w-[480px] text-left text-sm">
             <caption className="sr-only">Mission Hocking Hills preliminary budget in US dollars</caption>
             <thead className="bg-neutral-900 text-white"><tr><th scope="col" className="p-4">Category</th><th scope="col" className="p-4">Estimate</th><th scope="col" className="p-4">Basis</th></tr></thead>

@@ -35,7 +35,7 @@ export default async function VeteransLayout({
     <VeteranRouteProvider useSubdomainPaths={useSubdomainPaths}>
       <a href="#outreach-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-amber-400 focus:p-4 focus:text-black">Skip to outreach content</a>
       <VeteranNav />
-      <main id="outreach-content" className="min-h-screen bg-neutral-950 text-white">{children}</main>
+      <main id="outreach-content" className="outreach-content min-h-screen bg-neutral-950 text-white">{children}</main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({"@context":"https://schema.org","@type":"Organization",name:"Haptic Veteran Outreach",url:VETERAN_SITE_URL,email:"jreese@hapticvets.com",telephone:"+1-813-299-6905",description:"Ohio nonprofit developing veteran connection, resources, and planned community activities."}).replace(/</g,"\u003c")}} />
       <VeteranFooter />
     </VeteranRouteProvider>
