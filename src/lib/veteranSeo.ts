@@ -5,7 +5,7 @@ export const VETERAN_SITE_NAME = "Haptic Veteran Outreach";
 export const VETERAN_SITE_DESCRIPTION =
   "Haptic Veteran Outreach is an Ohio nonprofit developing veteran connection, practical resources, shared adventures, and future skills workshops.";
 export const VETERAN_OG_IMAGE_PATH =
-  "/images/veterans/branding/og-image1-v2.jpg";
+  "/images/veterans/branding/haptic-veteran-outreach-preview-v1.png";
 
 type VeteranMetadataOptions = {
   title: string;
@@ -41,8 +41,8 @@ export function buildVeteranMetadata({
       images: [
         {
           url: imagePath,
-          width: 1358,
-          height: 1159,
+          width: 1734,
+          height: 907,
           alt: imageAlt,
         },
       ],

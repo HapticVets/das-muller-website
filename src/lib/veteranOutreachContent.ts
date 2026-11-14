@@ -20,7 +20,7 @@ export const veteranOutreachAssets = {
     alt: "Das Muller logo.",
   },
   ogImage: {
-    src: "/images/veterans/branding/og-image1-v2.jpg",
+    src: "/images/veterans/branding/haptic-veteran-outreach-preview-v1.png",
     alt: "Haptic Veteran Outreach social sharing image.",
   },
 } as const;
